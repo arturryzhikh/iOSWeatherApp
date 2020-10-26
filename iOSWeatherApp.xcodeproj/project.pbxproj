@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86825471A1400F2EB22 /* AppDelegate.swift */; };
 		751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86A25471A1400F2EB22 /* SceneDelegate.swift */; };
-		751BF86D25471A1400F2EB22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86C25471A1400F2EB22 /* ViewController.swift */; };
-		751BF87025471A1400F2EB22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751BF86E25471A1400F2EB22 /* Main.storyboard */; };
+		751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86C25471A1400F2EB22 /* WeatherController.swift */; };
 		751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 751BF87125471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld */; };
 		751BF87525471A1500F2EB22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 751BF87425471A1500F2EB22 /* Assets.xcassets */; };
 		751BF87825471A1500F2EB22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */; };
@@ -39,8 +38,7 @@
 		751BF86525471A1400F2EB22 /* iOSWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF86825471A1400F2EB22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751BF86A25471A1400F2EB22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		751BF86C25471A1400F2EB22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		751BF86F25471A1400F2EB22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		751BF86C25471A1400F2EB22 /* WeatherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherController.swift; sourceTree = "<group>"; };
 		751BF87225471A1400F2EB22 /* iOSWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSWeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		751BF87425471A1500F2EB22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		751BF87725471A1500F2EB22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,14 +99,9 @@
 		751BF86725471A1400F2EB22 /* iOSWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				751BF86825471A1400F2EB22 /* AppDelegate.swift */,
-				751BF86A25471A1400F2EB22 /* SceneDelegate.swift */,
-				751BF86C25471A1400F2EB22 /* ViewController.swift */,
-				751BF86E25471A1400F2EB22 /* Main.storyboard */,
-				751BF87425471A1500F2EB22 /* Assets.xcassets */,
-				751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */,
-				751BF87925471A1500F2EB22 /* Info.plist */,
-				751BF87125471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld */,
+				7531FE1F25474DBB00F55875 /* Models */,
+				7531FE1D25474D8A00F55875 /* Modules */,
+				7531FE1925474D6A00F55875 /* Application */,
 			);
 			path = iOSWeatherApp;
 			sourceTree = "<group>";
@@ -129,6 +122,42 @@
 				751BF88F25471A1500F2EB22 /* Info.plist */,
 			);
 			path = iOSWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		7531FE1925474D6A00F55875 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				751BF87425471A1500F2EB22 /* Assets.xcassets */,
+				751BF86825471A1400F2EB22 /* AppDelegate.swift */,
+				751BF86A25471A1400F2EB22 /* SceneDelegate.swift */,
+				751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */,
+				751BF87925471A1500F2EB22 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		7531FE1D25474D8A00F55875 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7531FE1E25474DA500F55875 /* Weather */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7531FE1E25474DA500F55875 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		7531FE1F25474DBB00F55875 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				751BF87125471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +265,6 @@
 			files = (
 				751BF87825471A1500F2EB22 /* LaunchScreen.storyboard in Resources */,
 				751BF87525471A1500F2EB22 /* Assets.xcassets in Resources */,
-				751BF87025471A1400F2EB22 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				751BF86D25471A1400F2EB22 /* ViewController.swift in Sources */,
+				751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */,
 				751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */,
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
@@ -300,14 +328,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		751BF86E25471A1400F2EB22 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				751BF86F25471A1400F2EB22 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -425,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +462,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z6LFXP9G2;
-				INFOPLIST_FILE = iOSWeatherApp/Info.plist;
+				INFOPLIST_FILE = iOSWeatherApp/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,7 +481,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3Z6LFXP9G2;
-				INFOPLIST_FILE = iOSWeatherApp/Info.plist;
+				INFOPLIST_FILE = iOSWeatherApp/Application/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
