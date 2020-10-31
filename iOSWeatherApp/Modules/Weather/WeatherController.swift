@@ -8,12 +8,14 @@
 import UIKit
 
 class WeatherController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .magenta
+        view.backgroundColor = .red
+        printFunction(#function)
     }
 
 
 }
+
 
