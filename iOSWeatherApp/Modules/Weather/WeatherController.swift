@@ -31,7 +31,7 @@ struct ContentViewController_Previews: PreviewProvider {
 #endif
 final class WeatherController: UIViewController {
     var headerHeightConstraint : NSLayoutConstraint!
-    var headerMinHeight: CGFloat = 110
+    var headerMinHeight: CGFloat = 104
     lazy var headerMaxHeight: CGFloat = 300
     private var tableView: UITableView!
     private var header: WeatherHeader!
@@ -48,12 +48,18 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         setupHeader()
         setupTableView()
-       
+        view.backgroundColor = .blue
 
     }
     
     private func setupTableView()  {
         tableView = UITableView(frame: .zero, style: .plain)
+        tableView.backgroundColor = .clear
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
@@ -83,15 +89,51 @@ final class WeatherController: UIViewController {
 }
 
 extension WeatherController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 200  }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            
+            cell.backgroundColor = .red
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            
+            cell.backgroundColor = .black
+            return cell
+        case 2:
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.backgroundColor = .gray
+        cell.backgroundColor = .yellow
         return cell
+        default:
+       
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+            cell.backgroundColor = .green
+        return cell
+        }
+        
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        view.backgroundColor = .magenta
+            return view }
+        return nil
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return section == 0 ? 150: 0
+        
     }
     
     
@@ -119,35 +161,11 @@ extension WeatherController: UIScrollViewDelegate {
         } else {
             UIView.animate(withDuration: 0.15) {
                 self.headerHeightConstraint.constant = newHeaderHeight
+                scrollView.contentOffset.y = 0
                 self.view.layoutIfNeeded()
             }
            
         }
         self.view.layoutIfNeeded()
     }
-
-//            if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
-//                //Scrolled to bottom
-//                UIView.animate(withDuration: 0.3) {
-//                    self.headerHeightConstraint.constant = 0.0
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//            else if (scrollView.contentOffset.y < self.lastContentOffset || scrollView.contentOffset.y <= 0) && (self.headerHeightConstraint.constant != self.maxHeaderHeight)  {
-//                //Scrolling up, scrolled to top
-//                UIView.animate(withDuration: 0.3) {
-//                    self.headerHeightConstraint.constant = self.maxHeaderHeight
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//            else if (scrollView.contentOffset.y > self.lastContentOffset) && self.headerHeightConstraint.constant != 0.0 {
-//                //Scrolling down
-//                UIView.animate(withDuration: 0.3) {
-//                    self.headerHeightConstraint.constant = 0.0
-//                    self.view.layoutIfNeeded()
-//                }
-//            }
-//            self.lastContentOffset = scrollView.contentOffset.y
-
-
 }

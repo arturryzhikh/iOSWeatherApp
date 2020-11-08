@@ -12,34 +12,34 @@ final class WeatherHeader: UIView {
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+        backgroundColor = .clear
         setupSubviews()
     }
-   
+    
     //MARK: Subviews
-   private let cityLabel: UILabel = {
+    private let cityLabel: UILabel = {
         let lbl = UILabel()
-      
         lbl.text = "Новороссийск"
-        lbl.font = UIFont.boldSystemFont(ofSize: 40)
+        lbl.font = UIFont.boldSystemFont(ofSize: 30)
+        lbl.textColor = .lightGray
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
     }()
     private let weatherOverViewLabel: UILabel = {
         let lbl = UILabel()
-       
+        lbl.textColor = .lightGray
         lbl.text = "Облачно"
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont.systemFont(ofSize: 15)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
     }()
     private let temperatureLabel: UILabel = {
         let lbl = UILabel()
-       
+        lbl.textColor = .lightGray
         lbl.text = "9"
-        lbl.font = UIFont.boldSystemFont(ofSize: 40)
+        lbl.font = UIFont.boldSystemFont(ofSize: 60)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
@@ -53,18 +53,18 @@ final class WeatherHeader: UIView {
     }()
     private let highLabel: UILabel = {
         let lbl = UILabel()
-     
+        lbl.textColor = .lightGray
         lbl.text = "H:12"
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont.systemFont(ofSize: 15)
         lbl.numberOfLines = 1
         lbl.textAlignment = .right
         return lbl
     }()
     private let lowLabel: UILabel = {
         let lbl = UILabel()
-       
+        lbl.textColor = .lightGray
         lbl.text = "L:7"
-        lbl.font = UIFont.systemFont(ofSize: 20)
+        lbl.font = UIFont.systemFont(ofSize: 15)
         lbl.numberOfLines = 1
         lbl.textAlignment = .left
         return lbl
@@ -73,7 +73,7 @@ final class WeatherHeader: UIView {
     
     private func setupSubviews() {
         let padding: CGFloat = 2
-    
+        
         self.setSubviewsForAutoLayout([cityLabel,
                                        weatherOverViewLabel,
                                        temperatureLabel,
