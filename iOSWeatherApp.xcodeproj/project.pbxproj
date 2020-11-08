@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		75106E5C2557D16300C0B2C5 /* WeatherFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75106E5B2557D16300C0B2C5 /* WeatherFlowLayout.swift */; };
 		751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86825471A1400F2EB22 /* AppDelegate.swift */; };
 		751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86A25471A1400F2EB22 /* SceneDelegate.swift */; };
 		751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86C25471A1400F2EB22 /* WeatherController.swift */; };
@@ -39,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		75106E5B2557D16300C0B2C5 /* WeatherFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFlowLayout.swift; sourceTree = "<group>"; };
 		751BF86525471A1400F2EB22 /* iOSWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF86825471A1400F2EB22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751BF86A25471A1400F2EB22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
-				75106E5B2557D16300C0B2C5 /* WeatherFlowLayout.swift */,
 				7567BA872556FE0B006082FB /* WeatherHeader.swift */,
 			);
 			path = Weather;
@@ -309,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75106E5C2557D16300C0B2C5 /* WeatherFlowLayout.swift in Sources */,
 				751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */,
 				7567BA882556FE0B006082FB /* WeatherHeader.swift in Sources */,
 				751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */,

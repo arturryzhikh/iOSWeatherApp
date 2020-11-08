@@ -11,7 +11,7 @@ public extension UIView {
     subview.translatesAutoresizingMaskIntoConstraints = false
     self.addSubview(subview)
     }
-    func setSubviewsForAutoLayout(_ subviews: UIView...) {
+    func setSubviewsForAutoLayout(_ subviews: [UIView]) {
         subviews.forEach(self.setSubviewForAutoLayout)
     }
     func fill(_ view : UIView) {

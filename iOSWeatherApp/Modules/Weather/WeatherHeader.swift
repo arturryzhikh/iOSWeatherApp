@@ -72,8 +72,12 @@ final class WeatherHeader: UIView {
     
     
     private func setupSubviews() {
-        let padding: CGFloat = 8
-        self.setSubviewsForAutoLayout(cityLabel,weatherOverViewLabel,temperatureLabel,highLowStack)
+        let padding: CGFloat = 2
+    
+        self.setSubviewsForAutoLayout([cityLabel,
+                                       weatherOverViewLabel,
+                                       temperatureLabel,
+                                       highLowStack])
         
         NSLayoutConstraint.activate([
             //Constraint city label
@@ -92,9 +96,6 @@ final class WeatherHeader: UIView {
             highLowStack.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor,constant: padding),
             highLowStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             highLowStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            
-            
-            
         ])
     }
     
