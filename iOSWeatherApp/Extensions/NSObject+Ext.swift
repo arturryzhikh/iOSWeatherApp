@@ -7,13 +7,12 @@
 
 import UIKit
 
-extension UIResponder {
+extension NSObject {
     /// Prints function and caller's class name that call this function
     ///
     /// - Parameters:
-    ///     - function: Use *#function* to get calling function's name
     ///     - message:  Additional message
-    func printFunction(_ function: String,  message: String = "") {
+    func printFunction(_ function: String = #function,  message: String = "") {
         print("Caller: \(Self.className) Function: \(function) \(message)")
    }
     
