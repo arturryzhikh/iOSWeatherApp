@@ -6,6 +6,103 @@
 //
 
 import UIKit
+
+final class WeatherController: UIViewController {
+   
+    private var collectionView: UICollectionView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: WeatherFlowLayout())
+        collectionView.backgroundColor = .yellow
+        collectionView.showsVerticalScrollIndicator = false
+        //constraint collection view
+        view.setSubviewForAutoLayout(collectionView)
+        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        //register reusable views
+        collectionView.register(WeatherHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className)
+        collectionView.register(MyCell.self, forCellWithReuseIdentifier: MyCell.className)
+        //set delegate & data source
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
+        //setup layout
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+            layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 200)
+            
+            
+        }
+        print(collectionView.numberOfItems(inSection: 0))
+        
+       
+        
+        
+    }
+    
+    
+    
+}
+
+extension WeatherController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        5
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+           return  1
+        default:
+           return 100
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCell.className,
+                                                      for: indexPath) as! MyCell
+        cell.backgroundColor = indexPath.section == 0 ? .red : .green
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else  {
+            return UICollectionReusableView()
+        }
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
+        return header
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return section == 0 ? CGSize(width: view.frame.width, height: 300) : .zero
+        
+    }
+    
+}
+
+extension WeatherController: UICollectionViewDelegateFlowLayout {
+   
+}
+
+
+
+
+
 #if DEBUG
 import SwiftUI
 struct WeatherControllerContainerView: UIViewControllerRepresentable {
@@ -29,143 +126,5 @@ struct ContentViewController_Previews: PreviewProvider {
 }
 
 #endif
-final class WeatherController: UIViewController {
-    var headerHeightConstraint : NSLayoutConstraint!
-    var headerMinHeight: CGFloat = 104
-    lazy var headerMaxHeight: CGFloat = 300
-    private var tableView: UITableView!
-    private var header: WeatherHeader!
-    private func makeGradient() {
-        let layer = CAGradientLayer()
-        layer.colors = [#colorLiteral(red: 1, green: 0.5058823824, blue: 0.4392151833, alpha: 1),#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)].map { $0.cgColor }
-        layer.startPoint = CGPoint(x: 0.5, y: 0)
-        layer.endPoint = CGPoint(x: 0.5, y: 1)
-        layer.frame = view.bounds
-        view.layer.addSublayer(layer)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupHeader()
-        setupTableView()
-        view.backgroundColor = .blue
 
-    }
-    
-    private func setupTableView()  {
-        tableView = UITableView(frame: .zero, style: .plain)
-        tableView.backgroundColor = .clear
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.separatorColor = .red
-        view.setSubviewForAutoLayout(tableView)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: header.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-    private func setupHeader() {
-        header = WeatherHeader(frame: .zero)
-        
-        view.setSubviewForAutoLayout(header)
-        headerHeightConstraint = header.heightAnchor.constraint(equalToConstant: 250)
-        NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: view.topAnchor),
-            header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerHeightConstraint
-        ])
-    }
-    
-}
 
-extension WeatherController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 200  }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
-            cell.backgroundColor = .red
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
-            cell.backgroundColor = .black
-            return cell
-        case 2:
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        cell.backgroundColor = .yellow
-        return cell
-        default:
-       
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-            cell.backgroundColor = .green
-        return cell
-        }
-        
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
-        view.backgroundColor = .magenta
-            return view }
-        return nil
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return section == 0 ? 150: 0
-        
-    }
-    
-    
-    
-}
-extension WeatherController: UITableViewDelegate {
-    
-}
-extension WeatherController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let newHeaderHeight = headerHeightConstraint.constant - scrollView.contentOffset.y
-        if newHeaderHeight >= headerMaxHeight {
-            UIView.animate(withDuration: 0.15) {
-                self.headerHeightConstraint.constant = self.headerMaxHeight
-                self.view.layoutIfNeeded()
-            }
-            
-           
-        } else if  newHeaderHeight <= headerMinHeight {
-            UIView.animate(withDuration: 0.15) {
-                self.headerHeightConstraint.constant = self.headerMinHeight
-                self.view.layoutIfNeeded()
-            }
-           
-        } else {
-            UIView.animate(withDuration: 0.15) {
-                self.headerHeightConstraint.constant = newHeaderHeight
-                scrollView.contentOffset.y = 0
-                self.view.layoutIfNeeded()
-            }
-           
-        }
-        self.view.layoutIfNeeded()
-    }
-}

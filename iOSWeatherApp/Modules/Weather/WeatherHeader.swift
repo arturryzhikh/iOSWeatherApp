@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class WeatherHeader: UIView {
+final class WeatherHeader: UICollectionReusableView {
     
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
-        setupSubviews()
+        backgroundColor = .blue
+//        setupSubviews()
     }
     
     //MARK: Subviews
