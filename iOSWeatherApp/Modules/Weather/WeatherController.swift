@@ -13,7 +13,7 @@ final class WeatherController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: WeatherFlowLayout())
-        collectionView.backgroundColor = .yellow
+        
         collectionView.showsVerticalScrollIndicator = false
         //constraint collection view
         view.setSubviewForAutoLayout(collectionView)
@@ -36,11 +36,11 @@ final class WeatherController: UIViewController {
         //setup layout
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
-            layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: 200)
+            
             
             
         }
-        print(collectionView.numberOfItems(inSection: 0))
+       
         
        
         
@@ -53,14 +53,14 @@ final class WeatherController: UIViewController {
 
 extension WeatherController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
+        2
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-           return  1
+           return  0
         default:
-           return 100
+           return 20
         }
     }
     
@@ -69,28 +69,44 @@ extension WeatherController: UICollectionViewDataSource {
       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCell.className,
                                                       for: indexPath) as! MyCell
-        cell.backgroundColor = indexPath.section == 0 ? .red : .green
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionHeader else  {
+       
+        if indexPath.section == 0 {
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
+            header.backgroundColor = .red
+            return header
+        } else if indexPath.section == 1{
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
+            header.backgroundColor = .green
+            return header
+        } else {
             return UICollectionReusableView()
         }
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
-        return header
+    
+   
+        
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: 50)
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: view.frame.width, height: 300) : .zero
-        
+        if section == 0 {
+            return CGSize(width: view.frame.width, height: 300)
+        } else if section == 1 {
+            return CGSize(width: view.frame.width, height: 150)
+        } else {
+            return .zero
+        }
+       
     }
     
 }
