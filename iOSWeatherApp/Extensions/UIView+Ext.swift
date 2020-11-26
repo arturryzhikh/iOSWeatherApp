@@ -6,8 +6,9 @@
 //
 
 import UIKit
+
 public extension UIView {
-    /// Adds indibidual UIView as subview, set it's translateAutoResizingMaskIntoConstraints property to false
+    /// Adds individual UIView as subview, set it's translateAutoResizingMaskIntoConstraints property to false
     ///
     /// - Parameters:
     ///     - subview: UIView to add
@@ -39,6 +40,12 @@ public extension UIView {
     func centerInContainer(_ view: UIView) {
         horizontallyInContainer(view)
         verticallyInContainer(view)
+    }
+    func trailingTo(_ view: UIView, constant: CGFloat = 0, isActive: Bool = true) {
+        self.trailingAnchor.constraint(equalTo: view.trailingAnchor , constant: constant).isActive = isActive
+    }
+    func leadingTo(_ view: UIView, constant: CGFloat = 0, isActive: Bool = true) {
+        self.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: constant).isActive = isActive
     }
     
 }

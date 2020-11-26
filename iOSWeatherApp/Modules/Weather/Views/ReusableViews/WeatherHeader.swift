@@ -8,12 +8,10 @@
 import UIKit
 
 final class WeatherHeader: UICollectionReusableView {
-    
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .blue
-//        setupSubviews()
+        // setupSubviews()
     }
     static var kind: String = UICollectionView.elementKindSectionHeader
     //MARK: Subviews

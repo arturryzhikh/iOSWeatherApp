@@ -8,13 +8,19 @@
 import UIKit
 
 class TestCell: UICollectionViewCell {
+    override var frame: CGRect {
+        willSet {
+            printFunction(message: "\(newValue)")
+        }
+    }
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         label = UILabel()
         setSubviewForAutoLayout(label)
-        label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        label.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        label.centerInContainer(self)
+        label.trailingTo(self)
+        label.leadingTo(self)
         label.textColor = .black
         label.textAlignment = .center
     }

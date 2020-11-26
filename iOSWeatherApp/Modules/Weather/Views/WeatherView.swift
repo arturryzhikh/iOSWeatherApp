@@ -13,7 +13,6 @@ final class WeatherView: UIView {
     //MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print(frame)
         makeCollectionView()
     }
     
@@ -22,7 +21,8 @@ final class WeatherView: UIView {
     }
     //MARK: Instance methods
     private func makeCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: TestLayout())
+        collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         //constraint collection view
         self.setSubviewForAutoLayout(collectionView)
@@ -31,12 +31,21 @@ final class WeatherView: UIView {
         collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         //register headers
-        collectionView.register(WeatherHeader.self,
-                                forSupplementaryViewOfKind: WeatherHeader.kind,
-                                withReuseIdentifier: WeatherHeader.className)
+        collectionView.register(TestHeader.self,
+                                forSupplementaryViewOfKind: TestHeader.kind,
+                                withReuseIdentifier: TestHeader.className)
+        //register footers
+        collectionView.register(TestFooter.self,
+                                forSupplementaryViewOfKind: TestFooter.kind,
+                                withReuseIdentifier: TestFooter.className)
         //register Cells
         collectionView.register(TestCell.self, forCellWithReuseIdentifier: TestCell.className)
-        //register footers
+     
+        //layout setup
+        
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .vertical
+        }
         //pin collection view to the top of the view
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
