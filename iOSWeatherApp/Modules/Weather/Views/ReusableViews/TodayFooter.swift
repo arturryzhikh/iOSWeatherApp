@@ -7,10 +7,8 @@
 
 import UIKit
 
-class TestFooter: UICollectionReusableView, SuplementaryView {
-    static var kind: String {
-        return UICollectionView.elementKindSectionFooter
-    }
+class TodayFooter: UICollectionReusableView {
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
        

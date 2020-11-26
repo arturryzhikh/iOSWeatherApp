@@ -75,15 +75,15 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader :
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: TestHeader.kind,
-                                                                         withReuseIdentifier: TestHeader.className,
-                                                                         for: indexPath)     as! TestHeader
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: TodayHeader.reuseIdentifier,
+                                                                         for: indexPath) as! TodayHeader
             header.backgroundColor = .yellow
             return header
         case UICollectionView.elementKindSectionFooter :
-            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: TestFooter.kind,
-                                                                         withReuseIdentifier: TestFooter.className,
-                                                                         for: indexPath) as! TestFooter
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                         withReuseIdentifier: TodayFooter.reuseIdentifier,
+                                                                         for: indexPath) as! TodayFooter
             footer.backgroundColor = .green
             return footer
         default:

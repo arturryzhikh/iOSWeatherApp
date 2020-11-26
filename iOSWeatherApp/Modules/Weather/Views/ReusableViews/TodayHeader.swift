@@ -1,19 +1,20 @@
 //
-//  WeatherHeader.swift
+//  TestHeader.swift
 //  iOSWeatherApp
 //
-//  Created by Artur Ryzhikh on 07.11.2020.
+//  Created by Artur Ryzhikh on 26.11.2020.
 //
 
 import UIKit
 
-final class WeatherHeader: UICollectionReusableView {
+class TodayHeader: UICollectionReusableView {
+
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         // setupSubviews()
     }
-    static var kind: String = UICollectionView.elementKindSectionHeader
+  
     //MARK: Subviews
     private let cityLabel: UILabel = {
         let lbl = UILabel()
@@ -100,4 +101,7 @@ final class WeatherHeader: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+        
 }

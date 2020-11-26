@@ -31,13 +31,14 @@ final class WeatherView: UIView {
         collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         //register headers
-        collectionView.register(TestHeader.self,
-                                forSupplementaryViewOfKind: TestHeader.kind,
-                                withReuseIdentifier: TestHeader.className)
+        collectionView.register(TodayHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: TodayHeader.reuseIdentifier)
+        
         //register footers
-        collectionView.register(TestFooter.self,
-                                forSupplementaryViewOfKind: TestFooter.kind,
-                                withReuseIdentifier: TestFooter.className)
+        collectionView.register(TodayFooter.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                withReuseIdentifier: TodayFooter.reuseIdentifier)
         //register Cells
         collectionView.register(TestCell.self, forCellWithReuseIdentifier: TestCell.className)
      
