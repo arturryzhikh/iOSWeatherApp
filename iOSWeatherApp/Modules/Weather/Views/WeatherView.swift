@@ -21,7 +21,7 @@ final class WeatherView: UIView {
     }
     //MARK: Instance methods
     private func makeCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: TestLayout())
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
         collectionView.backgroundColor = .white
         collectionView.showsVerticalScrollIndicator = false
         //constraint collection view

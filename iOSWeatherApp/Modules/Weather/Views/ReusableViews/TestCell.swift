@@ -8,11 +8,6 @@
 import UIKit
 
 class TestCell: UICollectionViewCell {
-    override var frame: CGRect {
-        willSet {
-            printFunction(message: "\(newValue)")
-        }
-    }
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)

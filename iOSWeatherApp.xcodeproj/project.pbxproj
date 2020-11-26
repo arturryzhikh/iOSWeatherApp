@@ -21,7 +21,7 @@
 		75AE306A256FB22E00549CB6 /* TestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE3069256FB22E00549CB6 /* TestHeader.swift */; };
 		75AE306F256FB24400549CB6 /* TestFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE306E256FB24400549CB6 /* TestFooter.swift */; };
 		75C2B00F256F8679000A863C /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C2B00E256F8679000A863C /* WeatherView.swift */; };
-		75C2B020256F9AB4000A863C /* TestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C2B01F256F9AB4000A863C /* TestLayout.swift */; };
+		75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C2B01F256F9AB4000A863C /* WeatherFlowLayout.swift */; };
 		75CB77E9256131180081BE16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB77E8256131180081BE16 /* TestCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,7 @@
 		75AE3069256FB22E00549CB6 /* TestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHeader.swift; sourceTree = "<group>"; };
 		75AE306E256FB24400549CB6 /* TestFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFooter.swift; sourceTree = "<group>"; };
 		75C2B00E256F8679000A863C /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
-		75C2B01F256F9AB4000A863C /* TestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLayout.swift; sourceTree = "<group>"; };
+		75C2B01F256F9AB4000A863C /* WeatherFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFlowLayout.swift; sourceTree = "<group>"; };
 		75CB77E8256131180081BE16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,7 +219,7 @@
 		75C2B03B256FB033000A863C /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				75C2B01F256F9AB4000A863C /* TestLayout.swift */,
+				75C2B01F256F9AB4000A863C /* WeatherFlowLayout.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -363,7 +363,7 @@
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
-				75C2B020256F9AB4000A863C /* TestLayout.swift in Sources */,
+				75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */,
 				757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

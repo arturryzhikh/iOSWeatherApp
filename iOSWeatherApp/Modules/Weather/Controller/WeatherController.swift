@@ -97,6 +97,7 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
 //MARK: UICollectionViewDelegateFlowLayout
     //item size
 extension WeatherController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
