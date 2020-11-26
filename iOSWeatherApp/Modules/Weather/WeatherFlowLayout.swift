@@ -4,22 +4,7 @@
 //
 //  Created by Artur Ryzhikh on 15.11.2020.
 //
-public struct Window {
-    
-    static var frame: CGRect {
-        UIScreen.main.bounds
-    }
-    static var width: CGFloat {
-        return Window.frame.width
-    }
-    static var height: CGFloat {
-        return Window.frame.height
-    }
-    static var origin: CGPoint {
-        return Window.frame.origin
-    }
-    
-}
+
 import UIKit
 
 final class WeatherFlowLayout: UICollectionViewFlowLayout {
@@ -61,7 +46,7 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         guard let topHeader = headers.first, let secondHeader = headers.last else { return nil }
         
         
-        let topHeaderDefaulHeight:CGFloat = 300.0
+        let topHeaderDefaulHeight: CGFloat = 300.0
         topHeader.frame.size.height = max(150, topHeaderDefaulHeight - yOffset)
         topHeader.frame.origin.y = yOffset
         
@@ -85,7 +70,12 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         return attributes
     }
     
-    
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        if indexPath.section == 0 {
+            printFunction(message: "\(attributes)")
+        }
+        return nil
+    }
     
 }
 //let header = cache.filter { $0.representedElementKind == UICollectionView.elementKindSectionHeader}.first

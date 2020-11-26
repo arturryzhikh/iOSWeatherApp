@@ -15,7 +15,7 @@ final class WeatherHeader: UICollectionReusableView {
         backgroundColor = .blue
 //        setupSubviews()
     }
-    
+    static var kind: String = UICollectionView.elementKindSectionHeader
     //MARK: Subviews
     private let cityLabel: UILabel = {
         let lbl = UILabel()

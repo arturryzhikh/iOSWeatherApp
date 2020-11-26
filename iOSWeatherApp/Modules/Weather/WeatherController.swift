@@ -8,116 +8,75 @@
 import UIKit
 
 final class WeatherController: UIViewController {
-   
-    private var collectionView: UICollectionView!
+    private var weatherView: WeatherView {
+        return self.view as! WeatherView
+    }
+    
+    private var collectionView: UICollectionView {
+        return weatherView.collectionView
+    }
+    //MARK: Life Cycle
+    override func loadView() {
+        view = WeatherView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: WeatherFlowLayout())
-        
-        collectionView.showsVerticalScrollIndicator = false
-        //constraint collection view
-        view.setSubviewForAutoLayout(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        //register reusable views
-        collectionView.register(WeatherHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className)
-        collectionView.register(MyCell.self, forCellWithReuseIdentifier: MyCell.className)
-        //set delegate & data source
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
-        //setup layout
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .vertical
-            
-            
-            
-        }
-       
-        
-       
-        
-        
     }
     
     
     
 }
+//MARK: Instance methods
 
-extension WeatherController: UICollectionViewDataSource {
+extension WeatherController {
+    
+}
+
+//MARK: UICollectionViewDataSource & UICollectionViewDelegate
+extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
+        7
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-           return  0
-        default:
-           return 20
-        }
+        10
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCell.className,
-                                                      for: indexPath) as! MyCell
-        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.className, for: indexPath) as! TestCell
+        let section = indexPath.section
+        var backgroundColor: UIColor {
+            switch section {
+            case 1:
+                return .red
+            case 2: return .green
+            case 3: return .brown
+            case 4: return .darkGray
+            case 5: return .magenta
+            case 6: return .yellow
+            default: return .cyan
+            }
+        }
+        cell.label.text = "Section: \(indexPath.section) Item: \(indexPath.item)"
+        cell.backgroundColor = backgroundColor
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-       
-        if indexPath.section == 0 {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
-            header.backgroundColor = .red
-            return header
-        } else if indexPath.section == 1{
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WeatherHeader.className, for: indexPath) as! WeatherHeader
-            header.backgroundColor = .green
-            return header
-        } else {
-            return UICollectionReusableView()
-        }
-    
-   
-        
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: view.frame.width, height: 300)
-        } else if section == 1 {
-            return CGSize(width: view.frame.width, height: 150)
-        } else {
-            return .zero
-        }
-       
-    }
-    
 }
 
+
+//MAKR: UICollectionViewDelegateFlowLayout
 extension WeatherController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 40)
+    }
    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
 }
-
-
-
-
 
 #if DEBUG
 import SwiftUI
