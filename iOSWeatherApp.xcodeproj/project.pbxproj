@@ -16,7 +16,7 @@
 		751BF88325471A1500F2EB22 /* iOSWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88225471A1500F2EB22 /* iOSWeatherAppTests.swift */; };
 		751BF88E25471A1500F2EB22 /* iOSWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */; };
 		7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7567BA8C255700D3006082FB /* UIView+Ext.swift */; };
-		756F3E3E256FD99A00A349DE /* UIReusableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3E3D256FD99A00A349DE /* UIReusableView+Extension.swift */; };
+		756F3E3E256FD99A00A349DE /* UIReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F3E3D256FD99A00A349DE /* UIReusableView+Ext.swift */; };
 		757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */; };
 		75AE306A256FB22E00549CB6 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE3069256FB22E00549CB6 /* TodayHeader.swift */; };
 		75AE306F256FB24400549CB6 /* TodayFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE306E256FB24400549CB6 /* TodayFooter.swift */; };
@@ -59,7 +59,7 @@
 		751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWeatherAppUITests.swift; sourceTree = "<group>"; };
 		751BF88F25471A1500F2EB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7567BA8C255700D3006082FB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
-		756F3E3D256FD99A00A349DE /* UIReusableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIReusableView+Extension.swift"; sourceTree = "<group>"; };
+		756F3E3D256FD99A00A349DE /* UIReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIReusableView+Ext.swift"; sourceTree = "<group>"; };
 		757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		75AE3069256FB22E00549CB6 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
 		75AE306E256FB24400549CB6 /* TodayFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFooter.swift; sourceTree = "<group>"; };
@@ -180,17 +180,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		756F3E3C256FD96D00A349DE /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		757D526C2547F9C100F53F1D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				756F3E3D256FD99A00A349DE /* UIReusableView+Extension.swift */,
+				756F3E3D256FD99A00A349DE /* UIReusableView+Ext.swift */,
 				757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */,
 				7567BA8C255700D3006082FB /* UIView+Ext.swift */,
 			);
@@ -219,7 +212,6 @@
 		75C2B039256FAFEA000A863C /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
-				756F3E3C256FD96D00A349DE /* Protocols */,
 				75CB77E8256131180081BE16 /* TestCell.swift */,
 				75AE3069256FB22E00549CB6 /* TodayHeader.swift */,
 				75AE306E256FB24400549CB6 /* TodayFooter.swift */,
@@ -375,7 +367,7 @@
 				7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
 				75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */,
-				756F3E3E256FD99A00A349DE /* UIReusableView+Extension.swift in Sources */,
+				756F3E3E256FD99A00A349DE /* UIReusableView+Ext.swift in Sources */,
 				757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

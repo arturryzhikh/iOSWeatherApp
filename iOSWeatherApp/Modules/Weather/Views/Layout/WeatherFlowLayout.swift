@@ -34,35 +34,34 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         }
     }
     
-    // Telling our UICollectionViewLayout that it should be updating the layout while scrolling
+    // UICollectionViewLayout  should be updating the layout while scrolling
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
     
-    // We’ll use this constantly updating method to configure header and cell behaviours
+    //constantly updating method to configure header and footers behaviours
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        
-        // Scroll offset
-        let offset = collectionView?.contentOffset ?? CGPoint.zero
-        
-        // get all headers
+        // Scroll offset Y
+        let yOffset = collectionView?.contentOffset.y ?? CGPoint.zero.y
+        // all headers attributes
         let headersAttributes = attributesCache.filter { attribute -> Bool in
             return attribute.representedElementKind == UICollectionView.elementKindSectionHeader
         }
+        //all footers attributes
         let footersAttributes = attributesCache.filter { (attribute) -> Bool in
             attribute.representedElementKind == UICollectionView.elementKindSectionFooter
         }
+        // first header and first footer attributes
         guard let header = headersAttributes.first, let footer = footersAttributes.first else { return nil }
-        
         // setup header in first section
         let headerDefaultSize = header.frame.size
-        header.frame.size.height = max(150, headerDefaultSize.height - offset.y)
-        header.frame.origin.y = offset.y
-        
+        header.frame.size.height = max(150, headerDefaultSize.height - yOffset)
+        header.frame.origin.y = yOffset
         // setup footer in  first section
         footer.frame.origin.y = header.frame.origin.y + header.frame.size.height
         return attributesCache
     }
+    
   
     
     

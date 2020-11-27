@@ -26,21 +26,18 @@ final class WeatherView: UIView {
         collectionView.showsVerticalScrollIndicator = false
         //constraint collection view
         self.setSubviewForAutoLayout(collectionView)
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        collectionView.fill(self)
         //register headers
         collectionView.register(TodayHeader.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                forSupplementaryViewOfKind: TodayHeader.kind(.header),
                                 withReuseIdentifier: TodayHeader.reuseIdentifier)
         
         //register footers
         collectionView.register(TodayFooter.self,
-                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                forSupplementaryViewOfKind: TodayFooter.kind(.footer),
                                 withReuseIdentifier: TodayFooter.reuseIdentifier)
         //register Cells
-        collectionView.register(TestCell.self, forCellWithReuseIdentifier: TestCell.className)
+        collectionView.register(TestCell.self, forCellWithReuseIdentifier: TestCell.reuseIdentifier)
      
         //layout setup
         
@@ -53,6 +50,7 @@ final class WeatherView: UIView {
         } else {
             
         }
+       
     
     }
 

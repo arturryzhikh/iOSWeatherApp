@@ -53,7 +53,7 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.className, for: indexPath) as! TestCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.reuseIdentifier, for: indexPath) as! TestCell
         let section = indexPath.section
         var backgroundColor: UIColor {
             switch section {
@@ -73,6 +73,7 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
     //Setup Headers / Footers
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        printFunction(message: "kind: \(kind)")
         switch kind {
         case UICollectionView.elementKindSectionHeader :
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,

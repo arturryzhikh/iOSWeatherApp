@@ -8,6 +8,7 @@
 import UIKit
 
 class TestCell: UICollectionViewCell {
+    
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,6 +19,7 @@ class TestCell: UICollectionViewCell {
         label.leadingTo(self)
         label.textColor = .black
         label.textAlignment = .center
+        
     }
     
     required init?(coder: NSCoder) {
