@@ -13,25 +13,16 @@ final class WeatherView: UIView {
     //MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        makeCollectionView()
+        makeCollectionView(WeatherFlowLayout())
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: Instance methods
-    private func makeCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
-        collectionView.backgroundColor = .white
-        collectionView.showsVerticalScrollIndicator = false
-        //constraint collection view
-        self.setSubviewForAutoLayout(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+    private func makeCollectionView(_ layout: UICollectionViewFlowLayout) {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsVerticalScrollIndicator = false // hide indicator
+        constraintCollectionView()
         //register headers
         collectionView.registerHeaders(TodayHeader.self)
         //register footers
@@ -51,8 +42,15 @@ final class WeatherView: UIView {
         } else {
             
         }
-       
-    
+    }
+    private func constraintCollectionView() {
+        self.setSubviewForAutoLayout(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
 
 }
