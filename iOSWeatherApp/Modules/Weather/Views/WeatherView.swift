@@ -26,23 +26,24 @@ final class WeatherView: UIView {
         collectionView.showsVerticalScrollIndicator = false
         //constraint collection view
         self.setSubviewForAutoLayout(collectionView)
-        collectionView.fill(self)
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
         //register headers
-        collectionView.register(TodayHeader.self,
-                                forSupplementaryViewOfKind: TodayHeader.kind(.header),
-                                withReuseIdentifier: TodayHeader.reuseIdentifier)
-        
+        collectionView.registerHeaders(TodayHeader.self)
         //register footers
-        collectionView.register(TodayFooter.self,
-                                forSupplementaryViewOfKind: TodayFooter.kind(.footer),
-                                withReuseIdentifier: TodayFooter.reuseIdentifier)
+        collectionView.registerFooters(TodayFooter.self)
         //register Cells
-        collectionView.register(TestCell.self, forCellWithReuseIdentifier: TestCell.reuseIdentifier)
-     
+        collectionView.registerCells(TestCell.self)
         //layout setup
-        
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
+           
         }
         //pin collection view to the top of the view
         if #available(iOS 11.0, *) {

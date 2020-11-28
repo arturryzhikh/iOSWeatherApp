@@ -11,9 +11,9 @@ extension NSObject {
     /// Prints function and caller's class name that call this function
     ///
     /// - Parameters:
-    ///     - message:  Additional message
-    func printFunction(_ function: String = #function,  message: String = "") {
-        print("Caller: \(Self.className) Function: \(function) \(message)")
+    ///     - items:  Additional items to print
+    func printFunction(_ function: String = #function, items: Any...) {
+        print("Caller: \(Self.className) Function: \(function)", items)
    }
     
     /// Returns a name of an UIResponder

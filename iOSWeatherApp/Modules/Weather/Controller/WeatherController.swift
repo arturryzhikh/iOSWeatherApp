@@ -26,6 +26,7 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+       
         
     }
     
@@ -47,13 +48,25 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
         switch section {
         case 0:
             return 0
+        case 1:
+            return 4
+        case 2:
+            return 6
+        case 3:
+            return 7
+        case 4:
+            return 4
+        case 5:
+            return 3
+        case 6:
+            return 5
         default:
             return 10
         }
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.reuseIdentifier, for: indexPath) as! TestCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.description(), for: indexPath) as! TestCell
         let section = indexPath.section
         var backgroundColor: UIColor {
             switch section {
@@ -73,18 +86,20 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
     //Setup Headers / Footers
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        printFunction(message: "kind: \(kind)")
+       
         switch kind {
         case UICollectionView.elementKindSectionHeader :
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: TodayHeader.reuseIdentifier,
+                                                                         withReuseIdentifier: TodayHeader.description(),
                                                                          for: indexPath) as! TodayHeader
-            header.backgroundColor = .yellow
+            header.backgroundColor = .blue
+           
             return header
         case UICollectionView.elementKindSectionFooter :
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: TodayFooter.reuseIdentifier,
+                                                                         withReuseIdentifier: TodayFooter.description(),
                                                                          for: indexPath) as! TodayFooter
+            
             footer.backgroundColor = .green
             return footer
         default:
@@ -104,15 +119,25 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
         switch section {
-        case 0:
-            return CGSize(width: collectionView.frame.width - 50 , height: 100)
-            
+        case 1:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+        case 2:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+        case 3:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+        case 4:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+        case 5:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+        case 6:
+            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+      
         default:
-            return CGSize(width: collectionView.frame.width - 100 , height: 100)
+            return .zero
         }
        
     }
-    //header size
+   //header size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {

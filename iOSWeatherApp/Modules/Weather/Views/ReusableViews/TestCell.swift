@@ -14,9 +14,13 @@ class TestCell: UICollectionViewCell {
         super.init(frame: frame)
         label = UILabel()
         setSubviewForAutoLayout(label)
-        label.centerInContainer(self)
-        label.trailingTo(self)
-        label.leadingTo(self)
+        //constraint label
+        NSLayoutConstraint.activate([
+            label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+        ])
+        
         label.textColor = .black
         label.textAlignment = .center
         
