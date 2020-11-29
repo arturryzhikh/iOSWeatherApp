@@ -121,7 +121,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         case 3:
             return CGSize(width: collectionViewWidth, height: Screen.height * 0.07)
         case 4:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.056)
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.05)
         default:
             assert(false, "No appropriate size for thies indexPath")
         }
@@ -141,6 +141,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         let footerSize =  CGSize(width: collectionViewWidth, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
+    
     
    
 }

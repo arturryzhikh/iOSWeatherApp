@@ -74,8 +74,11 @@ final class WeatherView: UIView {
         //create
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
         //check if layout is flow
-        guard let layout = collectionView.collectionViewLayout as? WeatherFlowLayout else {
-            assert(false,"Collection View layout object is not a subclass of UICollectionViewFlowLayout")
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
+            //layout setup
+            layout.scrollDirection = .vertical
+            layout.minimumInteritemSpacing = 0
+            layout.minimumLineSpacing = 0
         }
         collectionView.showsVerticalScrollIndicator = false // hide indicator
         //register headers
@@ -84,10 +87,6 @@ final class WeatherView: UIView {
         collectionView.registerFooters(TodayFooter.self)
         //register Cells
         collectionView.registerCells(HourlyForecastCell.self)
-        //layout setup
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
         //pin collection view to the top of the view
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
