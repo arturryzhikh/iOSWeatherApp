@@ -8,7 +8,9 @@
 import UIKit
 
 class TodayFooter: UICollectionReusableView {
-   
+    static var defaultHeight: CGFloat {
+        Screen.height * 0.15
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
        

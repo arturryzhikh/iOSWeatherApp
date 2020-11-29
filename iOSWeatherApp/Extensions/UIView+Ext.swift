@@ -12,7 +12,7 @@ public extension UIView {
     ///
     /// - Parameters:
     ///     - subview: UIView to add
-    func setSubviewForAutoLayout(_ subview: UIView) {
+    func addSubviewForAutoLayout(_ subview: UIView) {
     subview.translatesAutoresizingMaskIntoConstraints = false
     self.addSubview(subview)
     }
@@ -20,11 +20,9 @@ public extension UIView {
     ///
     /// - Parameters:
     ///     - subview: UIViews to add
-    func setSubviewsForAutoLayout(_ subviews: [UIView]) {
-        subviews.forEach(self.setSubviewForAutoLayout)
+    func addSubviewsForAutoLayout(_ subviews: UIView...) {
+        subviews.forEach(addSubviewForAutoLayout)
     }
-    
-    
 }
 
 

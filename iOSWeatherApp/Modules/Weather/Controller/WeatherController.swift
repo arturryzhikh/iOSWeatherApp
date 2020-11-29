@@ -134,13 +134,15 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: collectionView.frame.width, height: 300) : .zero
+        let headerSize = CGSize(width: collectionView.frame.width, height: TodayHeader.defaultHeight)
+        return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        return section == 0 ? CGSize(width: collectionView.frame.width, height: 150) : .zero
+        let footerSize =  CGSize(width: collectionView.frame.width, height: TodayFooter.defaultHeight)
+        return section == 0 ? footerSize : .zero
     }
    
 }

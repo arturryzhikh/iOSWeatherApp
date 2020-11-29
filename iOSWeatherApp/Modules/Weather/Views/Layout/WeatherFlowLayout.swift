@@ -8,6 +8,7 @@
 import UIKit
 
 final class WeatherFlowLayout: UICollectionViewFlowLayout {
+    
     private var attributesCache: [UICollectionViewLayoutAttributes] = []
     override func prepare() {
         super.prepare()
@@ -54,7 +55,8 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         // first header and first footer attributes
         guard let header = headersAttributes.first, let footer = footersAttributes.first else { return nil }
         // setup header in first section
-        header.frame.size.height = max(TodayHeader.minimumHeight, TodayHeader.defaultHeight - yOffset)
+        let newHeaderHeight = max(TodayHeader.minimumHeight, TodayHeader.defaultHeight - yOffset)
+        header.frame.size.height = newHeaderHeight
         header.frame.origin.y = yOffset
         // setup footer in  first section
         footer.frame.origin.y = header.frame.origin.y + header.frame.size.height

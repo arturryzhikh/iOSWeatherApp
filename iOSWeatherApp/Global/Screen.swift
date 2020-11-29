@@ -17,4 +17,7 @@ struct Screen {
     static var statusBarHeight: CGFloat {
         return UIApplication.shared.statusBarFrame.height
     }
+    static var scale: CGFloat {
+        return UIScreen.main.scale
+    }
 }

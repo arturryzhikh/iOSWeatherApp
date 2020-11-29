@@ -13,7 +13,7 @@ class TestCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         label = UILabel()
-        setSubviewForAutoLayout(label)
+        addSubviewForAutoLayout(label)
         //constraint label
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),

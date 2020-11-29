@@ -9,17 +9,21 @@ import UIKit
 
 class TodayHeader: UICollectionReusableView {
     //MARK: Properties
+  
     //Static properties to determine size
     static var defaultHeight: CGFloat {
-        Screen.height * 0.45
+        minimumHeight * 2
     }
     static var minimumHeight: CGFloat {
-        Screen.height * 0.14
+        Screen.height * 0.15
     }
+
 //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
 //         setupSubviews()
+       
     }
   
     //MARK: Subviews
@@ -80,10 +84,10 @@ class TodayHeader: UICollectionReusableView {
     private func setupSubviews() {
         let padding: CGFloat = 2
         
-        self.setSubviewsForAutoLayout([cityLabel,
+        self.addSubviewsForAutoLayout(cityLabel,
                                        weatherOverViewLabel,
                                        temperatureLabel,
-                                       highLowStack])
+                                       highLowStack)
         
         NSLayoutConstraint.activate([
             //Constraint city label
