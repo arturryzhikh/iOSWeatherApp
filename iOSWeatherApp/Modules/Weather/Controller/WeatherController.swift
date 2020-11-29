@@ -6,14 +6,13 @@
 //
 
 import UIKit
-
+import CoreLocation
 final class WeatherController: UIViewController {
     //MARK: Subviews
     private var weatherView: WeatherView {
         return self.view as! WeatherView
     }
-    
-    private var collectionView: UICollectionView {
+    private var collectionView: UICollectionView  {
         return weatherView.collectionView
     }
     //MARK: Other Properties
@@ -26,13 +25,10 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-       
         
     }
-    
-    
-    
 }
+
 //MARK: Instance methods
 
 extension WeatherController {
@@ -86,14 +82,12 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
     //Setup Headers / Footers
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-       
         switch kind {
         case UICollectionView.elementKindSectionHeader :
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: TodayHeader.description(),
                                                                          for: indexPath) as! TodayHeader
             header.backgroundColor = .blue
-           
             return header
         case UICollectionView.elementKindSectionFooter :
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
@@ -103,13 +97,12 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
             footer.backgroundColor = .green
             return footer
         default:
-            fatalError("No such kind of supplementary view, kind is: \(kind)")
+            assert(false,"No such kind of supplementary view, kind is: \(kind)")
         }
     }
     
     
 }
-
 //MARK: UICollectionViewDelegateFlowLayout
     //item size
 extension WeatherController: UICollectionViewDelegateFlowLayout {
@@ -133,7 +126,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.frame.width - 50 , height: 50)
       
         default:
-            return .zero
+            assert(false,"No appropriate size for this section provided")
         }
        
     }
@@ -151,6 +144,8 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     }
    
 }
+
+
 //MARK: SwiftUI Preview
 #if DEBUG
 import SwiftUI

@@ -15,6 +15,7 @@
 		751BF87825471A1500F2EB22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */; };
 		751BF88325471A1500F2EB22 /* iOSWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88225471A1500F2EB22 /* iOSWeatherAppTests.swift */; };
 		751BF88E25471A1500F2EB22 /* iOSWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */; };
+		75494DBC25737F52004839B9 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75494DBB25737F52004839B9 /* Screen.swift */; };
 		7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7567BA8C255700D3006082FB /* UIView+Ext.swift */; };
 		757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */; };
 		75AE306A256FB22E00549CB6 /* TodayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AE3069256FB22E00549CB6 /* TodayHeader.swift */; };
@@ -58,6 +59,7 @@
 		751BF88925471A1500F2EB22 /* iOSWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWeatherAppUITests.swift; sourceTree = "<group>"; };
 		751BF88F25471A1500F2EB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75494DBB25737F52004839B9 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		7567BA8C255700D3006082FB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		75AE3069256FB22E00549CB6 /* TodayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayHeader.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		751BF86725471A1400F2EB22 /* iOSWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				75494DBA25737F42004839B9 /* Global */,
 				7531FE1925474D6A00F55875 /* Application */,
 				757D526C2547F9C100F53F1D /* Extensions */,
 				7531FE1F25474DBB00F55875 /* Models */,
@@ -178,6 +181,14 @@
 				751BF87125471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		75494DBA25737F42004839B9 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				75494DBB25737F52004839B9 /* Screen.swift */,
+			);
+			path = Global;
 			sourceTree = "<group>";
 		};
 		757D526C2547F9C100F53F1D /* Extensions */ = {
@@ -360,6 +371,7 @@
 				751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */,
 				75CB77E9256131180081BE16 /* TestCell.swift in Sources */,
 				751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */,
+				75494DBC25737F52004839B9 /* Screen.swift in Sources */,
 				75AE306A256FB22E00549CB6 /* TodayHeader.swift in Sources */,
 				75C2B00F256F8679000A863C /* WeatherView.swift in Sources */,
 				75AE306F256FB24400549CB6 /* TodayFooter.swift in Sources */,

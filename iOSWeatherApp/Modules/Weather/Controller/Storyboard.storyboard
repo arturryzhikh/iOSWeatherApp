@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PHOTO-2020-11-25-18-58-37 4" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-CH-56f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PHOTO-2020-11-25-18-58-37" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-CH-56f">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-8c-rXf">
@@ -38,11 +38,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M6-n8-M7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.91304347826087" y="73.660714285714278"/>
+            <point key="canvasLocation" x="-38" y="-5"/>
         </scene>
     </scenes>
     <resources>
-        <image name="PHOTO-2020-11-25-18-58-37 4" width="473" height="1024"/>
+        <image name="PHOTO-2020-11-25-18-58-37" width="473" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

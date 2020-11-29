@@ -8,17 +8,24 @@
 import UIKit
 
 class TodayHeader: UICollectionReusableView {
-
-    //MARK: Life cycle
+    //MARK: Properties
+    //Static properties to determine size
+    static var defaultHeight: CGFloat {
+        Screen.height * 0.45
+    }
+    static var minimumHeight: CGFloat {
+        Screen.height * 0.14
+    }
+//MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // setupSubviews()
+//         setupSubviews()
     }
   
     //MARK: Subviews
     private let cityLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Новороссийск"
+        lbl.text = "Оренбургская Область"
         lbl.font = UIFont.boldSystemFont(ofSize: 30)
         lbl.textColor = .lightGray
         lbl.numberOfLines = 1
@@ -80,7 +87,7 @@ class TodayHeader: UICollectionReusableView {
         
         NSLayoutConstraint.activate([
             //Constraint city label
-            cityLabel.topAnchor.constraint(equalTo: topAnchor,constant: 32),
+            cityLabel.topAnchor.constraint(equalTo: topAnchor,constant: Screen.statusBarHeight),
             cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             cityLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             //Constraint weather overview label
@@ -95,6 +102,7 @@ class TodayHeader: UICollectionReusableView {
             highLowStack.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor,constant: padding),
             highLowStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             highLowStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            highLowStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
