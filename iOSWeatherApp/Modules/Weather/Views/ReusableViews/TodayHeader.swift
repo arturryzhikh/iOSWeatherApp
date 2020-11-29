@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayHeader: UICollectionReusableView {
+class TodayHeader: UICollectionViewCell {
     //MARK: Properties
   
     //Static properties to determine size

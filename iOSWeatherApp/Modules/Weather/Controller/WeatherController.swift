@@ -38,31 +38,28 @@ extension WeatherController {
 //MARK: UICollectionViewDataSource & UICollectionViewDelegate
 extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        7
+        5
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 0
         case 1:
-            return 4
+            return 9
         case 2:
-            return 6
+            return 1
         case 3:
-            return 7
-        case 4:
-            return 4
-        case 5:
-            return 3
-        case 6:
-            return 5
-        default:
             return 10
+        case 4:
+            return 1
+       default:
+            assert(false, "Wrong number of items in section")
         }
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.description(), for: indexPath) as! TestCell
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCell.description(), for: indexPath) as! HourlyForecastCell
         let section = indexPath.section
         var backgroundColor: UIColor {
             switch section {
@@ -110,23 +107,23 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width: CGFloat = collectionView.bounds.width
         let section = indexPath.section
         switch section {
         case 1:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+            return CGSize(width: width , height: 50)
         case 2:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+            return CGSize(width: width , height: 50)
         case 3:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+            return CGSize(width: width , height: 50)
         case 4:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+            return CGSize(width: width , height: 50)
         case 5:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
+            return CGSize(width: width , height: 50)
         case 6:
-            return CGSize(width: collectionView.frame.width - 50 , height: 50)
-      
+            return CGSize(width: width , height: 50)
         default:
-            assert(false,"No appropriate size for this section provided")
+            return .zero
         }
        
     }

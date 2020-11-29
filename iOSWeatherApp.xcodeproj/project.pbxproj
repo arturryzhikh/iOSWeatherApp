@@ -183,6 +183,13 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		753962BF2573F2ED00AD197F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		75494DBA25737F42004839B9 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +220,7 @@
 		75C2B038256FAFDA000A863C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				753962BF2573F2ED00AD197F /* Protocols */,
 				75C2B00E256F8679000A863C /* WeatherView.swift */,
 				75C2B03B256FB033000A863C /* Layout */,
 				75C2B039256FAFEA000A863C /* ReusableViews */,

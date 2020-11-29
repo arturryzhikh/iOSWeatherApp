@@ -46,7 +46,7 @@ final class WeatherView: UIView {
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: pageControlBar.topAnchor)
         ])
     }
     //MARK: Subviews:
@@ -83,7 +83,7 @@ final class WeatherView: UIView {
         //register footers
         collectionView.registerFooters(TodayFooter.self)
         //register Cells
-        collectionView.registerCells(TestCell.self)
+        collectionView.registerCells(HourlyForecastCell.self)
         //layout setup
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
