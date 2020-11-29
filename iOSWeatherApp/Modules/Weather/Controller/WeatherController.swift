@@ -16,6 +16,9 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
+    private var collectionViewWidth: CGFloat {
+        return collectionView.frame.width
+    }
     
     //MARK: Life Cycle
     override func loadView() {
@@ -107,23 +110,20 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width: CGFloat = collectionView.bounds.width
         let section = indexPath.section
         switch section {
-        case 1:
-            return CGSize(width: width , height: 50)
-        case 2:
-            return CGSize(width: width , height: 50)
-        case 3:
-            return CGSize(width: width , height: 50)
-        case 4:
-            return CGSize(width: width , height: 50)
-        case 5:
-            return CGSize(width: width , height: 50)
-        case 6:
-            return CGSize(width: width , height: 50)
-        default:
+        case 0:
             return .zero
+        case 1:
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.03)
+        case 2:
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.12)
+        case 3:
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.07)
+        case 4:
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.056)
+        default:
+            assert(false, "No appropriate size for thies indexPath")
         }
        
     }
@@ -131,16 +131,17 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: collectionView.frame.width, height: TodayHeader.defaultHeight)
+        let headerSize = CGSize(width: collectionViewWidth, height: TodayHeader.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: collectionView.frame.width, height: TodayFooter.defaultHeight)
+        let footerSize =  CGSize(width: collectionViewWidth, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
+    
    
 }
 
