@@ -12,7 +12,16 @@ final class HourlyForecastCell: UICollectionViewCell {
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
+       
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func setup() {
         label = UILabel()
         addSubviewForAutoLayout(label)
         //constraint label
@@ -23,13 +32,5 @@ final class HourlyForecastCell: UICollectionViewCell {
         ])
         label.textColor = .black
         label.textAlignment = .center
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    private func setup() {
-        
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 final class WeatherFlowLayout: UICollectionViewFlowLayout {
-    
     private var attributesCache: [UICollectionViewLayoutAttributes] = []
     override func prepare() {
         super.prepare()

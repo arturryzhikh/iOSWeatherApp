@@ -18,6 +18,7 @@ final class WeatherView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         addConstraints()
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -54,13 +55,15 @@ final class WeatherView: UIView {
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
         v.addSubviewsForAutoLayout(pageControl,line)//add subviews above so the could be visible and interactiable
-        v.backgroundColor = .darkText
+        //FIXME: test background color
+        v.backgroundColor = #colorLiteral(red: 0.5306975654, green: 0.3500108371, blue: 0.7565638628, alpha: 1)
         return v
     }()
     //Top line
     private let line: UIView = {
         let line = UIView()
-        line.backgroundColor = .white
+        //FIXME: test background color
+        line.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
         return line
     }()
     //Page Controle
@@ -73,14 +76,11 @@ final class WeatherView: UIView {
     let collectionView: UICollectionView = {
         //create
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
-        //check if layout is flow
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout{
-            //layout setup
-            layout.scrollDirection = .vertical
-            layout.minimumInteritemSpacing = 0
-            layout.minimumLineSpacing = 0
-        }
-        collectionView.showsVerticalScrollIndicator = false // hide indicator
+        //FIXME: test background color
+        collectionView.backgroundColor = .white
+        // hide indicator
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         //register headers
         collectionView.registerHeaders(TodayHeader.self)
         //register footers

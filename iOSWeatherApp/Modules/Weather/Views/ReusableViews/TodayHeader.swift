@@ -15,7 +15,7 @@ class TodayHeader: UICollectionViewCell {
         minimumHeight * 2
     }
     static var minimumHeight: CGFloat {
-        Screen.height * 0.15
+        Screen.height * 0.143
     }
 
 //MARK: Life cycle

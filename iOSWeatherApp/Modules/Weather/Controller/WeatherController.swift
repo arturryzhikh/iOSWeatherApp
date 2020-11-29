@@ -28,7 +28,6 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
     }
 }
 
@@ -61,14 +60,13 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCell.description(), for: indexPath) as! HourlyForecastCell
         let section = indexPath.section
         var backgroundColor: UIColor {
             switch section {
             case 1: return .red
             case 2: return .green
-            case 3: return .brown
+            case 3: return .blue
             case 4: return .darkGray
             case 5: return .magenta
             case 6: return .yellow
@@ -87,14 +85,14 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: TodayHeader.description(),
                                                                          for: indexPath) as! TodayHeader
-            header.backgroundColor = .blue
+            header.backgroundColor = .gray
             return header
         case UICollectionView.elementKindSectionFooter :
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: TodayFooter.description(),
                                                                          for: indexPath) as! TodayFooter
             
-            footer.backgroundColor = .green
+            footer.backgroundColor = .brown
             return footer
         default:
             assert(false,"No such kind of supplementary view, kind is: \(kind)")
@@ -112,18 +110,16 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
         switch section {
-        case 0:
-            return .zero
         case 1:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.03)
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.327 / 9)
         case 2:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.12)
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.130)
         case 3:
             return CGSize(width: collectionViewWidth, height: Screen.height * 0.07)
         case 4:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.05)
+            return CGSize(width: collectionViewWidth, height: Screen.height * 0.052)
         default:
-            assert(false, "No appropriate size for thies indexPath")
+            assert(false, "No appropriate size for this indexPath")
         }
        
     }
@@ -141,9 +137,15 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         let footerSize =  CGSize(width: collectionViewWidth, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
-    
-    
-   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .zero
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 }
 
 
