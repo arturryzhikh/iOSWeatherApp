@@ -16,9 +16,6 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var collectionViewWidth: CGFloat {
-        return collectionView.frame.width
-    }
     
     //MARK: Life Cycle
     override func loadView() {
@@ -29,12 +26,6 @@ final class WeatherController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-}
-
-//MARK: Instance methods
-
-extension WeatherController {
-    
 }
 
 //MARK: UICollectionViewDataSource & UICollectionViewDelegate
@@ -55,7 +46,7 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
         case 4:
             return 1
        default:
-            assert(false, "Wrong number of items in section")
+           fatalError("Wrong number of items in section")
         }
     }
     //Setup Cells
@@ -95,7 +86,7 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
             footer.backgroundColor = .brown
             return footer
         default:
-            assert(false,"No such kind of supplementary view, kind is: \(kind)")
+            fatalError("No such kind of supplementary view, kind is: \(kind)")
         }
     }
     
@@ -104,22 +95,23 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
 //MARK: UICollectionViewDelegateFlowLayout
     //item size
 extension WeatherController: UICollectionViewDelegateFlowLayout {
-    
+  
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
+        let width = Screen.width * 0.9
         switch section {
         case 1:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.327 / 9)
+            return CGSize(width: width , height: Screen.height * 0.066)
         case 2:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.130)
+            return CGSize(width: width, height: Screen.height * 0.130)
         case 3:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.07)
+            return CGSize(width: width, height: Screen.height * 0.073)
         case 4:
-            return CGSize(width: collectionViewWidth, height: Screen.height * 0.052)
+            return CGSize(width: width, height: Screen.height * 0.052)
         default:
-            assert(false, "No appropriate size for this indexPath")
+           fatalError("No appropriate size for this indexPath")
         }
        
     }
@@ -127,14 +119,14 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: collectionViewWidth, height: TodayHeader.defaultHeight)
+        let headerSize = CGSize(width: Screen.width, height: TodayHeader.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: collectionViewWidth, height: TodayFooter.defaultHeight)
+        let footerSize =  CGSize(width: Screen.width, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

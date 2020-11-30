@@ -28,7 +28,7 @@ final class HourlyForecastCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            
         ])
         label.textColor = .black
         label.textAlignment = .center
