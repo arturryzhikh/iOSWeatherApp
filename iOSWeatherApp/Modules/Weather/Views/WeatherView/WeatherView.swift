@@ -13,13 +13,9 @@ final class WeatherView: UIView {
     //MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         addConstraints()
-        
     }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -34,15 +30,15 @@ final class WeatherView: UIView {
             pageControlBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             pageControlBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             pageControlBar.bottomAnchor.constraint(equalTo: bottomAnchor),
-            pageControlBar.heightAnchor.constraint(equalTo: heightAnchor,multiplier: 0.08),
+            pageControlBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.085),
             //line view
             line.leadingAnchor.constraint(equalTo: pageControlBar.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: pageControlBar.trailingAnchor),
             line.topAnchor.constraint(equalTo: pageControlBar.topAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1 * Screen.scale),
+            line.heightAnchor.constraint(equalToConstant: 1),
             //page control
             pageControl.centerXAnchor.constraint(equalTo: pageControlBar.centerXAnchor),
-            pageControl.centerYAnchor.constraint(equalTo: pageControlBar.centerYAnchor),
+            pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 16),
             //collection view
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -75,7 +71,8 @@ final class WeatherView: UIView {
     //create collection view
     let collectionView: UICollectionView = {
         //create
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: WeatherFlowLayout())
         //FIXME: test background color
         collectionView.backgroundColor = .white
         // hide indicator
