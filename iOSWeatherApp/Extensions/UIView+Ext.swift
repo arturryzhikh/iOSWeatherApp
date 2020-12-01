@@ -20,7 +20,7 @@ public extension UIView {
     ///
     /// - Parameters:
     ///     - subview: UIViews to add
-    func addSubviewsForAutoLayout(_ subviews: UIView...) {
+    func addSubviewsForAutoLayout(_ subviews: [UIView]) {
         subviews.forEach(addSubviewForAutoLayout)
     }
 }

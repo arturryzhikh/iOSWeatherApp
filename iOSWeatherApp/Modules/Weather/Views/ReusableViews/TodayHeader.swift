@@ -8,112 +8,94 @@
 import UIKit
 
 class TodayHeader: UICollectionViewCell {
-    //MARK: Properties
-  
-    //Static properties to determine size
+    //MARK: Static  Properties
     static var defaultHeight: CGFloat {
-        minimumHeight * 2
+        Screen.height * 0.448
     }
     static var minimumHeight: CGFloat {
-        Screen.height * 0.143
+        defaultHeight / 2
     }
-
-//MARK: Life cycle
+    //MARK: Other Properties
+    
+    //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//         setupSubviews()
+        addConstraints()
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
        
     }
-  
     //MARK: Subviews
-    private let cityLabel: UILabel = {
+    private let locationLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Оренбургская Область"
-        lbl.font = UIFont.boldSystemFont(ofSize: 30)
-        lbl.textColor = .lightGray
+        lbl.text = "Coceнское"
+        
+        lbl.backgroundColor = .blue
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.045).rounded(), weight: .regular)
+        lbl.textColor = .white
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
     }()
     private let weatherOverViewLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.text = "Облачно"
-        lbl.font = UIFont.systemFont(ofSize: 15)
+        lbl.backgroundColor = .cyan
+        lbl.textColor = .white
+        lbl.text = "Переменная облачность"
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .ultraLight)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
     }()
     private let temperatureLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
+        lbl.textColor = .white
+        lbl.backgroundColor = .green
         lbl.text = "9"
-        lbl.font = UIFont.boldSystemFont(ofSize: 60)
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.111).rounded(),weight: .light)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
     }()
-    private lazy var highLowStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [highLabel,lowLabel])
-        stack.axis = .horizontal
-        stack.spacing = 8
-        stack.distribution = .fillEqually
-        return stack
-    }()
-    private let highLabel: UILabel = {
+    private let highLowLabel: UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.text = "H:12"
-        lbl.font = UIFont.systemFont(ofSize: 15)
+        lbl.backgroundColor = .darkGray
+        lbl.textColor = .white
+        lbl.text = "H: 12° L: -5°"
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.02).rounded(),weight: .light)
         lbl.numberOfLines = 1
-        lbl.textAlignment = .right
-        return lbl
-    }()
-    private let lowLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .lightGray
-        lbl.text = "L:7"
-        lbl.font = UIFont.systemFont(ofSize: 15)
-        lbl.numberOfLines = 1
-        lbl.textAlignment = .left
+        lbl.textAlignment = .center
         return lbl
     }()
     
     
-    private func setupSubviews() {
-        let padding: CGFloat = 2
-        
-        self.addSubviewsForAutoLayout(cityLabel,
-                                       weatherOverViewLabel,
-                                       temperatureLabel,
-                                       highLowStack)
-        
+    //MARK:Instance methods
+    private func addConstraints() {
+        self.addSubviewsForAutoLayout([locationLabel,weatherOverViewLabel,temperatureLabel,highLowLabel])
+        let topPadding =  self.frame.size.height * 0.25
         NSLayoutConstraint.activate([
-            //Constraint city label
-            cityLabel.topAnchor.constraint(equalTo: topAnchor,constant: Screen.statusBarHeight),
-            cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            cityLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            //Constraint weather overview label
-            weatherOverViewLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor,constant: padding),
-            weatherOverViewLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            weatherOverViewLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            //Constraint temperature label
-            temperatureLabel.topAnchor.constraint(equalTo: weatherOverViewLabel.bottomAnchor,constant: padding),
-            temperatureLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            temperatureLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            //Constraint hithLowStackView
-            highLowStack.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor,constant: padding),
-            highLowStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            highLowStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            highLowStack.bottomAnchor.constraint(equalTo: bottomAnchor)
+            locationLabel.topAnchor.constraint(equalTo: self.topAnchor,constant: topPadding),
+            locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            //overview label
+            weatherOverViewLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
+            weatherOverViewLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            weatherOverViewLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            //temperature label
+            temperatureLabel.topAnchor.constraint(equalTo: weatherOverViewLabel.bottomAnchor),
+            temperatureLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            //hight low label
+            highLowLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
+            highLowLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            highLowLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
         ])
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
-    
-        
 }

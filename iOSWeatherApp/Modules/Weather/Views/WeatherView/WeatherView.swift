@@ -23,7 +23,7 @@ final class WeatherView: UIView {
     // create page controll bar
     private func addConstraints() {
         //add subviews
-        addSubviewsForAutoLayout(collectionView,pageControlBar)
+        addSubviewsForAutoLayout([collectionView,pageControlBar])
         //Autolayout
         NSLayoutConstraint.activate([
             //page control bar
@@ -38,7 +38,7 @@ final class WeatherView: UIView {
             line.heightAnchor.constraint(equalToConstant: 1 * Screen.scale),
             //page control
             pageControl.centerXAnchor.constraint(equalTo: pageControlBar.centerXAnchor),
-            pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 16),
+            pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 10),
             //collection view
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -50,7 +50,7 @@ final class WeatherView: UIView {
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
-        v.addSubviewsForAutoLayout(pageControl,line)//add subviews above so the could be visible and interactiable
+        v.addSubviewsForAutoLayout([pageControl,line])//add subviews above so the could be visible and interactiable
         //FIXME: test background color
         v.backgroundColor = #colorLiteral(red: 0.5306975654, green: 0.3500108371, blue: 0.7565638628, alpha: 1)
         return v

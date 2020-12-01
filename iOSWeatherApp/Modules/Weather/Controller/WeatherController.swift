@@ -65,15 +65,9 @@ extension WeatherController: UICollectionViewDataSource {
         }
     }
 }
-//MARK: UICollectionViewDelegate
-extension WeatherController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printFunction(items: indexPath)
-    }
-}
+
 //MARK: UICollectionViewDelegateFlowLayout
- 
-extension WeatherController: UICollectionViewDelegateFlowLayout {
+ extension WeatherController: UICollectionViewDelegateFlowLayout {
     //item size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -83,13 +77,13 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         let height = Screen.height
         switch section {
         case 1:
-            return CGSize(width: width , height: height * 0.066)
+            return CGSize(width: width , height: (height * 0.066).rounded())
         case 2:
-            return CGSize(width: width, height: height * 0.131)
+            return CGSize(width: width, height: (height * 0.131).rounded())
         case 3:
-            return CGSize(width: width, height: height * 0.073)
+            return CGSize(width: width, height: (height * 0.073).rounded())
         case 4:
-            return CGSize(width: width, height: height * 0.052)
+            return CGSize(width: width, height: (height * 0.052).rounded())
         default:
            fatalError("No appropriate size for this indexPath")
         }
@@ -110,21 +104,8 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        -0.1
+        -1 * Screen.scale
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        .zero
-    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        switch section {
-//        case 2...4 :
-//            return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
-//        default:
-//            return .zero
-//        }
-//    }
-    
-    
     
 }
 

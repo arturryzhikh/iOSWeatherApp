@@ -225,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
-				75AE308A256FCE0700549CB6 /* Storyboard.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +232,7 @@
 		75C2B038256FAFDA000A863C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				75AE308A256FCE0700549CB6 /* Storyboard.storyboard */,
 				753962BF2573F2ED00AD197F /* WeatherView */,
 				75C2B039256FAFEA000A863C /* ReusableViews */,
 			);
