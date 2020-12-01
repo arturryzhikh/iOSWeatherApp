@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		750F197A25753360004FBC6A /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F197925753360004FBC6A /* ViewModel.swift */; };
 		751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86825471A1400F2EB22 /* AppDelegate.swift */; };
 		751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86A25471A1400F2EB22 /* SceneDelegate.swift */; };
 		751BF86D25471A1400F2EB22 /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86C25471A1400F2EB22 /* WeatherController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		750F197925753360004FBC6A /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		751BF86525471A1400F2EB22 /* iOSWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF86825471A1400F2EB22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		751BF86A25471A1400F2EB22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		750F197E25763BC0004FBC6A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				750F197925753360004FBC6A /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		751BF85C25471A1400F2EB22 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		7531FE1E25474DA500F55875 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				750F197E25763BC0004FBC6A /* ViewModels */,
 				75C2B037256FAFCA000A863C /* Controller */,
 				75C2B038256FAFDA000A863C /* Views */,
 			);
@@ -374,6 +385,7 @@
 				75494DBC25737F52004839B9 /* Screen.swift in Sources */,
 				75AE306A256FB22E00549CB6 /* TodayHeader.swift in Sources */,
 				75C2B00F256F8679000A863C /* WeatherView.swift in Sources */,
+				750F197A25753360004FBC6A /* ViewModel.swift in Sources */,
 				75AE306F256FB24400549CB6 /* TodayFooter.swift in Sources */,
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */,

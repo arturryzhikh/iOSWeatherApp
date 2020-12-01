@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreLocation
+
 final class WeatherController: UIViewController {
     //MARK: Subviews
     private var weatherView: WeatherView {
@@ -16,7 +16,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    
+    private var viewModel = ViewModel()
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -25,47 +25,22 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+       
     }
 }
 
-//MARK: UICollectionViewDataSource & UICollectionViewDelegate
-extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegate {
+//MARK: UICollectionViewDataSource
+extension WeatherController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
+        viewModel.numbersOfSections
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 0
-        case 1:
-            return 9
-        case 2:
-            return 1
-        case 3:
-            return 10
-        case 4:
-            return 1
-       default:
-           fatalError("Wrong number of items in section")
-        }
+        viewModel.numberOfItemsIn(section: section)
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCell.description(), for: indexPath) as! HourlyForecastCell
-        let section = indexPath.section
-        var backgroundColor: UIColor {
-            switch section {
-            case 1: return .red
-            case 2: return .green
-            case 3: return .blue
-            case 4: return .darkGray
-            case 5: return .magenta
-            case 6: return .yellow
-            default: return .cyan
-            }
-        }
         cell.label.text = "Section: \(indexPath.section) Item: \(indexPath.item)"
-        cell.backgroundColor = backgroundColor
         return cell
     }
     //Setup Headers / Footers
@@ -89,27 +64,32 @@ extension WeatherController: UICollectionViewDataSource, UICollectionViewDelegat
             fatalError("No such kind of supplementary view, kind is: \(kind)")
         }
     }
-    
-    
+}
+//MARK: UICollectionViewDelegate
+extension WeatherController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        printFunction(items: indexPath)
+    }
 }
 //MARK: UICollectionViewDelegateFlowLayout
-    //item size
+ 
 extension WeatherController: UICollectionViewDelegateFlowLayout {
-  
+    //item size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
         let width = Screen.width * 0.9
+        let height = Screen.height
         switch section {
         case 1:
-            return CGSize(width: width , height: Screen.height * 0.066)
+            return CGSize(width: width , height: height * 0.066)
         case 2:
-            return CGSize(width: width, height: Screen.height * 0.130)
+            return CGSize(width: width, height: height * 0.131)
         case 3:
-            return CGSize(width: width, height: Screen.height * 0.073)
+            return CGSize(width: width, height: height * 0.073)
         case 4:
-            return CGSize(width: width, height: Screen.height * 0.052)
+            return CGSize(width: width, height: height * 0.052)
         default:
            fatalError("No appropriate size for this indexPath")
         }
@@ -130,14 +110,22 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
+        -0.1
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return .zero
+        .zero
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        switch section {
+//        case 2...4 :
+//            return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
+//        default:
+//            return .zero
+//        }
+//    }
+    
+    
+    
 }
 
 

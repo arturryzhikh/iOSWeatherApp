@@ -8,6 +8,7 @@
 import UIKit
 
 final class WeatherFlowLayout: UICollectionViewFlowLayout {
+    
     private var attributesCache: [UICollectionViewLayoutAttributes] = []
     override func prepare() {
         super.prepare()
@@ -32,7 +33,6 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
             }
         }
     }
-    
     // UICollectionViewLayout  should be updating the layout while scrolling
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
