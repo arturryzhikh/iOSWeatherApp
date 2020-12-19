@@ -13,7 +13,7 @@ class TodayHeader: UICollectionViewCell {
         Screen.height * 0.453
     }
     static var minimumHeight: CGFloat {
-        Screen.height * 0.170
+        Screen.height * 0.143
     }
     
     //MARK: Other Properties
@@ -23,10 +23,17 @@ class TodayHeader: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
     }
+    
     override func layoutSubviews() {
-        super.layoutSubviews()
-        printFunction(items: highLowLabel.frame.origin.y)
-        
+        topConstraint?.constant = frame.size.height * 0.22
+        highLowLabel.alpha = computeAlpha()
+        temperatureLabel.alpha = computeAlpha()
+        printFunction(items: computeAlpha())
+    }
+    
+    private func computeAlpha() -> CGFloat {
+        let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
+        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
     }
    
     required init?(coder: NSCoder) {
@@ -78,7 +85,7 @@ class TodayHeader: UICollectionViewCell {
         lbl.textColor = .white
         lbl.backgroundColor = .brown
         lbl.text = "9"
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.111).rounded(),weight: .light)
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.111).rounded(),weight: .regular)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
@@ -100,8 +107,8 @@ class TodayHeader: UICollectionViewCell {
         addConstraints()
     }
     private func addConstraints() {
-        
-        topConstraint = topSack.topAnchor.constraint(equalTo: self.topAnchor,constant: self.frame.size.height * 0.2)
+        let topPadding = frame.size.height * 0.22
+        topConstraint = topSack.topAnchor.constraint(equalTo: self.topAnchor, constant: topPadding)
         topConstraint?.isActive = true
         NSLayoutConstraint.activate([
             topSack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -109,7 +116,7 @@ class TodayHeader: UICollectionViewCell {
             bottomStack.topAnchor.constraint(equalTo: topSack.bottomAnchor),
             bottomStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             bottomStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStack.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor)
+            bottomStack.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor,constant: 100)
         ])
     }
     

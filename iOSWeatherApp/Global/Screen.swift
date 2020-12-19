@@ -21,4 +21,5 @@ struct Screen {
     static var scale: CGFloat {
         return UIScreen.main.scale
     }
+    
 }
