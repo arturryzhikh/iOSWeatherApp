@@ -15,20 +15,16 @@ class TodayHeader: UICollectionViewCell {
     static var minimumHeight: CGFloat {
         Screen.height * 0.143
     }
-    
     //MARK: Other Properties
-    var topConstraint: NSLayoutConstraint?
+   
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
-    
     override func layoutSubviews() {
-        topConstraint?.constant = Screen.statusBarHeight
         highLowLabel.alpha = computeAlpha()
         temperatureLabel.alpha = computeAlpha()
-        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,7 +36,6 @@ class TodayHeader: UICollectionViewCell {
                         temperatureLabel,
                         highLowLabel]
         let stack = UIStackView(arrangedSubviews: subviews)
-        
         stack.alignment = .fill
         stack.distribution = .fillProportionally
         stack.axis = .vertical
@@ -100,10 +95,8 @@ class TodayHeader: UICollectionViewCell {
         addConstraints()
     }
     private func addConstraints() {
-        let topPadding = frame.size.height * 0.25
-        topConstraint = vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight)
-        topConstraint?.isActive = true
         NSLayoutConstraint.activate([
+            vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight),
             vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
