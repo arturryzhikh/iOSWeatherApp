@@ -13,16 +13,22 @@ class TodayHeader: UICollectionViewCell {
         Screen.height * 0.453
     }
     static var minimumHeight: CGFloat {
-        Screen.height * 0.143
+        Screen.height * 0.170
     }
- 
+    
     //MARK: Other Properties
-
+    var topConstraint: NSLayoutConstraint?
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-//       addConstraints()
+        setupViews()
     }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        printFunction(items: highLowLabel.frame.origin.y)
+        
+    }
+   
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,6 +36,7 @@ class TodayHeader: UICollectionViewCell {
     private lazy var topSack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [locationLabel,
                                                    shortForcast])
+        
         stack.alignment = .fill
         stack.distribution = .fill
         stack.axis = .vertical
@@ -61,7 +68,7 @@ class TodayHeader: UICollectionViewCell {
         lbl.backgroundColor = .cyan
         lbl.textColor = .white
         lbl.text = "Переменная облачность"
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .ultraLight)
+        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .light)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
         return lbl
@@ -69,13 +76,12 @@ class TodayHeader: UICollectionViewCell {
     private let temperatureLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.backgroundColor = .green
+        lbl.backgroundColor = .brown
         lbl.text = "9"
         lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.111).rounded(),weight: .light)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
-        lbl.setContentCompressionResistancePriority(.init(100), for: .vertical)
-       return lbl
+        return lbl
     }()
     private let highLowLabel: UILabel = {
         let lbl = UILabel()
@@ -85,24 +91,25 @@ class TodayHeader: UICollectionViewCell {
         lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.02).rounded(),weight: .light)
         lbl.numberOfLines = 1
         lbl.textAlignment = .center
-        lbl.setContentCompressionResistancePriority(.init(99), for: .vertical)
-       return lbl
+        return lbl
     }()
     //MARK:Instance methods
+    private func setupViews() {
+        addSubviewsForAutoLayout([topSack,bottomStack])
+        clipsToBounds = true
+        addConstraints()
+    }
     private func addConstraints() {
-        self.addSubviewsForAutoLayout([topSack])
-        let topPadding =  self.frame.size.height * 0.18
+        
+        topConstraint = topSack.topAnchor.constraint(equalTo: self.topAnchor,constant: self.frame.size.height * 0.2)
+        topConstraint?.isActive = true
         NSLayoutConstraint.activate([
-            topSack.topAnchor.constraint(equalTo: self.topAnchor,constant: topPadding),
             topSack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             topSack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            topSack.heightAnchor.constraint(lessThanOrEqualTo: self.heightAnchor,multiplier: 0.8),
-            
-//            bottomStack.topAnchor.constraint(equalTo: topSack.bottomAnchor),
-//            bottomStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-//            bottomStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-//            topSack.heightAnchor.constraint(lessThanOrEqualTo: topSack.heightAnchor,multiplier: 0.5)
-            
+            bottomStack.topAnchor.constraint(equalTo: topSack.bottomAnchor),
+            bottomStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            bottomStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            bottomStack.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor)
         ])
     }
     

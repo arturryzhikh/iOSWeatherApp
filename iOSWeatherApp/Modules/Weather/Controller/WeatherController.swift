@@ -132,7 +132,7 @@ struct WeatherControllerContainerView: UIViewControllerRepresentable {
 @available(iOS 13.0, *)
 struct ContentViewController_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherControllerContainerView().previewDisplayName("iPhone 12 Pro").edgesIgnoringSafeArea(.all)
+        WeatherControllerContainerView().previewDisplayName("iPhone 12").edgesIgnoringSafeArea(.all)
     }
 }
 
