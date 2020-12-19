@@ -16,19 +16,23 @@ class TodayHeader: UICollectionViewCell {
         Screen.height * 0.143
     }
     //MARK: Other Properties
-   
+    private var computedAlpha: CGFloat {
+        let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
+        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
+    }
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
     override func layoutSubviews() {
-        highLowLabel.alpha = computeAlpha()
-        temperatureLabel.alpha = computeAlpha()
+        highLowLabel.alpha = computedAlpha
+        temperatureLabel.alpha = computedAlpha
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     //MARK: Subviews
     private lazy var vStack: UIStackView = {
         let subviews = [locationLabel,
@@ -84,11 +88,6 @@ class TodayHeader: UICollectionViewCell {
         return lbl
     }()
     //MARK:Instance methods
-    private func computeAlpha() -> CGFloat {
-        let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
-    }
-    
     private func setupViews() {
         addSubviewsForAutoLayout([vStack])
         clipsToBounds = true
