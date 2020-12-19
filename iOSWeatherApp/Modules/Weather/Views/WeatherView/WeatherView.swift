@@ -11,11 +11,12 @@ final class WeatherView: UIView {
     //MARK: Other Properties
     
     //MARK: Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -50,7 +51,7 @@ final class WeatherView: UIView {
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
-        v.addSubviewsForAutoLayout([pageControl,line])//add subviews above so the could be visible and interactiable
+        v.addSubviewsForAutoLayout([pageControl,line])//add subviews above so the could be visible
         //FIXME: test background color
         v.backgroundColor = #colorLiteral(red: 0.5306975654, green: 0.3500108371, blue: 0.7565638628, alpha: 1)
         return v

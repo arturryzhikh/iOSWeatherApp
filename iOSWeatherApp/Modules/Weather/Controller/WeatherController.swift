@@ -25,12 +25,12 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-       
     }
 }
 
 //MARK: UICollectionViewDataSource
 extension WeatherController: UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel.numbersOfSections
     }
@@ -64,6 +64,8 @@ extension WeatherController: UICollectionViewDataSource {
             fatalError("No such kind of supplementary view, kind is: \(kind)")
         }
     }
+    
+    
 }
 
 //MARK: UICollectionViewDelegateFlowLayout
@@ -87,7 +89,6 @@ extension WeatherController: UICollectionViewDataSource {
         default:
            fatalError("No appropriate size for this indexPath")
         }
-       
     }
    //header size
     func collectionView(_ collectionView: UICollectionView,
@@ -103,9 +104,11 @@ extension WeatherController: UICollectionViewDataSource {
         let footerSize =  CGSize(width: Screen.width, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         -1 * Screen.scale
     }
+    
     
 }
 

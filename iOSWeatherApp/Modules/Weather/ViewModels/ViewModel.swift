@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewModel {
+final class ViewModel {
+    
     func numberOfItemsIn(section: Int) -> Int  {
         switch section {
         case 0:
@@ -21,9 +22,10 @@ class ViewModel {
         case 4:
         return 1
         default:
-        fatalError("Wrong number of items in section")
+        fatalError("No data for number of items for this section \(section)")
         }
     }
+    
     var numbersOfSections: Int {
         return 5
     }

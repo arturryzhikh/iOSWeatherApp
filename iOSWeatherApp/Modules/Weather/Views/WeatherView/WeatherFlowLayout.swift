@@ -10,6 +10,7 @@ import UIKit
 final class WeatherFlowLayout: UICollectionViewFlowLayout {
     
     private var attributesCache: [UICollectionViewLayoutAttributes] = []
+    
     override func prepare() {
         super.prepare()
         attributesCache = [] //clear cache
@@ -18,10 +19,12 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         let numberOfSections = collectionView.numberOfSections
         for section in 0..<numberOfSections {
             let headerIndexPath = IndexPath(item: 0, section: section)
-            if let headerAttribute = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: headerIndexPath)?.copy() {
+            if let headerAttribute = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                                          at: headerIndexPath)?.copy() {
                 attributesCache.append(headerAttribute as! UICollectionViewLayoutAttributes)
             }
-            if let footerAttribute = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, at: headerIndexPath)?.copy() {
+            if let footerAttribute = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
+                                                                          at: headerIndexPath)?.copy() {
                 attributesCache.append(footerAttribute as! UICollectionViewLayoutAttributes)
             }
             let numberOfItems = collectionView.numberOfItems(inSection: section)
@@ -33,11 +36,10 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
             }
         }
     }
-    // UICollectionViewLayout  should be updating the layout while scrolling
+    // UICollectionViewLayout should be updating the layout while scrolling
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
-    
     //constantly updating method to configure header and footers behaviours
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let collectionView = self.collectionView else { return nil }
@@ -60,8 +62,9 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         // setup footer in  first section
         footer.frame.origin.y = header.frame.origin.y + header.frame.size.height
         return attributesCache
+        
     }
-    
+   
   
     
     
