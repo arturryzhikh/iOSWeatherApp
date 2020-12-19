@@ -25,41 +25,29 @@ class TodayHeader: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-        topConstraint?.constant = frame.size.height * 0.22
+        topConstraint?.constant = Screen.statusBarHeight
         highLowLabel.alpha = computeAlpha()
         temperatureLabel.alpha = computeAlpha()
-        printFunction(items: computeAlpha())
+        
     }
-    
-    private func computeAlpha() -> CGFloat {
-        let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
-    }
-   
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     //MARK: Subviews
-    private lazy var topSack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [locationLabel,
-                                                   shortForcast])
+    private lazy var vStack: UIStackView = {
+        let subviews = [locationLabel,
+                        shortForcast,
+                        temperatureLabel,
+                        highLowLabel]
+        let stack = UIStackView(arrangedSubviews: subviews)
         
         stack.alignment = .fill
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.axis = .vertical
         stack.spacing = 0
         return stack
     }()
-    private lazy var bottomStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [
-                                    temperatureLabel,
-                                    highLowLabel])
-        stack.alignment = .fill
-        stack.distribution = .fill
-        stack.axis = .vertical
-        stack.spacing = 0
-        return stack
-    }()
+
     private let locationLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Coceнское"
@@ -101,22 +89,24 @@ class TodayHeader: UICollectionViewCell {
         return lbl
     }()
     //MARK:Instance methods
+    private func computeAlpha() -> CGFloat {
+        let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
+        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
+    }
+    
     private func setupViews() {
-        addSubviewsForAutoLayout([topSack,bottomStack])
+        addSubviewsForAutoLayout([vStack])
         clipsToBounds = true
         addConstraints()
     }
     private func addConstraints() {
-        let topPadding = frame.size.height * 0.22
-        topConstraint = topSack.topAnchor.constraint(equalTo: self.topAnchor, constant: topPadding)
+        let topPadding = frame.size.height * 0.25
+        topConstraint = vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight)
         topConstraint?.isActive = true
         NSLayoutConstraint.activate([
-            topSack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            topSack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStack.topAnchor.constraint(equalTo: topSack.bottomAnchor),
-            bottomStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            bottomStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            bottomStack.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor,constant: 100)
+            vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
         ])
     }
     
