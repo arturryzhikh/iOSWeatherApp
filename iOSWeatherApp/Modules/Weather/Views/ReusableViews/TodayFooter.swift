@@ -13,11 +13,39 @@ class TodayFooter: DataCell {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
+        //FIXME: move method to point when view model is available
+        populateSubviews()
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+   
+    private let locationLabel: UILabel = {
+        let lbl = UILabel(transparentText: false,font: .locationLabel)
+        return lbl
+    }()
+    
+    //MARK:Instance methods
+    private func setup() {
+        clipsToBounds = true
+        addConstraints()
+    }
+    private func addConstraints() {
+        addSubviewsForAutoLayout([locationLabel])
+        NSLayoutConstraint.activate([
+            locationLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight),
+            locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            ])
+    }
+    private func populateSubviews() {
+        locationLabel.text = "Section 0 Footer"
+        
+    }
+    
+    
     
 }

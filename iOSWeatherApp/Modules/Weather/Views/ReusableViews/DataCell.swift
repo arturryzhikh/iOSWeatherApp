@@ -22,7 +22,7 @@ class DataCell: UICollectionViewCell {
         return line
     }()
     private func setup() {
-        backgroundColor = .lightGray
+        backgroundColor = .clear
         addConstraints()
     }
     private func addConstraints() {

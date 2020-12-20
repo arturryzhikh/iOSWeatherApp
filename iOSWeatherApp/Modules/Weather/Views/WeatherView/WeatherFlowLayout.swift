@@ -61,11 +61,19 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         header.frame.origin.y = yOffset
         // setup footer in  first section
         footer.frame.origin.y = header.frame.origin.y + header.frame.size.height
+        let cellsAttributes = attributesCache.filter { (attribute) -> Bool in
+            return attribute.representedElementCategory == .cell //if attributes belong to items
+        }
+        let footerBottomBound = footer.frame.origin.y + footer.frame.size.height
+        cellsAttributes.forEach { (attribute) in
+            if attribute.frame.origin.y < footerBottomBound {
+                attribute.alpha = 0 
+            }
+        }
         return attributesCache
         
     }
    
   
-    
     
 }

@@ -79,10 +79,8 @@ final class TodayHeader: DataCell {
             ])
     }
     private func populateSubviews() {
-        locationLabel.text = "Сосенское"
-        shortForcastLabel.text = "Переменная облачность"
-        temperatureLabel.text = "25"
-        highLowLabel.text = "H: 12° L: -5°"
+        locationLabel.text = "Section 0 Header"
+        
     }
     
     
