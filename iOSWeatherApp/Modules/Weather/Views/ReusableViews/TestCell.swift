@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HourlyForecastCell: UICollectionViewCell {
+final class TestCell: DataCell {
     
     var label: UILabel!
     override init(frame: CGRect) {
@@ -21,7 +21,6 @@ final class HourlyForecastCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     private func setup() {
-        backgroundColor = .red
         label = UILabel()
         addSubviewForAutoLayout(label)
         //constraint label
@@ -30,7 +29,7 @@ final class HourlyForecastCell: UICollectionViewCell {
             label.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             
         ])
-        label.textColor = .black
+        label.textColor = .weatherWhite()
         label.textAlignment = .center
     }
 }

@@ -1,16 +1,13 @@
 //
-//  TestFooter.swift
+//  DataCell.swift
 //  iOSWeatherApp
 //
-//  Created by Artur Ryzhikh on 26.11.2020.
+//  Created by Artur Ryzhikh on 20.12.2020.
 //
 
 import UIKit
 
-class TodayFooter: DataCell {
-    static var defaultHeight: CGFloat {
-        Screen.height * 0.143
-    }
+class DataCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -19,5 +16,4 @@ class TodayFooter: DataCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

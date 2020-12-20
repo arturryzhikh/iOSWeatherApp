@@ -39,7 +39,7 @@ extension WeatherController: UICollectionViewDataSource {
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCell.description(), for: indexPath) as! HourlyForecastCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.description(), for: indexPath) as! TestCell
         cell.label.text = "Section: \(indexPath.section) Item: \(indexPath.item)"
         return cell
     }
@@ -51,14 +51,14 @@ extension WeatherController: UICollectionViewDataSource {
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: TodayHeader.description(),
                                                                          for: indexPath) as! TodayHeader
-            header.backgroundColor = .gray
+            
             return header
         case UICollectionView.elementKindSectionFooter :
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                          withReuseIdentifier: TodayFooter.description(),
                                                                          for: indexPath) as! TodayFooter
             
-            footer.backgroundColor = .brown
+           
             return footer
         default:
             fatalError("No such kind of supplementary view, kind is: \(kind)")
@@ -105,8 +105,8 @@ extension WeatherController: UICollectionViewDataSource {
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        -1 * Screen.scale
+                            minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            -1 * Screen.scale
     }
     
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayHeader: UICollectionViewCell {
+final class TodayHeader: DataCell {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -26,6 +26,7 @@ final class TodayHeader: UICollectionViewCell {
         setupViews()
         //FIXME: move method to point when view model is available
         populateSubviews()
+        
     }
     override func layoutSubviews() {
         highLowLabel.alpha = computedAlpha
@@ -67,7 +68,6 @@ final class TodayHeader: UICollectionViewCell {
     //MARK:Instance methods
     private func setupViews() {
         clipsToBounds = true
-        alpha = 0
         addConstraints()
     }
     private func addConstraints() {

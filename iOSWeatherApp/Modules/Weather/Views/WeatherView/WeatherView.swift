@@ -12,16 +12,15 @@ final class WeatherView: UIView {
     
     //MARK: Life Cycle
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         addConstraints()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  
     //MARK: Instance methods
-    // create page controll bar
     private func addConstraints() {
         //add subviews
         addSubviewsForAutoLayout([collectionView,pageControlBar])
@@ -36,7 +35,7 @@ final class WeatherView: UIView {
             line.leadingAnchor.constraint(equalTo: pageControlBar.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: pageControlBar.trailingAnchor),
             line.topAnchor.constraint(equalTo: pageControlBar.topAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1 * Screen.scale),
+            line.heightAnchor.constraint(equalToConstant: 1),
             //page control
             pageControl.centerXAnchor.constraint(equalTo: pageControlBar.centerXAnchor),
             pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 10),
@@ -57,8 +56,7 @@ final class WeatherView: UIView {
     //Top line
     private let line: UIView = {
         let line = UIView()
-        //FIXME: test background color
-        line.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        line.backgroundColor = .white
         return line
     }()
     //Page Controle
@@ -69,17 +67,12 @@ final class WeatherView: UIView {
     }()
     //create collection view
     let collectionView: UICollectionView = {
-        //create
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
-        // hide indicator
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        //register headers
         collectionView.registerHeaders(TodayHeader.self)
-        //register footers
         collectionView.registerFooters(TodayFooter.self)
-        //register Cells
-        collectionView.registerCells(HourlyForecastCell.self)
+        collectionView.registerCells(TestCell.self)
         //pin collection view to the top of the view
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
