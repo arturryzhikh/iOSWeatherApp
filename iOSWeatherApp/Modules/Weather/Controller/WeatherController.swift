@@ -48,20 +48,22 @@ extension WeatherController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader :
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: TodayHeader.description(),
-                                                                         for: indexPath) as! TodayHeader
-            
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TodayHeader.description(), for: indexPath) as? TodayHeader else {
+                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+                
+            }
             return header
+            
+            
         case UICollectionView.elementKindSectionFooter :
-            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                         withReuseIdentifier: TodayFooter.description(),
-                                                                         for: indexPath) as! TodayFooter
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TodayFooter.description(), for: indexPath) as? TodayFooter else {
+                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+            }
             
            
             return footer
         default:
-            fatalError("No such kind of supplementary view, kind is: \(kind)")
+            fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
         }
     }
     
@@ -117,7 +119,6 @@ extension WeatherController: UICollectionViewDataSource {
 #if DEBUG
 import SwiftUI
 struct WeatherControllerContainerView: UIViewControllerRepresentable {
-    
     typealias UIViewControllerType = WeatherController
     
     func makeUIViewController(context: Context) -> UIViewControllerType {
