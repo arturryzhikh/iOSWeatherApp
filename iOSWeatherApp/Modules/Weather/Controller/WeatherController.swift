@@ -106,7 +106,7 @@ extension WeatherController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                             minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            -1 * Screen.scale
+            return 0
     }
     
     

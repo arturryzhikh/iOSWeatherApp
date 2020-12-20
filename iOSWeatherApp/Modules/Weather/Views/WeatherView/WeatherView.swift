@@ -73,13 +73,6 @@ final class WeatherView: UIView {
         collectionView.registerHeaders(TodayHeader.self)
         collectionView.registerFooters(TodayFooter.self)
         collectionView.registerCells(TestCell.self)
-        //pin collection view to the top of the view
-        if #available(iOS 11.0, *) {
-            collectionView.contentInsetAdjustmentBehavior = .never
-            //FIXME: - Fallback to earlier versions
-        } else {
-            
-        }
         return collectionView
     }()
     

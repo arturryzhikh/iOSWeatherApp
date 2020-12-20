@@ -23,7 +23,7 @@ final class TodayHeader: DataCell {
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        setup()
         //FIXME: move method to point when view model is available
         populateSubviews()
         
@@ -66,7 +66,7 @@ final class TodayHeader: DataCell {
         return lbl
     }()
     //MARK:Instance methods
-    private func setupViews() {
+    private func setup() {
         clipsToBounds = true
         addConstraints()
     }
