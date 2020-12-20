@@ -52,8 +52,6 @@ final class WeatherView: UIView {
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
         v.addSubviewsForAutoLayout([pageControl,line])//add subviews above so the could be visible
-        //FIXME: test background color
-        v.backgroundColor = #colorLiteral(red: 0.5306975654, green: 0.3500108371, blue: 0.7565638628, alpha: 1)
         return v
     }()
     //Top line
@@ -72,10 +70,7 @@ final class WeatherView: UIView {
     //create collection view
     let collectionView: UICollectionView = {
         //create
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: WeatherFlowLayout())
-        //FIXME: test background color
-        collectionView.backgroundColor = .white
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
         // hide indicator
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false

@@ -16,6 +16,9 @@
 		751BF87825471A1500F2EB22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 751BF87625471A1500F2EB22 /* LaunchScreen.storyboard */; };
 		751BF88325471A1500F2EB22 /* iOSWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88225471A1500F2EB22 /* iOSWeatherAppTests.swift */; };
 		751BF88E25471A1500F2EB22 /* iOSWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */; };
+		7548A94B258F4F9200690A52 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548A94A258F4F9200690A52 /* UIColor+Ext.swift */; };
+		7548A960258F51C000690A52 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548A95F258F51C000690A52 /* UILabel+Ext.swift */; };
+		7548A968258F544E00690A52 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7548A967258F544E00690A52 /* UIFont+Ext.swift */; };
 		75494DBC25737F52004839B9 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75494DBB25737F52004839B9 /* Screen.swift */; };
 		7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7567BA8C255700D3006082FB /* UIView+Ext.swift */; };
 		757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */; };
@@ -61,6 +64,9 @@
 		751BF88925471A1500F2EB22 /* iOSWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF88D25471A1500F2EB22 /* iOSWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSWeatherAppUITests.swift; sourceTree = "<group>"; };
 		751BF88F25471A1500F2EB22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7548A94A258F4F9200690A52 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		7548A95F258F51C000690A52 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		7548A967258F544E00690A52 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		75494DBB25737F52004839B9 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		7567BA8C255700D3006082FB /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
@@ -215,8 +221,11 @@
 			isa = PBXGroup;
 			children = (
 				75F27D712572FBEE00C8C22D /* UICollectionView+Ext.swift */,
+				7548A95F258F51C000690A52 /* UILabel+Ext.swift */,
+				7548A94A258F4F9200690A52 /* UIColor+Ext.swift */,
 				757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */,
 				7567BA8C255700D3006082FB /* UIView+Ext.swift */,
+				7548A967258F544E00690A52 /* UIFont+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,12 +394,15 @@
 				75494DBC25737F52004839B9 /* Screen.swift in Sources */,
 				75AE306A256FB22E00549CB6 /* TodayHeader.swift in Sources */,
 				75C2B00F256F8679000A863C /* WeatherView.swift in Sources */,
+				7548A960258F51C000690A52 /* UILabel+Ext.swift in Sources */,
+				7548A968258F544E00690A52 /* UIFont+Ext.swift in Sources */,
 				750F197A25753360004FBC6A /* ViewModel.swift in Sources */,
 				75AE306F256FB24400549CB6 /* TodayFooter.swift in Sources */,
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
 				75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */,
+				7548A94B258F4F9200690A52 /* UIColor+Ext.swift in Sources */,
 				75F27D722572FBEE00C8C22D /* UICollectionView+Ext.swift in Sources */,
 				757D526E2547F9EE00F53F1D /* NSObject+Ext.swift in Sources */,
 			);

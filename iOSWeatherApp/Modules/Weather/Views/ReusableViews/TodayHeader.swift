@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TodayHeader: UICollectionViewCell {
+final class TodayHeader: UICollectionViewCell {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -24,6 +24,8 @@ class TodayHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        //FIXME: move method to point when view model is available
+        populateSubviews()
     }
     override func layoutSubviews() {
         highLowLabel.alpha = computedAlpha
@@ -36,7 +38,7 @@ class TodayHeader: UICollectionViewCell {
     //MARK: Subviews
     private lazy var vStack: UIStackView = {
         let subviews = [locationLabel,
-                        shortForcast,
+                        shortForcastLabel,
                         temperatureLabel,
                         highLowLabel]
         let stack = UIStackView(arrangedSubviews: subviews)
@@ -46,60 +48,41 @@ class TodayHeader: UICollectionViewCell {
         stack.spacing = 0
         return stack
     }()
-
     private let locationLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Coceнское"
-        lbl.backgroundColor = .blue
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.045).rounded(), weight: .regular)
-        lbl.textColor = .white
-        lbl.numberOfLines = 1
-        lbl.textAlignment = .center
+        let lbl = UILabel(transparentText: false,font: .locationLabel)
         return lbl
     }()
-    private let shortForcast: UILabel = {
-        let lbl = UILabel()
-        lbl.backgroundColor = .cyan
-        lbl.textColor = .white
-        lbl.text = "Переменная облачность"
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .light)
-        lbl.numberOfLines = 1
-        lbl.textAlignment = .center
+    private let shortForcastLabel: UILabel = {
+        let lbl = UILabel(font: .shortForcastLabel)
         return lbl
     }()
     private let temperatureLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.textColor = .white
-        lbl.backgroundColor = .brown
-        lbl.text = "9"
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.111).rounded(),weight: .regular)
-        lbl.numberOfLines = 1
-        lbl.textAlignment = .center
+        let lbl = UILabel(font: .temperatureLabel)
         return lbl
     }()
     private let highLowLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.backgroundColor = .red
-        lbl.textColor = .white
-        lbl.text = "H: 12° L: -5°"
-        lbl.font = UIFont.systemFont(ofSize: (Screen.height * 0.02).rounded(),weight: .light)
-        lbl.numberOfLines = 1
-        lbl.textAlignment = .center
+        let lbl = UILabel(font: .highLowLabel)
         return lbl
     }()
     //MARK:Instance methods
     private func setupViews() {
-        addSubviewsForAutoLayout([vStack])
         clipsToBounds = true
+        alpha = 0
         addConstraints()
     }
     private func addConstraints() {
+        addSubviewsForAutoLayout([vStack])
         NSLayoutConstraint.activate([
             vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight),
             vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            
-        ])
+            ])
+    }
+    private func populateSubviews() {
+        locationLabel.text = "Сосенское"
+        shortForcastLabel.text = "Переменная облачность"
+        temperatureLabel.text = "25"
+        highLowLabel.text = "H: 12° L: -5°"
     }
     
     
