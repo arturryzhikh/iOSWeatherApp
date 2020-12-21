@@ -49,15 +49,15 @@ final class TodayHeader: ClearCell {
         return lbl
     }()
     private let shortForcastLabel: UILabel = {
-        let lbl = UILabel(font: .shortForcastLabel)
+        let lbl = UILabel(font: .regularTemperature)
         return lbl
     }()
     private let temperatureLabel: UILabel = {
-        let lbl = UILabel(font: .temperatureLabel)
+        let lbl = UILabel(font: .HugeTemperature)
         return lbl
     }()
     private let highLowLabel: UILabel = {
-        let lbl = UILabel(font: .highLowLabel)
+        let lbl = UILabel(font: .regularTemperature)
         return lbl
     }()
     

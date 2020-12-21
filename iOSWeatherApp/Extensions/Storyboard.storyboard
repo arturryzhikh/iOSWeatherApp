@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default.png" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-CH-56f">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default1" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-CH-56f">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-8c-rXf">
-                                <rect key="frame" x="19" y="77" width="375" height="35"/>
+                                <rect key="frame" x="52" y="604" width="375" height="11"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98637241129999997" green="0.98651367430000003" blue="0.98634153599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -38,11 +38,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8M6-n8-M7o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5642.0289855072469" y="-533.03571428571422"/>
+            <point key="canvasLocation" x="-5730.434782608696" y="-644.19642857142856"/>
         </scene>
     </scenes>
     <resources>
-        <image name="default.png" width="750" height="1334"/>
+        <image name="default1" width="828" height="1792"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

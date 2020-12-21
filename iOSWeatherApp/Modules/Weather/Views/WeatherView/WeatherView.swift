@@ -23,14 +23,14 @@ final class WeatherView: UIView {
     //MARK: Instance methods
     private func addConstraints() {
         //add subviews
-        addSubviewsForAutoLayout([weatherImageView,collectionView,pageControlBar])
+        addSubviewsForAutoLayout([backgroundImageView,collectionView,pageControlBar])
         //Autolayout
         NSLayoutConstraint.activate([
             //weather image view
-            weatherImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            weatherImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            weatherImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            weatherImageView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
             //page control bar
             pageControlBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             pageControlBar.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -53,7 +53,7 @@ final class WeatherView: UIView {
     }
     //MARK: Subviews:
     //background
-    private let weatherImageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         //FIXME: Hardcoded image name
         iv.image = UIImage(named: "background")

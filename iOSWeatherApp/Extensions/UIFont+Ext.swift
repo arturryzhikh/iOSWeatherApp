@@ -9,15 +9,19 @@ import UIKit
 
 extension UIFont {
     class var locationLabel: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded(), weight: .regular)
+        UIFont.systemFont(ofSize: (Screen.height * 0.029).rounded(), weight: .regular)
     }
-    class var shortForcastLabel: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .light)
+    class var regularTemperature: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.016).rounded(),weight: .regular)
     }
-    class var temperatureLabel: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.09).rounded(),weight: .light)
+    class var HugeTemperature: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.08).rounded(),weight: .light)
     }
-    class var highLowLabel: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.02).rounded(),weight: .light)
+    class var degree: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.26).rounded(),weight: .regular)
     }
+    class var precipitaionProbability: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.11).rounded(),weight: .light)
+    }
+    
 }

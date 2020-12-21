@@ -10,7 +10,6 @@ import UIKit
 public class ClearCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame:frame)
-        
         initialSetup()
     }
     required init?(coder: NSCoder) {
