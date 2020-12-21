@@ -23,9 +23,14 @@ final class WeatherView: UIView {
     //MARK: Instance methods
     private func addConstraints() {
         //add subviews
-        addSubviewsForAutoLayout([collectionView,pageControlBar])
+        addSubviewsForAutoLayout([weatherImageView,collectionView,pageControlBar])
         //Autolayout
         NSLayoutConstraint.activate([
+            //weather image view
+            weatherImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            weatherImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            weatherImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            weatherImageView.topAnchor.constraint(equalTo: topAnchor),
             //page control bar
             pageControlBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             pageControlBar.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -47,6 +52,13 @@ final class WeatherView: UIView {
         ])
     }
     //MARK: Subviews:
+    //background
+    private let weatherImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "background")
+        iv.contentMode = .scaleToFill
+        return iv
+    }()
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
@@ -68,6 +80,7 @@ final class WeatherView: UIView {
     //create collection view
     let collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.registerHeaders(TodayHeader.self)

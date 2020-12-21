@@ -137,6 +137,7 @@
 		751BF86725471A1400F2EB22 /* iOSWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				75222EA4258FAAF5004C0391 /* Protocols */,
 				75494DBA25737F42004839B9 /* Global */,
 				7531FE1925474D6A00F55875 /* Application */,
 				757D526C2547F9C100F53F1D /* Extensions */,
@@ -162,6 +163,13 @@
 				751BF88F25471A1500F2EB22 /* Info.plist */,
 			);
 			path = iOSWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+		75222EA4258FAAF5004C0391 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		7531FE1925474D6A00F55875 /* Application */ = {

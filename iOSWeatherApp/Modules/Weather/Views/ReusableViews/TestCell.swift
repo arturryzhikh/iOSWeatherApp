@@ -12,15 +12,6 @@ final class TestCell: DataCell {
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
-       
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    private func setup() {
         label = UILabel()
         addSubviewForAutoLayout(label)
         //constraint label
@@ -32,4 +23,8 @@ final class TestCell: DataCell {
         label.textColor = .weatherWhite()
         label.textAlignment = .center
     }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+   
 }

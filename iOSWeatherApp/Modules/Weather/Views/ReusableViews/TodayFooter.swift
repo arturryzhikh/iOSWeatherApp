@@ -7,13 +7,14 @@
 
 import UIKit
 
-class TodayFooter: DataCell {
+final class TodayFooter: DataCell {
+    
     static var defaultHeight: CGFloat {
         Screen.height * 0.143
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        addConstraints()
         //FIXME: move method to point when view model is available
         populateSubviews()
         
@@ -29,10 +30,7 @@ class TodayFooter: DataCell {
     }()
     
     //MARK:Instance methods
-    private func setup() {
-        clipsToBounds = true
-        addConstraints()
-    }
+    
     private func addConstraints() {
         addSubviewsForAutoLayout([locationLabel])
         NSLayoutConstraint.activate([

@@ -8,9 +8,12 @@
 import UIKit
 
 class DataCell: UICollectionViewCell {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        clipsToBounds = true
+        backgroundColor = .clear
+        addSeparator()
     }
     
     required init?(coder: NSCoder) {
@@ -21,11 +24,7 @@ class DataCell: UICollectionViewCell {
         line.backgroundColor = .white
         return line
     }()
-    private func setup() {
-        backgroundColor = .clear
-        addConstraints()
-    }
-    private func addConstraints() {
+    private func addSeparator() {
         addSubviewForAutoLayout(line)
         NSLayoutConstraint.activate([
             line.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -34,5 +33,6 @@ class DataCell: UICollectionViewCell {
             line.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
+    
    
 }

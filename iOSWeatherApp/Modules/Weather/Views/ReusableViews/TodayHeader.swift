@@ -23,7 +23,7 @@ final class TodayHeader: DataCell {
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setup()
+        addConstraints()
         //FIXME: move method to point when view model is available
         populateSubviews()
         
@@ -65,11 +65,8 @@ final class TodayHeader: DataCell {
         let lbl = UILabel(font: .highLowLabel)
         return lbl
     }()
+    
     //MARK:Instance methods
-    private func setup() {
-        clipsToBounds = true
-        addConstraints()
-    }
     private func addConstraints() {
         addSubviewsForAutoLayout([vStack])
         NSLayoutConstraint.activate([
@@ -79,8 +76,10 @@ final class TodayHeader: DataCell {
             ])
     }
     private func populateSubviews() {
-        locationLabel.text = "Section 0 Header"
-        
+        locationLabel.text = "Краснодарский край"
+        shortForcastLabel.text = "Солнечно"
+        temperatureLabel.text = "27"
+        highLowLabel.text = "H:35 L:18"
     }
     
     
