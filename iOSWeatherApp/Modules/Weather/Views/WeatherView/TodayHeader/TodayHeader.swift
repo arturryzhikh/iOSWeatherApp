@@ -21,19 +21,14 @@ final class TodayHeader: ClearCell {
         return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
     }
     //MARK: Life cycle
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initialSetup()
-        //FIXME: move method to point when view model is available
+    override func initialSetup() {
+        super.initialSetup()
+        addConstraints()
         populateSubviews()
-        
     }
     override func layoutSubviews() {
         highLowLabel.alpha = computedAlpha
         temperatureLabel.alpha = computedAlpha
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: Subviews
@@ -75,9 +70,7 @@ final class TodayHeader: ClearCell {
             vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
     }
-    private func initialSetup() {
-        addConstraints()
-    }
+    
     private func populateSubviews() {
         locationLabel.text = "Краснодарский край"
         shortForcastLabel.text = "Солнечно"

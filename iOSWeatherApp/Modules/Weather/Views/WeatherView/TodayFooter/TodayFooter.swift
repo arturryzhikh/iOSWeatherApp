@@ -7,25 +7,52 @@
 
 import UIKit
 
-final class TodayFooter: ClearTopBottomSeparatorCell {
-    
+final class TodayFooter: ClearTopBottomSeparatorCell, UICollectionViewDelegate {
+    //MAKR: Static properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.143
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        //FIXME: move method to point when view model is available
-       
-        
+    //MARK: Subviews
+    private let collectionView: UICollectionView = {
+         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+         collectionView.backgroundColor = .clear
+         collectionView.showsVerticalScrollIndicator = false
+         collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+     }()
+     
+    //MARK: Other Properties
+    //MARK: Life cycle
+    override func initialSetup() {
+        super.initialSetup()
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+      addConstraints()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     //MARK:Instance methods
-   
-    
-    
+    private func addConstraints() {
+        addSubviewForAutoLayout(collectionView)
+        NSLayoutConstraint.activate([
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+    }
 }
+////MARK: DataSource
+//extension TodayFooter: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        return UICollectionViewCell()
+//    }
+//
+//
+//}
+////MARK: Delegate Flow Layout
+//extension UICollectionViewDelegate {
+//
+//}

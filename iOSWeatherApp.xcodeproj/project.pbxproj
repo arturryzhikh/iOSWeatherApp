@@ -31,7 +31,6 @@
 		75CB77E9256131180081BE16 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB77E8256131180081BE16 /* TestCell.swift */; };
 		75E2C8912590A46A005C19A8 /* ClearBottomSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2C8902590A46A005C19A8 /* ClearBottomSeparatorCell.swift */; };
 		75E2C8A72590AA20005C19A8 /* ClearTopBottomSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2C8A62590AA20005C19A8 /* ClearTopBottomSeparatorCell.swift */; };
-		75E2C8AF2590AC10005C19A8 /* DataSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2C8AE2590AC10005C19A8 /* DataSourceCell.swift */; };
 		75F27D722572FBEE00C8C22D /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F27D712572FBEE00C8C22D /* UICollectionView+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +82,6 @@
 		75CB77E8256131180081BE16 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		75E2C8902590A46A005C19A8 /* ClearBottomSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearBottomSeparatorCell.swift; sourceTree = "<group>"; };
 		75E2C8A62590AA20005C19A8 /* ClearTopBottomSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearTopBottomSeparatorCell.swift; sourceTree = "<group>"; };
-		75E2C8AE2590AC10005C19A8 /* DataSourceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceCell.swift; sourceTree = "<group>"; };
 		75F27D712572FBEE00C8C22D /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,7 +172,6 @@
 		75222EA4258FAAF5004C0391 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				75E2C8AE2590AC10005C19A8 /* DataSourceCell.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -222,8 +219,8 @@
 				75C2B00E256F8679000A863C /* WeatherView.swift */,
 				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
 				75C2B01F256F9AB4000A863C /* WeatherFlowLayout.swift */,
-				75E2C8B72590B156005C19A8 /* TodayFooter */,
 				75E2C8B62590B144005C19A8 /* TodayHeader */,
+				75E2C8B72590B156005C19A8 /* TodayFooter */,
 				75C2B039256FAFEA000A863C /* ReusableViews */,
 			);
 			path = WeatherView;
@@ -430,7 +427,6 @@
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				75E2C8A72590AA20005C19A8 /* ClearTopBottomSeparatorCell.swift in Sources */,
 				7567BA8D255700D3006082FB /* UIView+Ext.swift in Sources */,
-				75E2C8AF2590AC10005C19A8 /* DataSourceCell.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
 				75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */,
 				75E2C8912590A46A005C19A8 /* ClearBottomSeparatorCell.swift in Sources */,
