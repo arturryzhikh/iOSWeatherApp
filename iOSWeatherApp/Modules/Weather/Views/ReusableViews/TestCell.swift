@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class TestCell: DataCell {
-    
+final class TestCell: ClearCell {
+
     var label: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)

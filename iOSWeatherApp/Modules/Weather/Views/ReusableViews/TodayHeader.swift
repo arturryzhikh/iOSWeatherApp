@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayHeader: DataCell {
+final class TodayHeader: ClearCell {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -23,7 +23,7 @@ final class TodayHeader: DataCell {
     //MARK: Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addConstraints()
+        initialSetup()
         //FIXME: move method to point when view model is available
         populateSubviews()
         
@@ -74,6 +74,9 @@ final class TodayHeader: DataCell {
             vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             ])
+    }
+    private func initialSetup() {
+        addConstraints()
     }
     private func populateSubviews() {
         locationLabel.text = "Краснодарский край"

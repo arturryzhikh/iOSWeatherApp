@@ -55,6 +55,7 @@ final class WeatherView: UIView {
     //background
     private let weatherImageView: UIImageView = {
         let iv = UIImageView()
+        //FIXME: Hardcoded image name
         iv.image = UIImage(named: "background")
         iv.contentMode = .scaleToFill
         return iv

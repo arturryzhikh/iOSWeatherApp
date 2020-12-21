@@ -1,38 +1,32 @@
 //
-//  DataCell.swift
+//  TransparentCellWithSeparator.swift
 //  iOSWeatherApp
 //
-//  Created by Artur Ryzhikh on 20.12.2020.
+//  Created by Artur Ryzhikh on 21.12.2020.
 //
 
 import UIKit
 
-class DataCell: UICollectionViewCell {
-    
+class ClearBottomSeparatorCell: ClearCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        clipsToBounds = true
-        backgroundColor = .clear
-        addSeparator()
+        addSeparatorOf(height: 1)
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    private let line: UIView = {
-        let line = UIView()
-        line.backgroundColor = .white
-        return line
-    }()
-    private func addSeparator() {
+    func addSeparatorOf(height: CGFloat) {
+        let line: UIView = {
+            let line = UIView()
+            line.backgroundColor = .white
+            return line
+        }()
         addSubviewForAutoLayout(line)
         NSLayoutConstraint.activate([
             line.leadingAnchor.constraint(equalTo: leadingAnchor),
             line.trailingAnchor.constraint(equalTo: trailingAnchor),
             line.bottomAnchor.constraint(equalTo: bottomAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1)
+            line.heightAnchor.constraint(equalToConstant: height)
         ])
     }
-    
-   
 }
