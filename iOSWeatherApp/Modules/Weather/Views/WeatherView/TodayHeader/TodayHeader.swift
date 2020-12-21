@@ -16,7 +16,7 @@ final class TodayHeader: ClearCell {
         Screen.height * 0.143
     }
     //MARK: Other Properties
-    private var computedAlpha: CGFloat {
+    private var computedAlpha: CGFloat { //calculate alpha of temperature and high low labels depending on view height
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
         return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
     }
@@ -31,6 +31,7 @@ final class TodayHeader: ClearCell {
         populateSubviews()
     }
     override func layoutSubviews() {
+        //update top constraint because origin of view changes during scrolling
         topConstraint?.constant = topPadding
         highLowLabel.alpha = computedAlpha
         temperatureLabel.alpha = computedAlpha
