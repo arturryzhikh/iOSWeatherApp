@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClearTopBottomSeparatorCell: ClearBottomSeparatorCell {
+class ClearTopBottomSeparatorCell: ClearCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSeparatorsOfHeight()
@@ -16,18 +16,17 @@ class ClearTopBottomSeparatorCell: ClearBottomSeparatorCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func addSeparatorsOfHeight(top: CGFloat = 1,bottom: CGFloat = 1) {
+    func addSeparatorsOfHeight(top: CGFloat = 1, bottom: CGFloat = 1) {
         let topline: UIView = {
             let line = UIView()
-            line.backgroundColor = .white
+            line.backgroundColor = .weatherWhite()
             return line
         }()
         let bottomline: UIView = {
             let line = UIView()
-            line.backgroundColor = .white
+            line.backgroundColor = .weatherWhite()
             return line
         }()
-        
         addSubviewsForAutoLayout([topline,bottomline])
         NSLayoutConstraint.activate([
             topline.leadingAnchor.constraint(equalTo: leadingAnchor),

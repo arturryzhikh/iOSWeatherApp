@@ -8,9 +8,7 @@
 import UIKit
 
 class ClearCell: UICollectionViewCell {
-
-    
-  override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
         backgroundColor = .clear

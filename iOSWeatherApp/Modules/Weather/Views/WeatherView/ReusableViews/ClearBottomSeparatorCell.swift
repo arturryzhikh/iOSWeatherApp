@@ -18,7 +18,7 @@ class ClearBottomSeparatorCell: ClearCell {
     func addSeparatorOf(height: CGFloat) {
         let line: UIView = {
             let line = UIView()
-            line.backgroundColor = .white
+            line.backgroundColor = .weatherWhite()
             return line
         }()
         addSubviewForAutoLayout(line)

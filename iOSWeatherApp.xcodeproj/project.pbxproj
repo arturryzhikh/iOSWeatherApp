@@ -203,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				750F197E25763BC0004FBC6A /* ViewModels */,
-				75C2B037256FAFCA000A863C /* Controller */,
 				75C2B038256FAFDA000A863C /* Views */,
 			);
 			path = Weather;
@@ -221,7 +220,11 @@
 			isa = PBXGroup;
 			children = (
 				75C2B00E256F8679000A863C /* WeatherView.swift */,
+				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
 				75C2B01F256F9AB4000A863C /* WeatherFlowLayout.swift */,
+				75E2C8B72590B156005C19A8 /* TodayFooter */,
+				75E2C8B62590B144005C19A8 /* TodayHeader */,
+				75C2B039256FAFEA000A863C /* ReusableViews */,
 			);
 			path = WeatherView;
 			sourceTree = "<group>";
@@ -243,24 +246,15 @@
 				757D526D2547F9EE00F53F1D /* NSObject+Ext.swift */,
 				7567BA8C255700D3006082FB /* UIView+Ext.swift */,
 				7548A967258F544E00690A52 /* UIFont+Ext.swift */,
+				75AE308A256FCE0700549CB6 /* Storyboard.storyboard */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		75C2B037256FAFCA000A863C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		75C2B038256FAFDA000A863C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				75AE308A256FCE0700549CB6 /* Storyboard.storyboard */,
 				753962BF2573F2ED00AD197F /* WeatherView */,
-				75C2B039256FAFEA000A863C /* ReusableViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,10 +266,24 @@
 				75848D0A258F73B800ADF593 /* ClearCell.swift */,
 				75E2C8902590A46A005C19A8 /* ClearBottomSeparatorCell.swift */,
 				75E2C8A62590AA20005C19A8 /* ClearTopBottomSeparatorCell.swift */,
-				75AE3069256FB22E00549CB6 /* TodayHeader.swift */,
-				75AE306E256FB24400549CB6 /* TodayFooter.swift */,
 			);
 			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		75E2C8B62590B144005C19A8 /* TodayHeader */ = {
+			isa = PBXGroup;
+			children = (
+				75AE3069256FB22E00549CB6 /* TodayHeader.swift */,
+			);
+			path = TodayHeader;
+			sourceTree = "<group>";
+		};
+		75E2C8B72590B156005C19A8 /* TodayFooter */ = {
+			isa = PBXGroup;
+			children = (
+				75AE306E256FB24400549CB6 /* TodayFooter.swift */,
+			);
+			path = TodayFooter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
