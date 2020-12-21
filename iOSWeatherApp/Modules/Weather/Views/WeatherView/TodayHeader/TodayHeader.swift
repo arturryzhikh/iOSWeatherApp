@@ -20,6 +20,10 @@ final class TodayHeader: ClearCell {
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
         return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
     }
+    private var topConstraint: NSLayoutConstraint?
+    private var topPadding: CGFloat {
+        return frame.height * 0.3
+    }
     //MARK: Life cycle
     override func initialSetup() {
         super.initialSetup()
@@ -27,23 +31,12 @@ final class TodayHeader: ClearCell {
         populateSubviews()
     }
     override func layoutSubviews() {
+        topConstraint?.constant = topPadding
         highLowLabel.alpha = computedAlpha
         temperatureLabel.alpha = computedAlpha
+        degreeLabel.alpha =  computedAlpha
     }
-    
     //MARK: Subviews
-    private lazy var vStack: UIStackView = {
-        let subviews = [locationLabel,
-                        shortForcastLabel,
-                        temperatureLabel,
-                        highLowLabel]
-        let stack = UIStackView(arrangedSubviews: subviews)
-        stack.alignment = .fill
-        stack.distribution = .fillProportionally
-        stack.axis = .vertical
-        stack.spacing = 0
-        return stack
-    }()
     private let locationLabel: UILabel = {
         let lbl = UILabel(transparentText: false,font: .locationLabel)
         return lbl
@@ -60,14 +53,30 @@ final class TodayHeader: ClearCell {
         let lbl = UILabel(font: .regularTemperature)
         return lbl
     }()
+    private let degreeLabel: UILabel = {
+        let lbl = UILabel(font: .degree)
+        lbl.text = "o"
+        lbl.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        lbl.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return lbl
+    }()
     
     //MARK:Instance methods
     private func addConstraints() {
-        addSubviewsForAutoLayout([vStack])
+        addSubviewsForAutoLayout([locationLabel,shortForcastLabel,temperatureLabel,highLowLabel,degreeLabel])
+        topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
+        topConstraint?.isActive = true
         NSLayoutConstraint.activate([
-            vStack.topAnchor.constraint(equalTo: self.topAnchor, constant: Screen.statusBarHeight),
-            vStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            vStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            shortForcastLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
+            shortForcastLabel.centerXAnchor.constraint(equalTo: locationLabel.centerXAnchor),
+            temperatureLabel.topAnchor.constraint(equalTo: shortForcastLabel.bottomAnchor),
+            temperatureLabel.centerXAnchor.constraint(equalTo: shortForcastLabel.centerXAnchor),
+            highLowLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
+            highLowLabel.centerXAnchor.constraint(equalTo: temperatureLabel.centerXAnchor),
+            degreeLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor),
+            degreeLabel.topAnchor.constraint(equalTo: temperatureLabel.topAnchor,constant: 8),
             ])
     }
     

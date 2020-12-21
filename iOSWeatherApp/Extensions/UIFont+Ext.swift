@@ -18,7 +18,7 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.08).rounded(),weight: .light)
     }
     class var degree: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.26).rounded(),weight: .regular)
+        UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .regular)
     }
     class var precipitaionProbability: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.11).rounded(),weight: .light)
