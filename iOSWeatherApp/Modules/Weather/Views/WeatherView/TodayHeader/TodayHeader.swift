@@ -25,8 +25,8 @@ final class TodayHeader: ClearCell {
         return frame.height * 0.3
     }
     //MARK: Life cycle
-    override func initialSetup() {
-        super.initialSetup()
+    override func setup() {
+        super.setup()
         addConstraints()
         populateSubviews()
     }

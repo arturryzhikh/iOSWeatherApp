@@ -9,8 +9,8 @@ import UIKit
 
 final class HourlyWeatherCell: ClearCell {
     //MARK: Life Cycle
-    override func initialSetup() {
-        super.initialSetup()
+    override func setup() {
+        super.setup()
     }
     //MARK: Subviews
     private let hourLabel: UILabel = {

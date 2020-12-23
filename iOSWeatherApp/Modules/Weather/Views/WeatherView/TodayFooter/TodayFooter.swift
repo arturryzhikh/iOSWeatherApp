@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayFooter: ClearTopBottomSeparatorCell, UICollectionViewDelegate {
+final class TodayFooter: ClearCell, UICollectionViewDelegate {
     //MAKR: Static properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.143
@@ -23,10 +23,13 @@ final class TodayFooter: ClearTopBottomSeparatorCell, UICollectionViewDelegate {
      
     //MARK: Other Properties
     //MARK: Life cycle
-    override func initialSetup() {
-        super.initialSetup()
+    override func setup() {
+        
+        insertSeparator(position: .bottom, aboveSubview: collectionView)
+        insertSeparator(position: .top, aboveSubview: collectionView)
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
+        
       addConstraints()
     }
     //MARK:Instance methods
