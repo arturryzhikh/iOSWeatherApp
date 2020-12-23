@@ -8,7 +8,8 @@
 import UIKit
 
 final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
- 
+    //MARK: Other properties
+  
     //MARK: Subviews
     let dayLabel: UILabel = {
         let lbl = UILabel(font: .regularTemperature)
@@ -20,7 +21,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
     }()
     private let temperatureLowLabel: UILabel = {
         let lbl = UILabel(font: .regularTemperature)
-        lbl.textColor = .weatherTransparent()
+        lbl.textColor = .weatherTransparent
         return lbl
     }()
     private let weatherEmojiLabel: UILabel = {
@@ -29,7 +30,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
     }()
     private let percentageLabel: UILabel = {
         let lbl = UILabel(font: .percentage)
-        lbl.textColor = .percentage()
+        lbl.textColor = .percentage
         return lbl
     }()
     private lazy var weatherEmojiStack: UIStackView = {
@@ -37,7 +38,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
         sv.axis = .horizontal
         sv.alignment = .center
         sv.distribution = .fill
-        sv.spacing = 6
+        sv.spacing = Screen.width * 0.025
         return sv
     }()
     private lazy var temperatureStack: UIStackView = {
@@ -45,7 +46,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
         sv.axis = .horizontal
         sv.alignment = .fill
         sv.distribution = .fill
-        sv.spacing = 16
+        sv.spacing = Screen.width * 0.05
         return sv
         
     }()

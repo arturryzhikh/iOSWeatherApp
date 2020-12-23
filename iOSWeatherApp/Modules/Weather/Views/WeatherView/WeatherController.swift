@@ -8,6 +8,9 @@
 import UIKit
 
 final class WeatherController: UIViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     //MARK: Subviews
     private var weatherView: WeatherView {
         return self.view as! WeatherView
@@ -26,6 +29,7 @@ final class WeatherController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
 }
 
 //MARK: UICollectionViewDataSource
@@ -39,9 +43,19 @@ extension WeatherController: UICollectionViewDataSource {
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
-        
-        return cell
+        var cell: UICollectionViewCell
+        let section = indexPath.section
+        switch section {
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
+            return cell
+        case 2:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+            return cell
+        default:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+            return cell
+        }
     }
     //Setup Headers / Footers
     func collectionView(_ collectionView: UICollectionView,
@@ -60,7 +74,7 @@ extension WeatherController: UICollectionViewDataSource {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
             
-           
+            
             return footer
         default:
             fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
@@ -71,7 +85,7 @@ extension WeatherController: UICollectionViewDataSource {
 }
 
 //MARK: UICollectionViewDelegateFlowLayout
- extension WeatherController: UICollectionViewDelegateFlowLayout {
+extension WeatherController: UICollectionViewDelegateFlowLayout {
     //item size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -89,10 +103,10 @@ extension WeatherController: UICollectionViewDataSource {
         case 4:
             return CGSize(width: width, height: (height * 0.052).rounded())
         default:
-           fatalError("No appropriate size for this indexPath")
+            fatalError("No appropriate size for this indexPath")
         }
     }
-   //header size
+    //header size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -107,8 +121,8 @@ extension WeatherController: UICollectionViewDataSource {
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                            minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     

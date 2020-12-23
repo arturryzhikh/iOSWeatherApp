@@ -8,13 +8,13 @@
 import UIKit
 
 extension UIColor {
-    class func weatherWhite() -> UIColor {
+    class var weatherWhite: UIColor {
         return white.withAlphaComponent(0.85)
     }
-    class func weatherTransparent() -> UIColor {
+    class var weatherTransparent: UIColor {
         return white.withAlphaComponent(0.5)
     }
-    class func percentage() -> UIColor {
+    class var percentage: UIColor {
         return  #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
     }
 }

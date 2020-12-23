@@ -10,6 +10,7 @@
 		341457F8259336C900FEA647 /* Customizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341457F7259336C900FEA647 /* Customizable.swift */; };
 		34145803259338AF00FEA647 /* DataDriven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34145802259338AF00FEA647 /* DataDriven.swift */; };
 		341458202593404100FEA647 /* UIView+AddSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414581F2593404100FEA647 /* UIView+AddSeparator.swift */; };
+		341458452593606200FEA647 /* WeatherOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341458442593606200FEA647 /* WeatherOverViewCell.swift */; };
 		750F197A25753360004FBC6A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F197925753360004FBC6A /* DataSource.swift */; };
 		751BF86925471A1400F2EB22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86825471A1400F2EB22 /* AppDelegate.swift */; };
 		751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751BF86A25471A1400F2EB22 /* SceneDelegate.swift */; };
@@ -57,6 +58,7 @@
 		341457F7259336C900FEA647 /* Customizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customizable.swift; sourceTree = "<group>"; };
 		34145802259338AF00FEA647 /* DataDriven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDriven.swift; sourceTree = "<group>"; };
 		3414581F2593404100FEA647 /* UIView+AddSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSeparator.swift"; sourceTree = "<group>"; };
+		341458442593606200FEA647 /* WeatherOverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOverViewCell.swift; sourceTree = "<group>"; };
 		750F197925753360004FBC6A /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		751BF86525471A1400F2EB22 /* iOSWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		751BF86825471A1400F2EB22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				75CB77E8256131180081BE16 /* DailyWeatherCell.swift */,
 			);
 			path = DailyWeather;
+			sourceTree = "<group>";
+		};
+		341458432593605200FEA647 /* WeatherOverView */ = {
+			isa = PBXGroup;
+			children = (
+				341458442593606200FEA647 /* WeatherOverViewCell.swift */,
+			);
+			path = WeatherOverView;
 			sourceTree = "<group>";
 		};
 		750F197E25763BC0004FBC6A /* ViewModels */ = {
@@ -230,6 +240,7 @@
 		753962BF2573F2ED00AD197F /* WeatherView */ = {
 			isa = PBXGroup;
 			children = (
+				341458432593605200FEA647 /* WeatherOverView */,
 				341458362593596200FEA647 /* DailyWeather */,
 				75C2B00E256F8679000A863C /* WeatherView.swift */,
 				751BF86C25471A1400F2EB22 /* WeatherController.swift */,
@@ -446,6 +457,7 @@
 				7567BA8D255700D3006082FB /* UIView+AddSubviewsForAutoLayout.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
 				75C2B020256F9AB4000A863C /* WeatherFlowLayout.swift in Sources */,
+				341458452593606200FEA647 /* WeatherOverViewCell.swift in Sources */,
 				7548A94B258F4F9200690A52 /* UIColor+WeatherColors.swift in Sources */,
 				75F27D722572FBEE00C8C22D /* UICollectionView+RegisterReusableViews.swift in Sources */,
 				757D526E2547F9EE00F53F1D /* NSObject+PrintFunction+ClassName.swift in Sources */,

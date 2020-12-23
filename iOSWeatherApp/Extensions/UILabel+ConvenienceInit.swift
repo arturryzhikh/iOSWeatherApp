@@ -13,7 +13,7 @@ extension UILabel {
                      alignment: NSTextAlignment = .center,
                      font: UIFont) {
         self.init()
-        textColor = transparentText ? UIColor.weatherTransparent() : UIColor.weatherWhite()
+        textColor = transparentText ? UIColor.weatherTransparent : UIColor.weatherWhite
         textAlignment = alignment
         numberOfLines = 1
         self.font = font

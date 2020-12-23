@@ -14,7 +14,7 @@ enum SeparatorPosition {
 }
 
 extension UIView {
-    func addSeparator(to position: SeparatorPosition, color: UIColor = .weatherWhite(),
+    func addSeparator(to position: SeparatorPosition, color: UIColor = .weatherWhite,
                       of height: CGFloat = 1 / Screen.scale, aboveSubview: UIView) {
         guard self.contains(aboveSubview)  else {
             printFunction(items: "aboveSubview \(aboveSubview.description) is not added into view heiarchy. Try to add it first")
