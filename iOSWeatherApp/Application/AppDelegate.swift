@@ -19,7 +19,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)
-            let rootVC = WeatherController()
+            let rootVC = LocationsController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
             window?.rootViewController = rootVC
             window?.makeKeyAndVisible()
         }

@@ -17,15 +17,13 @@ final class WeatherView: UIView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviewsForAutoLayout([backgroundImageView,collectionView,pageControlBar,line])
         addConstraints()
-        pageControlBar.addSeparator(to: .top,aboveSubview: pageControl)
+        
     }
-  
+    
     //MARK: Instance methods
     private func addConstraints() {
-        //add subviews
-        addSubviewsForAutoLayout([backgroundImageView,collectionView,pageControlBar])
-        //Autolayout
         NSLayoutConstraint.activate([
             //weather image view
             backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -37,9 +35,11 @@ final class WeatherView: UIView {
             pageControlBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             pageControlBar.bottomAnchor.constraint(equalTo: bottomAnchor),
             pageControlBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.085),
-            //page control
-            pageControl.centerXAnchor.constraint(equalTo: pageControlBar.centerXAnchor),
-            pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 10),
+            //white line above page control bar
+            line.leadingAnchor.constraint(equalTo: pageControlBar.leadingAnchor),
+            line.trailingAnchor.constraint(equalTo: pageControlBar.trailingAnchor),
+            line.heightAnchor.constraint(equalToConstant: 1 / Screen.scale),
+            line.topAnchor.constraint(equalTo: pageControlBar.topAnchor),
             //collection view
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: self.topAnchor),
@@ -48,11 +48,16 @@ final class WeatherView: UIView {
         ])
     }
     //MARK: Subviews:
+    private let line: UIView =  {
+        let v = UIView()
+        v.backgroundColor = .weatherWhite
+        return v
+    }()
     //background
     private let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         //FIXME: Hardcoded image name
-//        iv.image = UIImage(named: "background")
+        //        iv.image = UIImage(named: "background")
         iv.backgroundColor = .gray
         iv.contentMode = .scaleToFill
         return iv
@@ -60,14 +65,7 @@ final class WeatherView: UIView {
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
-        v.addSubviewsForAutoLayout([pageControl])
         return v
-    }()
-    //Page Controle
-    private let pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.numberOfPages = 4
-        return pc
     }()
     //create collection view
     let collectionView: UICollectionView = {

@@ -13,7 +13,7 @@ enum SeparatorPosition {
     case top
 }
 
-extension UIView {
+extension ClearCell {
     func addSeparator(to position: SeparatorPosition, color: UIColor = .weatherWhite,
                       of height: CGFloat = 1 / Screen.scale, aboveSubview: UIView) {
         guard self.contains(aboveSubview)  else {

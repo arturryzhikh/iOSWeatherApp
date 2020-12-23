@@ -8,6 +8,7 @@
 import UIKit
 
 final class WeatherController: UIViewController {
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -19,7 +20,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var viewModel = DataSource()
+    private var dataSource = DataSource()
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -36,10 +37,10 @@ final class WeatherController: UIViewController {
 extension WeatherController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        viewModel.numbersOfSections
+        dataSource.numbersOfSections
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.numberOfItemsIn(section: section)
+        dataSource.numberOfItemsIn(section: section)
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
