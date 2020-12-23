@@ -27,6 +27,7 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
     //MARK: Life cycle
     override func setup() {
         super.setup()
+        addSubviewsForAutoLayout([locationLabel,shortForcastLabel,temperatureLabel,highLowLabel,degreeLabel])
         setupConstraints()
         populateSubviews()
     }
@@ -63,10 +64,9 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
     }()
     
     func setupConstraints() {
-        addSubviewsForAutoLayout([locationLabel,shortForcastLabel,temperatureLabel,highLowLabel,degreeLabel])
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true
-        NSLayoutConstraint.activate([
+        let constraints = [
             locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             shortForcastLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
@@ -77,14 +77,14 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
             highLowLabel.centerXAnchor.constraint(equalTo: temperatureLabel.centerXAnchor),
             degreeLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor),
             degreeLabel.topAnchor.constraint(equalTo: temperatureLabel.topAnchor,constant: 8),
-            ])
+            ]
+        NSLayoutConstraint.activate(constraints)
     }
-    
     func populateSubviews() {
         locationLabel.text = "Краснодарский край"
         shortForcastLabel.text = "Солнечно"
         temperatureLabel.text = "27"
-        highLowLabel.text = "H:35 L:18"
+        highLowLabel.text = "H:35  L:18"
     }
     
     //MARK:Instance methods
