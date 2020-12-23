@@ -12,11 +12,10 @@ final class LocationsController: UIPageViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    fileprivate lazy var pages: [WeatherController] = {
+    private lazy var weatherControllers: [WeatherController] = {
         return [
             self.getViewController(),
             self.getViewController(),
-            
         ]
     }()
     fileprivate func getViewController() -> WeatherController {
@@ -32,13 +31,15 @@ final class LocationsController: UIPageViewController {
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
+    //Page control
     private lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
-        pc.numberOfPages = pages.count
+        pc.numberOfPages = weatherControllers.count
         pc.currentPage = 0
         pc.tintColor = UIColor.black
         pc.pageIndicatorTintColor = .weatherTransparent
         pc.currentPageIndicatorTintColor = .weatherWhite
+        pc.addTarget(self, action: #selector(self.pageControlSelectionAction(_:)), for: .touchUpInside)
         return pc
     }()
     //MARK: Life cycle
@@ -52,7 +53,6 @@ final class LocationsController: UIPageViewController {
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = self
@@ -60,41 +60,45 @@ final class LocationsController: UIPageViewController {
         view.addSubviewForAutoLayout(pageControl)
         view.insertSubview(backgroundImageView, at: 0)
         setupConstraints()
-        if let firstVC = pages.first {
+        if let firstVC = weatherControllers.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-        
-        
     }
+    //MARK: Instance methods
+    @objc private func pageControlSelectionAction(_ sender: UIPageControl) {
+        let currentPageIndex = sender.currentPage
+        let vc = weatherControllers[currentPageIndex]
+        setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+        }
 }
 extension LocationsController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let viewControllerIndex = pages.firstIndex(of: viewController as! WeatherController) else { return nil }
+        guard let viewControllerIndex = weatherControllers.firstIndex(of: viewController as! WeatherController) else { return nil }
         
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0  else { return nil }
         
-        guard pages.count > previousIndex else { return nil        }
+        guard weatherControllers.count > previousIndex else { return nil        }
         
-        return pages[previousIndex]
+        return weatherControllers[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
     {
-        guard let viewControllerIndex = pages.firstIndex(of: viewController as! WeatherController) else {
+        guard let viewControllerIndex = weatherControllers.firstIndex(of: viewController as! WeatherController) else {
             return nil
         }
         let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = pages.count
+        let orderedViewControllersCount = weatherControllers.count
         guard orderedViewControllersCount != nextIndex else {
             return nil
         }
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
-        return pages[nextIndex]
+        return weatherControllers[nextIndex]
         
     }
 }
@@ -102,7 +106,7 @@ extension LocationsController: UIPageViewControllerDataSource {
 extension LocationsController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         let pageContentViewController = pageViewController.viewControllers![0]
-        self.pageControl.currentPage = pages.firstIndex(of: pageContentViewController as! WeatherController)!
+        self.pageControl.currentPage = weatherControllers.firstIndex(of: pageContentViewController as! WeatherController)!
     }
     
     
