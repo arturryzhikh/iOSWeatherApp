@@ -39,7 +39,7 @@ final class LocationsController: UIPageViewController {
     //MARK: Life cycle
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            pageControl.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.height * 0.06),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.height * 0.03),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

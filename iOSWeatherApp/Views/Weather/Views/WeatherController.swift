@@ -111,7 +111,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         case 4:
             return CGSize(width: collectionView.frame.width, height: (height * 0.09))
         default:
-            fatalError("No appropriate size for this indexPath")
+            fatalError("No appropriate size for this indexPath \(indexPath)")
         }
     }
     //header size
