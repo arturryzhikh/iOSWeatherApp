@@ -9,8 +9,8 @@ import UIKit
 
 ///enum that defines separator position in Clear Cell
 enum SeparatorPosition {
-    case top
     case bottom
+    case top
 }
 
 extension UIView {
@@ -34,4 +34,5 @@ extension UIView {
         }
         
     }
+    
 }

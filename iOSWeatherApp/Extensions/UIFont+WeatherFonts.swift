@@ -17,6 +17,9 @@ extension UIFont {
     class var HugeTemperature: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.08).rounded(),weight: .light)
     }
+    class var day: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.022).rounded(),weight: .regular)
+    }
     class var degree: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .regular)
     }
@@ -24,7 +27,13 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.015).rounded(),weight: .light)
     }
     class var weatherEmoji: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.036).rounded())
+        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded())
+    }
+    class var extendedInfoTitle: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.017).rounded())
+    }
+    class var extendedInfoValue: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.032).rounded())
     }
     
 }

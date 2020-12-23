@@ -18,6 +18,7 @@ final class WeatherOverViewCell: ClearCell, Customizable, DataDriven {
         tv.isScrollEnabled = false
         tv.isUserInteractionEnabled = false
         tv.textContainerInset = .zero
+        tv.textContainer.maximumNumberOfLines = 4
         tv.textContainer.lineFragmentPadding = 0
         return tv
     }()

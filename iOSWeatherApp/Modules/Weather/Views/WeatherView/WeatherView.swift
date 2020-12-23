@@ -52,7 +52,8 @@ final class WeatherView: UIView {
     private let backgroundImageView: UIImageView = {
         let iv = UIImageView()
         //FIXME: Hardcoded image name
-        iv.image = UIImage(named: "background")
+//        iv.image = UIImage(named: "background")
+        iv.backgroundColor = .gray
         iv.contentMode = .scaleToFill
         return iv
     }()
@@ -76,7 +77,7 @@ final class WeatherView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.registerHeaders(TodayHeader.self)
         collectionView.registerFooters(TodayFooter.self)
-        collectionView.registerCells(DailyWeatherCell.self,WeatherOverViewCell.self)
+        collectionView.registerCells(DailyWeatherCell.self,WeatherOverViewCell.self,ExtendedInfoCell.self)
         return collectionView
     }()
     

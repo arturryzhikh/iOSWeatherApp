@@ -52,10 +52,15 @@ extension WeatherController: UICollectionViewDataSource {
         case 2:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
             return cell
+        case 3:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
+            return cell
         default:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
             return cell
+            
         }
+        
     }
     //Setup Headers / Footers
     func collectionView(_ collectionView: UICollectionView,
