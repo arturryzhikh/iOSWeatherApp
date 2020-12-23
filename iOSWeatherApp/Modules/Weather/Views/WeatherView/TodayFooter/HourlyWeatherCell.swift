@@ -25,7 +25,7 @@ final class HourlyWeatherCell: ClearCell, Customizable , DataDriven {
         sv.axis = .vertical
         sv.alignment = .center
         sv.distribution = .fill
-        sv.spacing = 6
+        sv.spacing = 2
         return sv
         
     }()
@@ -43,7 +43,6 @@ final class HourlyWeatherCell: ClearCell, Customizable , DataDriven {
     }()
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            
             vStack.topAnchor.constraint(equalTo: topAnchor),
             vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
