@@ -12,7 +12,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
   
     //MARK: Subviews
     let dayLabel: UILabel = {
-        let lbl = UILabel(font: .day)
+        let lbl = UILabel(font: .regularTemperature)
         return lbl
     }()
     private let temperatureHighLabel: UILabel = {

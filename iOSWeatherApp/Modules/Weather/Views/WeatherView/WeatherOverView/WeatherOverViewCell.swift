@@ -12,7 +12,7 @@ final class WeatherOverViewCell: ClearCell, Customizable, DataDriven {
     private let overViewTextView: UITextView = {
         let tv = UITextView()
         tv.textAlignment = .left
-        tv.font = .regularTemperature
+        tv.font = .overView
         tv.textColor = .weatherWhite
         tv.backgroundColor = .clear
         tv.isScrollEnabled = false

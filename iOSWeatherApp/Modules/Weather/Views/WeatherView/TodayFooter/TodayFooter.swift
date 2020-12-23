@@ -25,7 +25,7 @@ final class TodayFooter: ClearCell, UICollectionViewDelegate {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
-            layout.minimumLineSpacing = 10
+            layout.minimumLineSpacing = horizontalInset
             layout.minimumInteritemSpacing = 0
             layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
             
