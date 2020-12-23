@@ -14,8 +14,8 @@ enum SeparatorPosition {
 }
 
 extension ClearCell {
-    func addSeparator(to position: SeparatorPosition, color: UIColor = .weatherWhite,
-                      of height: CGFloat = 1 / Screen.scale, aboveSubview: UIView) {
+    func addSeparator(to position: SeparatorPosition, color: UIColor = .weatherTransparent,
+                      of height: CGFloat = 0.75, aboveSubview: UIView) {
         guard self.contains(aboveSubview)  else {
             printFunction(items: "aboveSubview \(aboveSubview.description) is not added into view heiarchy. Try to add it first")
             return

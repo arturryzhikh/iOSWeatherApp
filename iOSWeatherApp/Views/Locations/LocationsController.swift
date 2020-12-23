@@ -16,8 +16,18 @@ final class LocationsController: UIPageViewController {
         return [
             self.getViewController(),
             self.getViewController(),
+            self.getViewController(),
+            self.getViewController(),
+            self.getViewController(),
+            self.getViewController()
         ]
-    }()
+    }() {
+        willSet {
+            printFunction(items: newValue)
+            pageControl.numberOfPages = newValue.count
+        }
+    }
+    
     fileprivate func getViewController() -> WeatherController {
         return WeatherController()
     }
@@ -35,11 +45,10 @@ final class LocationsController: UIPageViewController {
     private lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = weatherControllers.count
-        pc.currentPage = 0
         pc.tintColor = UIColor.black
         pc.pageIndicatorTintColor = .weatherTransparent
         pc.currentPageIndicatorTintColor = .weatherWhite
-        pc.addTarget(self, action: #selector(self.pageControlSelectionAction(_:)), for: .touchUpInside)
+        pc.addTarget(self, action: #selector(self.pageControlDotDidPressed(_:)), for: .touchUpInside)
         return pc
     }()
     //MARK: Life cycle
@@ -65,10 +74,11 @@ final class LocationsController: UIPageViewController {
         }
     }
     //MARK: Instance methods
-    @objc private func pageControlSelectionAction(_ sender: UIPageControl) {
-        let currentPageIndex = sender.currentPage
-        let vc = weatherControllers[currentPageIndex]
+    @objc private func pageControlDotDidPressed(_ sender: UIPageControl) {
+        let index = sender.currentPage
+        let vc = weatherControllers[index]
         setViewControllers([vc], direction: .forward, animated: true, completion: nil)
+       
         }
 }
 extension LocationsController: UIPageViewControllerDataSource {
@@ -98,6 +108,7 @@ extension LocationsController: UIPageViewControllerDataSource {
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
+        
         return weatherControllers[nextIndex]
         
     }

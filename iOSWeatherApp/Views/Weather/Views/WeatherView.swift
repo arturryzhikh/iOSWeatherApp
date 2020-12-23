@@ -33,7 +33,7 @@ final class WeatherView: UIView {
             //white line above page control bar
             line.leadingAnchor.constraint(equalTo: pageControlBar.leadingAnchor),
             line.trailingAnchor.constraint(equalTo: pageControlBar.trailingAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1 / Screen.scale),
+            line.heightAnchor.constraint(equalToConstant: 0.75),
             line.topAnchor.constraint(equalTo: pageControlBar.topAnchor),
             //collection view
             collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
