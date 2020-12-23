@@ -12,7 +12,7 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.029).rounded(), weight: .regular)
     }
     class var regularTemperature: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.016).rounded(),weight: .regular)
+        UIFont.systemFont(ofSize: (Screen.height * 0.02).rounded(),weight: .regular)
     }
     class var HugeTemperature: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.08).rounded(),weight: .light)
@@ -22,6 +22,9 @@ extension UIFont {
     }
     class var precipitaionProbability: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.11).rounded(),weight: .light)
+    }
+    class var weatherEmoji: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded())
     }
     
 }

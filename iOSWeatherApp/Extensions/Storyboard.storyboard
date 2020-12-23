@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-8c-rXf">
-                                <rect key="frame" x="64" y="197" width="375" height="27"/>
+                                <rect key="frame" x="13" y="404" width="375" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98637241129999997" green="0.98651367430000003" blue="0.98634153599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
