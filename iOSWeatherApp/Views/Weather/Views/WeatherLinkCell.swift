@@ -5,6 +5,7 @@
 //  Created by Artur Ryzhikh on 23.12.2020.
 //
 import UIKit
+
 final class WeatherLinkCell: ClearCell, Customizable, DataDriven {
     //MARK: Subviews
     private let linkLabel: UILabel = {
