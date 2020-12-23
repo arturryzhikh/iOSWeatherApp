@@ -20,11 +20,11 @@ extension UIFont {
     class var degree: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.03).rounded(),weight: .regular)
     }
-    class var precipitaionProbability: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.11).rounded(),weight: .light)
+    class var percentage: UIFont {
+        UIFont.systemFont(ofSize: (Screen.height * 0.015).rounded(),weight: .light)
     }
     class var weatherEmoji: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded())
+        UIFont.systemFont(ofSize: (Screen.height * 0.036).rounded())
     }
     
 }

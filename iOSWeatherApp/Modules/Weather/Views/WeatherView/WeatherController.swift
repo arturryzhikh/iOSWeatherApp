@@ -39,8 +39,8 @@ extension WeatherController: UICollectionViewDataSource {
     }
     //Setup Cells
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TestCell.description(), for: indexPath) as! TestCell
-        cell.label.text = "Section: \(indexPath.section) Item: \(indexPath.item)"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
+        
         return cell
     }
     //Setup Headers / Footers

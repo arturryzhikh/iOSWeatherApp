@@ -19,9 +19,10 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default1" translatesAutoresizingMaskIntoConstraints="NO" id="fSq-CH-56f">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.52549019607843139" green="0.86274509803921573" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-8c-rXf">
-                                <rect key="frame" x="13" y="404" width="375" height="123"/>
+                                <rect key="frame" x="26" y="604" width="375" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98637241129999997" green="0.98651367430000003" blue="0.98634153599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>

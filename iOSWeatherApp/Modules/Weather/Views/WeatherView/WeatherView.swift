@@ -76,7 +76,7 @@ final class WeatherView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.registerHeaders(TodayHeader.self)
         collectionView.registerFooters(TodayFooter.self)
-        collectionView.registerCells(TestCell.self)
+        collectionView.registerCells(DailyWeatherCell.self)
         return collectionView
     }()
     

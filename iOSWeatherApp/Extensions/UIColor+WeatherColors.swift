@@ -14,4 +14,7 @@ extension UIColor {
     class func weatherTransparent() -> UIColor {
         return white.withAlphaComponent(0.5)
     }
+    class func percentage() -> UIColor {
+        return  #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+    }
 }
