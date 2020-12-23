@@ -25,12 +25,12 @@ final class HourlyWeatherCell: ClearCell, Customizable , DataDriven {
         sv.axis = .vertical
         sv.alignment = .center
         sv.distribution = .fill
-        sv.spacing = 2
+        sv.spacing = 4
         return sv
         
     }()
     let hourLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
+        let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
     private let temperatureLabel: UILabel = {

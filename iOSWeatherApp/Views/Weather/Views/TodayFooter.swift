@@ -10,7 +10,7 @@ import UIKit
 final class TodayFooter: ClearCell, UICollectionViewDelegate {
     //MAKR: Static properties
     static var defaultHeight: CGFloat {
-        Screen.height * 0.143
+        Screen.height * 0.15
     }
     //MARK: Subviews
     private lazy var collectionView: UICollectionView = {

@@ -44,15 +44,15 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
         return lbl
     }()
     private let shortForcastLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
+        let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
     private let temperatureLabel: UILabel = {
-        let lbl = UILabel(font: .HugeTemperature)
+        let lbl = UILabel(font: .hugeTemperature)
         return lbl
     }()
     private let highLowLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
+        let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
     private let degreeLabel: UILabel = {

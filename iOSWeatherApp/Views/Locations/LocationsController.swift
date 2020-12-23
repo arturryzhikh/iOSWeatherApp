@@ -12,6 +12,7 @@ final class LocationsController: UIPageViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
     private lazy var weatherControllers: [WeatherController] = {
         return [
             self.getViewController(),
@@ -21,44 +22,24 @@ final class LocationsController: UIPageViewController {
             self.getViewController(),
             self.getViewController()
         ]
-    }() {
-        willSet {
-            printFunction(items: newValue)
-            pageControl.numberOfPages = newValue.count
-        }
-    }
-    
-    fileprivate func getViewController() -> WeatherController {
+    }()
+    private func getViewController() -> WeatherController {
         return WeatherController()
     }
     //MARK: Subviews
-    //background
-    private let backgroundImageView: UIImageView = {
-        let iv = UIImageView()
-        //FIXME: Hardcoded image name
-        iv.image = UIImage(named: "background")
-        iv.contentMode = .scaleToFill
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        return iv
-    }()
-    //Page control
+   //Page control
     private lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.numberOfPages = weatherControllers.count
         pc.tintColor = UIColor.black
-        pc.pageIndicatorTintColor = .weatherTransparent
-        pc.currentPageIndicatorTintColor = .weatherWhite
+        pc.currentPage = 0
         pc.addTarget(self, action: #selector(self.pageControlDotDidPressed(_:)), for: .touchUpInside)
         return pc
     }()
     //MARK: Life cycle
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            pageControl.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.height * 0.08),
+            pageControl.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -Screen.height * 0.06),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
@@ -66,11 +47,12 @@ final class LocationsController: UIPageViewController {
         super.viewDidLoad()
         dataSource = self
         delegate   = self
+        view.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         view.addSubviewForAutoLayout(pageControl)
-        view.insertSubview(backgroundImageView, at: 0)
         setupConstraints()
         if let firstVC = weatherControllers.first {
             setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
+            
         }
     }
     //MARK: Instance methods

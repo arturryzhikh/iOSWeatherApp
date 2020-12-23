@@ -20,7 +20,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
         return lbl
     }()
     private let temperatureLowLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
+        let lbl = UILabel(font: .lightTemperature)
         lbl.textColor = .weatherTransparent
         return lbl
     }()
@@ -29,7 +29,7 @@ final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
         return lbl
     }()
     private let percentageLabel: UILabel = {
-        let lbl = UILabel(font: .percentage)
+        let lbl = UILabel(font: .extendedInfoTitle)
         lbl.textColor = .percentage
         return lbl
     }()

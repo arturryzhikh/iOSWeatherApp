@@ -103,13 +103,13 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         let height = Screen.height
         switch section {
         case 1:
-            return CGSize(width: width , height: (height * 0.066).rounded())
+            return CGSize(width: width , height: (height * 0.066))
         case 2:
-            return CGSize(width: width, height: (height * 0.131).rounded())
+            return CGSize(width: width, height: (height * 0.131))
         case 3:
-            return CGSize(width: width, height: (height * 0.073).rounded())
+            return CGSize(width: width, height: (height * 0.07))
         case 4:
-            return CGSize(width: collectionView.frame.width, height: (height * 0.052).rounded())
+            return CGSize(width: collectionView.frame.width, height: (height * 0.09))
         default:
             fatalError("No appropriate size for this indexPath")
         }
