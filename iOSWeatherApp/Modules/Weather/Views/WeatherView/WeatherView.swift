@@ -18,6 +18,7 @@ final class WeatherView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addConstraints()
+        pageControlBar.addSeparator(to: .top,aboveSubview: pageControl)
     }
   
     //MARK: Instance methods
@@ -36,11 +37,6 @@ final class WeatherView: UIView {
             pageControlBar.trailingAnchor.constraint(equalTo: trailingAnchor),
             pageControlBar.bottomAnchor.constraint(equalTo: bottomAnchor),
             pageControlBar.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.085),
-            //line view
-            line.leadingAnchor.constraint(equalTo: pageControlBar.leadingAnchor),
-            line.trailingAnchor.constraint(equalTo: pageControlBar.trailingAnchor),
-            line.topAnchor.constraint(equalTo: pageControlBar.topAnchor),
-            line.heightAnchor.constraint(equalToConstant: 1),
             //page control
             pageControl.centerXAnchor.constraint(equalTo: pageControlBar.centerXAnchor),
             pageControl.topAnchor.constraint(equalTo: pageControlBar.topAnchor,constant: 10),
@@ -63,14 +59,8 @@ final class WeatherView: UIView {
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
-        v.addSubviewsForAutoLayout([pageControl,line])//add subviews above so the could be visible
+        v.addSubviewsForAutoLayout([pageControl])
         return v
-    }()
-    //Top line
-    private let line: UIView = {
-        let line = UIView()
-        line.backgroundColor = .white
-        return line
     }()
     //Page Controle
     private let pageControl: UIPageControl = {

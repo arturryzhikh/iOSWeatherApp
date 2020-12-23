@@ -29,28 +29,3 @@ public class ClearCell: UICollectionViewCell {
     }
     
 }
-
-///enum that defines separator position in Clear Cell
-enum SeparatorPosition {
-    case top
-    case bottom
-}
-extension ClearCell {
-    func insertSeparator(position: SeparatorPosition, color: UIColor = .weatherWhite(), of height: CGFloat = 1 / Screen.scale, aboveSubview: UIView) {
-        let separator = UIView()
-        separator.backgroundColor = color
-        addSubviewForAutoLayout(separator)
-        if !self.subviews.contains(aboveSubview) {
-            addSubviewForAutoLayout(aboveSubview)
-        }
-        insertSubview(separator, aboveSubview: aboveSubview)
-        separator.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        separator.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: height).isActive = true
-        if position == .top {
-            separator.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        } else if position == .bottom {
-            separator.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        }
-    }
-}

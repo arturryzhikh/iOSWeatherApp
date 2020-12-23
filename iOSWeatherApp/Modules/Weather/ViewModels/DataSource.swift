@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewModel {
+final class DataSource {
     
     func numberOfItemsIn(section: Int) -> Int  {
         switch section {

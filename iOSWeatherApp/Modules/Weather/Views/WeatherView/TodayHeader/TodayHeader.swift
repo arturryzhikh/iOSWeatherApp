@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayHeader: ClearCell {
+final class TodayHeader: ClearCell, Customizable, DataDriven {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -27,7 +27,7 @@ final class TodayHeader: ClearCell {
     //MARK: Life cycle
     override func setup() {
         super.setup()
-        addConstraints()
+        setupConstraints()
         populateSubviews()
     }
     override func layoutSubviews() {
@@ -62,8 +62,7 @@ final class TodayHeader: ClearCell {
         return lbl
     }()
     
-    //MARK:Instance methods
-    private func addConstraints() {
+    func setupConstraints() {
         addSubviewsForAutoLayout([locationLabel,shortForcastLabel,temperatureLabel,highLowLabel,degreeLabel])
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true
@@ -81,12 +80,15 @@ final class TodayHeader: ClearCell {
             ])
     }
     
-    private func populateSubviews() {
+    func populateSubviews() {
         locationLabel.text = "Краснодарский край"
         shortForcastLabel.text = "Солнечно"
         temperatureLabel.text = "27"
         highLowLabel.text = "H:35 L:18"
     }
+    
+    //MARK:Instance methods
+    
     
     
 }

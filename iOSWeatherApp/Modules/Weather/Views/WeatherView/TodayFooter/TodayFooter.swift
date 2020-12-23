@@ -24,18 +24,16 @@ final class TodayFooter: ClearCell, UICollectionViewDelegate {
     //MARK: Other Properties
     //MARK: Life cycle
     override func setup() {
-        
-        insertSeparator(position: .bottom, aboveSubview: collectionView)
-        insertSeparator(position: .top, aboveSubview: collectionView)
+        addSubviewForAutoLayout(collectionView)
+        addSeparator(to: .top, aboveSubview: collectionView)
+        addSeparator(to: .bottom, aboveSubview: collectionView)
+        setupConstraints()
 //        collectionView.delegate = self
 //        collectionView.dataSource = self
-        
-      addConstraints()
     }
     //MARK:Instance methods
-    private func addConstraints() {
-        addSubviewForAutoLayout(collectionView)
-        NSLayoutConstraint.activate([
+    private func setupConstraints() {
+       NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: topAnchor),

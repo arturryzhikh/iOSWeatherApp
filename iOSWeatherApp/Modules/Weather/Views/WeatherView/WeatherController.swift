@@ -16,7 +16,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var viewModel = ViewModel()
+    private var viewModel = DataSource()
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
