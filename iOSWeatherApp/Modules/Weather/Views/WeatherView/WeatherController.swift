@@ -55,9 +55,11 @@ extension WeatherController: UICollectionViewDataSource {
         case 3:
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
             return cell
-        default:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+        case 4:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
             return cell
+        default:
+           fatalError("No appropriate cell type for this section: \(section)")
             
         }
         
@@ -96,7 +98,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
-        let width = Screen.width * 0.9
+        let width = collectionView.frame.width * 0.9
         let height = Screen.height
         switch section {
         case 1:
@@ -106,7 +108,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         case 3:
             return CGSize(width: width, height: (height * 0.073).rounded())
         case 4:
-            return CGSize(width: width, height: (height * 0.052).rounded())
+            return CGSize(width: collectionView.frame.width, height: (height * 0.052).rounded())
         default:
             fatalError("No appropriate size for this indexPath")
         }

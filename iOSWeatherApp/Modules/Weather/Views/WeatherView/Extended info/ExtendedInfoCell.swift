@@ -23,7 +23,7 @@ final class ExtendedInfoCell: ClearCell, Customizable, DataDriven {
     override func setup() {
         addSubviewForAutoLayout(vStack)
         setupConstraints()
-        addSeparator(to: .bottom, aboveSubview: infoValueLabel)
+        addSeparator(to: .top, aboveSubview: infoValueLabel)
         populateSubviews()
         
       

@@ -27,13 +27,13 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.015).rounded(),weight: .light)
     }
     class var weatherEmoji: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded())
+        UIFont.systemFont(ofSize: (Screen.height * 0.04).rounded(),weight: .regular)
     }
     class var extendedInfoTitle: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.017).rounded())
+        UIFont.systemFont(ofSize: (Screen.height * 0.017).rounded(),weight: .regular)
     }
     class var extendedInfoValue: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.032).rounded())
+        UIFont.systemFont(ofSize: (Screen.height * 0.032).rounded(),weight: .regular)
     }
     
 }

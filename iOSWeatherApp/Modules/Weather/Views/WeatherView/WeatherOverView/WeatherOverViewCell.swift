@@ -26,7 +26,6 @@ final class WeatherOverViewCell: ClearCell, Customizable, DataDriven {
     override func setup() {
         addSubviewForAutoLayout(overViewTextView)
         addSeparator(to: .top, aboveSubview: overViewTextView)
-        addSeparator(to: .bottom, aboveSubview: overViewTextView)
         setupConstraints()
         populateSubviews()
     }
