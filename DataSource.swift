@@ -5,93 +5,42 @@
 //  Created by Artur Ryzhikh on 30.11.2020.
 //
 
-import UIKit
+
+import Foundation
 
 final class DataSource: NSObject  {
     
-    private var collectionView: UICollectionView!
-    init(of collectionView: UICollectionView) {
+    //MARK: Properties
+    private var service: APIService!
+    
+    private var model: WeatherResponse?
+    
+    
+    //MARK: Life Cycle
+    init(service: APIService = WeatherService.shared) {
         super.init()
-        self.collectionView = collectionView
-        collectionView.dataSource = self
-        collectionView.registerHeaders(CurrentCell.self)
-        collectionView.registerFooters(HourlySectionCell.self)
-        collectionView.registerCells(DailyWeatherCell.self,
-                                     WeatherOverViewCell.self,
-                                     ExtendedInfoCell.self
-                                     ,WeatherLinkCell.self)
+        self.service = service
+        getWeatherFor(latitude: 55.751244, longitude: 37.618423)
+      
     }
+   
+    
     
 }
 
-extension DataSource: UICollectionViewDataSource {
-   func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
-    }
+//MARK: Networking
+extension DataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    private func getWeatherFor(latitude: Double, longitude: Double) {
         
-        switch section {
-        case 0:
-            return 0
-        case 1:
-            return 9
-        case 2:
-            return 1
-        case 3:
-            return 10
-        case 4:
-            return 1
-        default:
-            fatalError("No data for number of items for this section \(section)")
-        }
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        var cell: UICollectionViewCell
-        let section = indexPath.section
-        switch section {
-        case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
-            return cell
-        case 2:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
-            return cell
-        case 3:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
-            return cell
-        case 4:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
-            return cell
-        default:
-           fatalError("No appropriate cell type for this section: \(section)")
-            
-        }
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        
-        case UICollectionView.elementKindSectionHeader :
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentCell.description(), for: indexPath) as? CurrentCell else {
-                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
-                
+        service.request(WeatherRequest(latitude: longitude, longitude: latitude)) { [weak self] (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let weather):
+                self?.model = weather
             }
-            return header
-            
-            
-        case UICollectionView.elementKindSectionFooter :
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlySectionCell.description(), for: indexPath) as? HourlySectionCell else {
-                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
-            }
-            
-            
-            return footer
-        default:
-            fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
         }
     }
- }
+}
+

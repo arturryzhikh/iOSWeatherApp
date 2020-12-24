@@ -34,8 +34,9 @@ final class WeatherController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
         collectionView.delegate = self
-        dataProvider = DataSource(of: collectionView)
+        dataProvider = DataSource()
     }
    
     
@@ -72,7 +73,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: width, height: CurrentCell.defaultHeight)
+        let headerSize = CGSize(width: width, height: CurrentWeatherCell.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
@@ -88,3 +89,77 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+
+//MARK: UICollectionViewDataSource
+extension WeatherController: UICollectionViewDataSource {
+   func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 9
+        case 2:
+            return 1
+        case 3:
+            return 10
+        case 4:
+            return 1
+        default:
+            fatalError("No data for number of items for this section \(section)")
+        }
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        var cell: UICollectionViewCell
+        let section = indexPath.section
+        switch section {
+        case 1:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
+            return cell
+        case 2:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+            return cell
+        case 3:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
+            return cell
+        case 4:
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
+            return cell
+        default:
+           fatalError("No appropriate cell type for this section: \(section)")
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        
+        case UICollectionView.elementKindSectionHeader :
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentWeatherCell.description(), for: indexPath) as? CurrentWeatherCell else {
+                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+                
+            }
+            return header
+            
+            
+        case UICollectionView.elementKindSectionFooter :
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlySectionCell.description(), for: indexPath) as? HourlySectionCell else {
+                fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+            }
+            
+            
+            return footer
+        default:
+            fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+        }
+    }
+ }

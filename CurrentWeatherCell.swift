@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrentCell: ClearCell, Customizable, DataDriven {
+final class CurrentWeatherCell: ClearCell, Customizable, DataDriven {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -18,7 +18,7 @@ final class CurrentCell: ClearCell, Customizable, DataDriven {
     //MARK: Other Properties
     private var computedAlpha: CGFloat { //calculate alpha of temperature and high low labels depending on view height
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (CurrentCell.defaultHeight - transparentY), 0)
+        return max((frame.height - transparentY) / (CurrentWeatherCell.defaultHeight - transparentY), 0)
     }
     private var topConstraint: NSLayoutConstraint?
     private var topPadding: CGFloat {
@@ -27,7 +27,7 @@ final class CurrentCell: ClearCell, Customizable, DataDriven {
     //MARK: Life cycle
     override func setup() {
         super.setup()
-        addSubviewsForAutoLayout([locationLabel,shortForcastLabel,temperatureLabel,highLowLabel,degreeLabel])
+        addSubviewsForAutoLayout([locationLabel,descriptionLabel,temperatureLabel,highLowLabel,degreeLabel])
         setupConstraints()
         populateSubviews()
     }
@@ -43,7 +43,7 @@ final class CurrentCell: ClearCell, Customizable, DataDriven {
         let lbl = UILabel(transparentText: false,font: .locationLabel)
         return lbl
     }()
-    private let shortForcastLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
@@ -69,10 +69,10 @@ final class CurrentCell: ClearCell, Customizable, DataDriven {
         let constraints = [
             locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            shortForcastLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
-            shortForcastLabel.centerXAnchor.constraint(equalTo: locationLabel.centerXAnchor),
-            temperatureLabel.topAnchor.constraint(equalTo: shortForcastLabel.bottomAnchor),
-            temperatureLabel.centerXAnchor.constraint(equalTo: shortForcastLabel.centerXAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: locationLabel.centerXAnchor),
+            temperatureLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
+            temperatureLabel.centerXAnchor.constraint(equalTo: descriptionLabel.centerXAnchor),
             highLowLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
             highLowLabel.centerXAnchor.constraint(equalTo: temperatureLabel.centerXAnchor),
             degreeLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor),
@@ -82,7 +82,7 @@ final class CurrentCell: ClearCell, Customizable, DataDriven {
     }
     func populateSubviews() {
         locationLabel.text = "Краснодарский край"
-        shortForcastLabel.text = "Солнечно"
+        descriptionLabel.text = "Солнечно"
         temperatureLabel.text = "27"
         highLowLabel.text = "H:35  L:18"
     }

@@ -19,19 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-//        let rootVC = LocationsController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         let rootVC = WeatherController()
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
-        let service = WeatherService.shared
-        service.request(WeatherRequest(latitude: 55.751244, longitude: 37.618423)) { (result) in
-            switch result {
-            case .failure(let error):
-                print(error)
-            case .success(let weather):
-                print(weather)
-            }
-        }
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
