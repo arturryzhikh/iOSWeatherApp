@@ -7,28 +7,32 @@
 
 import UIKit
 
-final class DataProvider: NSObject  {
+final class DataSource: NSObject  {
     
-    private weak var collectionView: UICollectionView?
-    init?(of collectionView: UICollectionView?) {
+    private var collectionView: UICollectionView!
+    private var width: CGFloat {
+        return collectionView.frame.width
+    }
+    init(of collectionView: UICollectionView) {
         super.init()
-        guard let collectionView = collectionView else { return nil }
         self.collectionView = collectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.registerHeaders(TodayHeader.self)
         collectionView.registerFooters(TodayFooter.self)
-        collectionView.registerCells(DailyWeatherCell.self,WeatherOverViewCell.self,ExtendedInfoCell.self
+        collectionView.registerCells(DailyWeatherCell.self,
+                                     WeatherOverViewCell.self,
+                                     ExtendedInfoCell.self
                                      ,WeatherLinkCell.self)
     }
     
 }
 
-extension DataProvider: UICollectionViewDataSource {
-  
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension DataSource: UICollectionViewDataSource {
+   func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 5
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -92,23 +96,23 @@ extension DataProvider: UICollectionViewDataSource {
     }
  }
 //MARK: UICollectionViewDelegateFlowLayout
-extension DataProvider: UICollectionViewDelegateFlowLayout {
+extension DataSource: UICollectionViewDelegateFlowLayout {
     //item size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
-        let width = collectionView.frame.width * 0.9
+        let partialWidth = width * 0.9
         let height = Screen.height
         switch section {
         case 1:
-            return CGSize(width: width , height: (height * 0.066))
+            return CGSize(width: partialWidth , height: (height * 0.066))
         case 2:
-            return CGSize(width: width, height: (height * 0.131))
+            return CGSize(width: partialWidth, height: (height * 0.131))
         case 3:
-            return CGSize(width: width, height: (height * 0.07))
+            return CGSize(width: partialWidth, height: (height * 0.07))
         case 4:
-            return CGSize(width: collectionView.frame.width, height: (height * 0.09))
+            return CGSize(width: width, height: (height * 0.09))
         default:
             return .zero
         }
@@ -117,20 +121,19 @@ extension DataProvider: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: Screen.width, height: TodayHeader.defaultHeight)
+        let headerSize = CGSize(width: width, height: TodayHeader.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: Screen.width, height: TodayFooter.defaultHeight)
+        let footerSize =  CGSize(width: width, height: TodayFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return .zero
     }
-    
     
 }

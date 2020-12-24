@@ -16,21 +16,20 @@ final class WeatherController: UIViewController {
     private var weatherView: WeatherView {
         return self.view as! WeatherView
     }
-    private var collectionView: UICollectionView  {
+    private var collectionView: UICollectionView!  {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var dataProvider: DataProvider?
+    private var dataProvider: DataSource!
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataProvider = DataProvider(of: collectionView)
-        printFunction(dataProvider)
+        dataProvider = DataSource(of: collectionView)
+        
         
     }
     
 }
-
