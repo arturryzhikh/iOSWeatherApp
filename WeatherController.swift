@@ -26,7 +26,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var dataProvider: DataSource!
+    private var viewModel: WeatherViewModel!
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -36,11 +36,13 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        dataProvider = DataSource()
+        viewModel = WeatherViewModel()
     }
    
     
 }
+
+
 //MARK: UICollectionViewDelegateFlowLayout
 extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -93,30 +95,16 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
 
 //MARK: UICollectionViewDataSource
 extension WeatherController: UICollectionViewDataSource {
+    
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        viewModel.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            return 0
-        case 1:
-            return 9
-        case 2:
-            return 1
-        case 3:
-            return 10
-        case 4:
-            return 1
-        default:
-            fatalError("No data for number of items for this section \(section)")
-        }
-        
+        viewModel.numberOfItemsIn(section)
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         var cell: UICollectionViewCell
         let section = indexPath.section
         switch section {
@@ -133,7 +121,7 @@ extension WeatherController: UICollectionViewDataSource {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
             return cell
         default:
-           fatalError("No appropriate cell type for this section: \(section)")
+           assert(false)
             
         }
         
@@ -159,7 +147,7 @@ extension WeatherController: UICollectionViewDataSource {
             
             return footer
         default:
-            fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
+            assert(false)
         }
     }
  }

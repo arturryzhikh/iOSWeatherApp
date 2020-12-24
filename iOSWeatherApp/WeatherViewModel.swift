@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DataSource: NSObject  {
+final class WeatherViewModel: NSObject  {
     
     //MARK: Properties
     private var service: APIService!
@@ -21,15 +21,36 @@ final class DataSource: NSObject  {
         super.init()
         self.service = service
         getWeatherFor(latitude: 55.751244, longitude: 37.618423)
-      
+        
     }
-   
     
+    var numberOfSections: Int {
+        return 5
+    }
+    func numberOfItemsIn(_ section: Int) -> Int {
+        
+        switch section {
+        case 0:
+            return 0
+        case 1:
+            return 9
+        case 2:
+            return 1
+        case 3:
+            return 10
+        case 4:
+            return 1
+        default:
+           assert(false)
+            
+        }
+    }
     
 }
 
 //MARK: Networking
-extension DataSource {
+
+extension WeatherViewModel {
     
     private func getWeatherFor(latitude: Double, longitude: Double) {
         
