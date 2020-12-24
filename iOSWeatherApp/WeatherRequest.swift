@@ -8,24 +8,23 @@
 import Foundation
 
 
-struct WelcomeRequest: APIRequest {
+struct WeatherRequest: APIRequest {
     
-    typealias Response = Welcome
+    typealias Response = WeatherResponse
     
     var endPoint: String {
         return API.oneCallendpoint
     }
-    
-    var queries: [String : String] = [:]
+//    String(Locale.current.languageCode ?? "en") //current language code
+    var queries: [String : String ] = [
+        "lang" : "ru" ,
+        "exclude" :  "minutely,alerts",
+        "units": "metric",
+    ]
     
     init(latitude: Double, longitude: Double) {
         queries.updateValue(String(latitude), forKey: "lat")
         queries.updateValue(String(longitude), forKey: "lon")
         
-     
-       
     }
-    
-    
 }
-

@@ -72,14 +72,14 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: width, height: TodayHeader.defaultHeight)
+        let headerSize = CGSize(width: width, height: CurrentCell.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: width, height: TodayFooter.defaultHeight)
+        let footerSize =  CGSize(width: width, height: HourlySectionCell.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

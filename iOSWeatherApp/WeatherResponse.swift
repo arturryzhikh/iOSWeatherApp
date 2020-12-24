@@ -8,34 +8,19 @@
 import Foundation
 
 
-struct Welcome: Codable {
-    
+
+struct WeatherResponse: Codable {
     let lat, lon: Double?
     let timezone: String?
     let timezoneOffset: Int?
     let current: Current?
-    let minutely: [Minutely]
     let hourly: [Current]?
     let daily: [Daily]?
-    let alerts: [Alert]?
 
     enum CodingKeys: String, CodingKey {
         case lat, lon, timezone
         case timezoneOffset
-        case current, minutely, hourly, daily, alerts
-    }
-}
-
-// MARK: - Alert
-struct Alert: Codable {
-    let senderName, event: String?
-    let start, end: Int?
-    let alertDescription: String?
-
-    enum CodingKeys: String, CodingKey {
-        case senderName
-        case event, start, end
-        case alertDescription
+        case current, hourly, daily
     }
 }
 
@@ -49,8 +34,8 @@ struct Current: Codable {
     let windSpeed: Double?
     let windDeg: Int?
     let weather: [Weather]?
+    let snow: Snow?
     let pop: Double?
-    let snow, rain: Rain?
 
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, temp
@@ -60,12 +45,12 @@ struct Current: Codable {
         case uvi, clouds, visibility
         case windSpeed
         case windDeg
-        case weather, pop, snow, rain
+        case weather, snow, pop
     }
 }
 
-// MARK: - Rain
-struct Rain: Codable {
+// MARK: - Snow
+struct Snow: Codable {
     let the1H: Double?
 
     enum CodingKeys: String, CodingKey {
@@ -78,7 +63,7 @@ struct Weather: Codable {
     let id: Int?
     let main: Main?
     let weatherDescription: Description?
-    let icon: String?
+    let icon: Icon?
 
     enum CodingKeys: String, CodingKey {
         case id, main
@@ -87,22 +72,29 @@ struct Weather: Codable {
     }
 }
 
+enum Icon: String, Codable {
+    case the01D = "01d"
+    case the04D = "04d"
+    case the04N = "04n"
+    case the10D = "10d"
+    case the13D = "13d"
+    case the13N = "13n"
+}
+
 enum Main: String, Codable {
     case clear = "Clear"
     case clouds = "Clouds"
-    case mist = "Mist"
     case rain = "Rain"
     case snow = "Snow"
 }
 
 enum Description: String, Codable {
-    case небольшойДождь = "небольшой дождь"
-    case небольшойСнег = "небольшой снег"
-    case пасмурно = "пасмурно"
-    case снег = "снег"
-    case снегСДождём = "снег с дождём"
-    case туман = "туман"
-    case ясно = "ясно"
+    case brokenClouds = "broken clouds"
+    case clearSky = "clear sky"
+    case lightRain = "light rain"
+    case lightSnow = "light snow"
+    case overcastClouds = "overcast clouds"
+    case snow = "snow"
 }
 
 // MARK: - Daily
@@ -138,9 +130,3 @@ struct Temp: Codable {
     let day, min, max, night: Double?
     let eve, morn: Double?
 }
-
-// MARK: - Minutely
-struct Minutely: Codable {
-    let dt, precipitation: Int?
-}
-

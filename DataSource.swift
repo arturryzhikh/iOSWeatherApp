@@ -14,8 +14,8 @@ final class DataSource: NSObject  {
         super.init()
         self.collectionView = collectionView
         collectionView.dataSource = self
-        collectionView.registerHeaders(TodayHeader.self)
-        collectionView.registerFooters(TodayFooter.self)
+        collectionView.registerHeaders(CurrentCell.self)
+        collectionView.registerFooters(HourlySectionCell.self)
         collectionView.registerCells(DailyWeatherCell.self,
                                      WeatherOverViewCell.self,
                                      ExtendedInfoCell.self
@@ -76,7 +76,7 @@ extension DataSource: UICollectionViewDataSource {
         switch kind {
         
         case UICollectionView.elementKindSectionHeader :
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TodayHeader.description(), for: indexPath) as? TodayHeader else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentCell.description(), for: indexPath) as? CurrentCell else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
                 
             }
@@ -84,7 +84,7 @@ extension DataSource: UICollectionViewDataSource {
             
             
         case UICollectionView.elementKindSectionFooter :
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TodayFooter.description(), for: indexPath) as? TodayFooter else {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlySectionCell.description(), for: indexPath) as? HourlySectionCell else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
             

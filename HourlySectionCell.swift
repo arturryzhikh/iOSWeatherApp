@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayFooter: ClearCell, UICollectionViewDelegate {
+final class HourlySectionCell: ClearCell, UICollectionViewDelegate {
     //MAKR: Static properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.15
@@ -36,6 +36,7 @@ final class TodayFooter: ClearCell, UICollectionViewDelegate {
     //MARK: Other Properties
     //MARK: Life cycle
     override func setup() {
+        isUserInteractionEnabled = true//switch back property to allow collection view scrolling
         addSubviewForAutoLayout(collectionView)
         addSeparator(to: .top, aboveSubview: collectionView)
         addSeparator(to: .bottom, aboveSubview: collectionView)
@@ -54,7 +55,7 @@ final class TodayFooter: ClearCell, UICollectionViewDelegate {
     }
 }
 ////MARK: DataSource
-extension TodayFooter: UICollectionViewDataSource {
+extension HourlySectionCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         50
@@ -72,6 +73,6 @@ extension TodayFooter: UICollectionViewDataSource {
     
 }
 //MARK: Delegate Flow Layout
-extension TodayFooter: UICollectionViewDelegateFlowLayout {
+extension HourlySectionCell: UICollectionViewDelegateFlowLayout {
     
 }

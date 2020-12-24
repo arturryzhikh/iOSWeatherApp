@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TodayHeader: ClearCell, Customizable, DataDriven {
+final class CurrentCell: ClearCell, Customizable, DataDriven {
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -18,7 +18,7 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
     //MARK: Other Properties
     private var computedAlpha: CGFloat { //calculate alpha of temperature and high low labels depending on view height
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (TodayHeader.defaultHeight - transparentY), 0)
+        return max((frame.height - transparentY) / (CurrentCell.defaultHeight - transparentY), 0)
     }
     private var topConstraint: NSLayoutConstraint?
     private var topPadding: CGFloat {

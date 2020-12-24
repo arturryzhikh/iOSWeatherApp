@@ -13,7 +13,7 @@ public class ClearCell: UICollectionViewCell {
         super.init(frame:frame)
         clipsToBounds = true
         backgroundColor =  .clear
-        isUserInteractionEnabled = true
+        isUserInteractionEnabled = false
         setup()
         
     }

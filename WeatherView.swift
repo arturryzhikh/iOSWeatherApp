@@ -19,7 +19,7 @@ final class WeatherView: UIView {
         super.init(frame: frame)
         addSubviewsForAutoLayout([collectionView,pageControlBar,line])
         addConstraints()
-        backgroundColor = .clear
+        backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         
     }
     
@@ -53,6 +53,7 @@ final class WeatherView: UIView {
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
         let v = UIView()
+        v.backgroundColor = .clear
         return v
     }()
     //create collection view
