@@ -19,7 +19,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)
-            let rootVC = LocationsController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+//            let rootVC = LocationsController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            let rootVC = WeatherController()
             window?.rootViewController = rootVC
             window?.makeKeyAndVisible()
         }
@@ -77,7 +78,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+        
         let context = persistentContainer.viewContext
+        
         if context.hasChanges {
             do {
                 try context.save()

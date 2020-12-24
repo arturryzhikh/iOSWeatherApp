@@ -55,6 +55,7 @@ final class TodayFooter: ClearCell, UICollectionViewDelegate {
 }
 ////MARK: DataSource
 extension TodayFooter: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         50
     }

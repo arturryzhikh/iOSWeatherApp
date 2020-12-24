@@ -16,11 +16,12 @@ final class WeatherController: UIViewController {
     private var width: CGFloat {
         return collectionView.frame.width
     }
-   
+    
     //MARK: Subviews
     private var weatherView: WeatherView {
         return self.view as! WeatherView
     }
+    
     private var collectionView: UICollectionView!  {
         return weatherView.collectionView
     }
@@ -29,22 +30,26 @@ final class WeatherController: UIViewController {
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         dataProvider = DataSource(of: collectionView)
-        
-        
     }
+   
     
 }
 //MARK: UICollectionViewDelegateFlowLayout
 extension WeatherController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        printFunction(items: indexPath)
+    }
     //item size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let section = indexPath.section
         let partialWidth = width * 0.9
         let height = Screen.height
@@ -60,7 +65,9 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
         default:
             return .zero
         }
+        
     }
+    
     //header size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

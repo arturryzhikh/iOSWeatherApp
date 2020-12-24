@@ -30,6 +30,7 @@ extension DataSource: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         switch section {
         case 0:
             return 0
@@ -44,8 +45,10 @@ extension DataSource: UICollectionViewDataSource {
         default:
             fatalError("No data for number of items for this section \(section)")
         }
+        
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         var cell: UICollectionViewCell
         let section = indexPath.section
         switch section {
@@ -71,6 +74,7 @@ extension DataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
+        
         case UICollectionView.elementKindSectionHeader :
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TodayHeader.description(), for: indexPath) as? TodayHeader else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")

@@ -42,6 +42,7 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
     }
     //constantly updating method to configure header and footers behaviours
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        
         guard let collectionView = self.collectionView else { return nil }
         // Scroll offset Y
         let yOffset = collectionView.contentOffset.y

@@ -39,7 +39,7 @@ final class TodayHeader: ClearCell, Customizable, DataDriven {
         degreeLabel.alpha =  computedAlpha
     }
     //MARK: Subviews
-    private let locationLabel: UILabel = {
+    let locationLabel: UILabel = {
         let lbl = UILabel(transparentText: false,font: .locationLabel)
         return lbl
     }()

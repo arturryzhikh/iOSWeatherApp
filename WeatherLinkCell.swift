@@ -7,6 +7,7 @@
 import UIKit
 
 final class WeatherLinkCell: ClearCell, Customizable, DataDriven {
+    
     //MARK: Subviews
     private let linkLabel: UILabel = {
         let lbl = UILabel(transparentText: false, alignment: .center, font: .overView)
