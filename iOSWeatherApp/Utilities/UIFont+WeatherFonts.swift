@@ -26,7 +26,7 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.03),weight: .light)
     }
     class var overView: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.025), weight: .light)
+        UIFont.systemFont(ofSize: (Screen.height * 0.022), weight: .light)
     }
     class var weatherEmoji: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.04), weight: .light)

@@ -8,4 +8,5 @@
 import UIKit
 protocol DataDriven: UICollectionViewCell {
     func populateSubviews()
+    
 }

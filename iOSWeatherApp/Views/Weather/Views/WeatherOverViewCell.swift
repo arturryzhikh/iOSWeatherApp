@@ -39,7 +39,7 @@ final class WeatherOverViewCell: ClearCell, Customizable, DataDriven {
         ])
         
     }
-    
+
     func populateSubviews() {
         overViewTextView.text = "Today: Mostly cloudy congitions with 7m/s winds from south/ The high will be 27.pPartly cloudy tonight with a low of 16"
     }

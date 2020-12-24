@@ -10,6 +10,7 @@ final class WeatherLinkCell: ClearCell, Customizable, DataDriven {
     //MARK: Subviews
     private let linkLabel: UILabel = {
         let lbl = UILabel(transparentText: false, alignment: .center, font: .overView)
+        lbl.numberOfLines = 3
         return lbl
     }()
     //MARK: Life cycle
