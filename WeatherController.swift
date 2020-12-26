@@ -26,7 +26,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var viewModel: WeatherViewModel!
+    private var viewModel: WeatherDataSource!
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -36,7 +36,7 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        viewModel = WeatherViewModel()
+        viewModel = WeatherDataSource(request: nil, delegate: nil, locationService: nil)
     }
    
     

@@ -9,7 +9,8 @@ import Foundation
 
 
 
-struct WeatherResponse: Codable {
+struct WeatherResponse: Decodable {
+    
     let lat, lon: Double?
     let timezone: String?
     let timezoneOffset: Int?
@@ -25,7 +26,8 @@ struct WeatherResponse: Codable {
 }
 
 // MARK: - Current
-struct Current: Codable {
+struct Current: Decodable {
+    
     let dt, sunrise, sunset: Int?
     let temp, feelsLike: Double?
     let pressure, humidity: Int?
@@ -59,7 +61,7 @@ struct Snow: Codable {
 }
 
 // MARK: - Weather
-struct Weather: Codable {
+struct Weather: Decodable {
     let id: Int?
     let main: Main?
     let weatherDescription: Description?
@@ -72,7 +74,7 @@ struct Weather: Codable {
     }
 }
 
-enum Icon: String, Codable {
+enum Icon: String, Decodable {
     case the01D = "01d"
     case the04D = "04d"
     case the04N = "04n"
@@ -81,14 +83,14 @@ enum Icon: String, Codable {
     case the13N = "13n"
 }
 
-enum Main: String, Codable {
+enum Main: String, Decodable {
     case clear = "Clear"
     case clouds = "Clouds"
     case rain = "Rain"
     case snow = "Snow"
 }
 
-enum Description: String, Codable {
+enum Description: String, Decodable {
     case brokenClouds = "broken clouds"
     case clearSky = "clear sky"
     case lightRain = "light rain"
@@ -98,7 +100,7 @@ enum Description: String, Codable {
 }
 
 // MARK: - Daily
-struct Daily: Codable {
+struct Daily: Decodable {
     let dt, sunrise, sunset: Int?
     let temp: Temp?
     let feelsLike: FeelsLike?
@@ -121,12 +123,12 @@ struct Daily: Codable {
 }
 
 // MARK: - FeelsLike
-struct FeelsLike: Codable {
+struct FeelsLike: Decodable {
     let day, night, eve, morn: Double?
 }
 
 // MARK: - Temp
-struct Temp: Codable {
+struct Temp: Decodable {
     let day, min, max, night: Double?
     let eve, morn: Double?
 }
