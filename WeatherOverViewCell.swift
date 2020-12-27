@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class WeatherOverViewCell: ClearCell, Customizable, DataDriven {
+final class WeatherOverViewCell: ClearCell, Customizable, Reusable {
+    func reset() {
+        
+    }
+    
     //MARK: Subviews
     private let overViewTextView: UITextView = {
         let tv = UITextView()

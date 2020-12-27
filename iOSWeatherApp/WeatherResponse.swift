@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-
+//
 
 struct WeatherResponse: Decodable {
     
@@ -18,11 +17,6 @@ struct WeatherResponse: Decodable {
     let hourly: [Current]?
     let daily: [Daily]?
 
-    enum CodingKeys: String, CodingKey {
-        case lat, lon, timezone
-        case timezoneOffset
-        case current, hourly, daily
-    }
 }
 
 // MARK: - Current
@@ -39,16 +33,6 @@ struct Current: Decodable {
     let snow: Snow?
     let pop: Double?
 
-    enum CodingKeys: String, CodingKey {
-        case dt, sunrise, sunset, temp
-        case feelsLike
-        case pressure, humidity
-        case dewPoint
-        case uvi, clouds, visibility
-        case windSpeed
-        case windDeg
-        case weather, snow, pop
-    }
 }
 
 // MARK: - Snow
@@ -65,22 +49,8 @@ struct Weather: Decodable {
     let id: Int?
     let main: Main?
     let weatherDescription: Description?
-    let icon: Icon?
+   
 
-    enum CodingKeys: String, CodingKey {
-        case id, main
-        case weatherDescription
-        case icon
-    }
-}
-
-enum Icon: String, Decodable {
-    case the01D = "01d"
-    case the04D = "04d"
-    case the04N = "04n"
-    case the10D = "10d"
-    case the13D = "13d"
-    case the13N = "13n"
 }
 
 enum Main: String, Decodable {
@@ -111,15 +81,6 @@ struct Daily: Decodable {
     let clouds: Int?
     let pop, snow, uvi, rain: Double?
 
-    enum CodingKeys: String, CodingKey {
-        case dt, sunrise, sunset, temp
-        case feelsLike
-        case pressure, humidity
-        case dewPoint
-        case windSpeed
-        case windDeg
-        case weather, clouds, pop, snow, uvi, rain
-    }
 }
 
 // MARK: - FeelsLike

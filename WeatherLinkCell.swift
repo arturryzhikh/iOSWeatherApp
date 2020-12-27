@@ -6,7 +6,12 @@
 //
 import UIKit
 
-final class WeatherLinkCell: ClearCell, Customizable, DataDriven {
+final class WeatherLinkCell: ClearCell, Customizable, Reusable {
+    
+     func reset() {
+        
+    }
+    
     
     //MARK: Subviews
     private let linkLabel: UILabel = {

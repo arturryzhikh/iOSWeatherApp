@@ -14,9 +14,11 @@ protocol DataSourceDelegate: class {
     func onFetchFailed(with reason: String)
     func isFetching()
 }
+
 protocol LocationService {
     
 }
+
 protocol DataSource {
     
     associatedtype RequestType: APIRequest

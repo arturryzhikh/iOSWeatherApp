@@ -36,7 +36,7 @@ final class HourlySectionCell: ClearCell, UICollectionViewDelegate {
     //MARK: Other Properties
     //MARK: Life cycle
     override func setup() {
-        isUserInteractionEnabled = true//switch back property to allow collection view scrolling
+        isUserInteractionEnabled = true//switch back property to allow collection view to be scrolling
         addSubviewForAutoLayout(collectionView)
         addSeparator(to: .top, aboveSubview: collectionView)
         addSeparator(to: .bottom, aboveSubview: collectionView)
@@ -73,6 +73,7 @@ extension HourlySectionCell: UICollectionViewDataSource {
     
 }
 //MARK: Delegate Flow Layout
+
 extension HourlySectionCell: UICollectionViewDelegateFlowLayout {
     
 }

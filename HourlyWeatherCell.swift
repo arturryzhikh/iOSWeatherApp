@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class HourlyWeatherCell: ClearCell, Customizable , DataDriven {
+final class HourlyWeatherCell: ClearCell, Customizable , Reusable {
+    func reset() {
+        
+    }
+    
   
     //MARK: Life Cycle
     override func setup() {
@@ -19,9 +23,11 @@ final class HourlyWeatherCell: ClearCell, Customizable , DataDriven {
     }
     //MARK: Subviews
     private lazy var vStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews:[ hourLabel,
-                             weatherEmojiLabel,
-                             temperatureLabel])
+        let sv = UIStackView(arrangedSubviews: [
+            hourLabel,
+            weatherEmojiLabel,
+            temperatureLabel
+        ])
         sv.axis = .vertical
         sv.alignment = .center
         sv.distribution = .fill

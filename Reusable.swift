@@ -7,7 +7,10 @@
 
 import UIKit
 
-protocol DataDriven: UICollectionViewCell {
+protocol Reusable: UICollectionReusableView {
+    
     func populateSubviews()
+    func reset()
     
 }
+

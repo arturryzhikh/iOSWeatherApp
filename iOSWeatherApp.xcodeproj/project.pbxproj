@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		341457F8259336C900FEA647 /* Customizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341457F7259336C900FEA647 /* Customizable.swift */; };
-		34145803259338AF00FEA647 /* DataDriven.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34145802259338AF00FEA647 /* DataDriven.swift */; };
+		34145803259338AF00FEA647 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34145802259338AF00FEA647 /* Reusable.swift */; };
 		341458202593404100FEA647 /* UIView+AddSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414581F2593404100FEA647 /* UIView+AddSeparator.swift */; };
 		341458452593606200FEA647 /* WeatherOverViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341458442593606200FEA647 /* WeatherOverViewCell.swift */; };
 		3414585725936C8D00FEA647 /* ExtendedInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414585625936C8D00FEA647 /* ExtendedInfoCell.swift */; };
@@ -66,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		341457F7259336C900FEA647 /* Customizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customizable.swift; sourceTree = "<group>"; };
-		34145802259338AF00FEA647 /* DataDriven.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDriven.swift; sourceTree = "<group>"; };
+		34145802259338AF00FEA647 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		3414581F2593404100FEA647 /* UIView+AddSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSeparator.swift"; sourceTree = "<group>"; };
 		341458442593606200FEA647 /* WeatherOverViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOverViewCell.swift; sourceTree = "<group>"; };
 		3414585625936C8D00FEA647 /* ExtendedInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedInfoCell.swift; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				341457F7259336C900FEA647 /* Customizable.swift */,
-				34145802259338AF00FEA647 /* DataDriven.swift */,
+				34145802259338AF00FEA647 /* Reusable.swift */,
 			);
 			name = "View Protocols";
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				341458202593404100FEA647 /* UIView+AddSeparator.swift in Sources */,
 				750F197A25753360004FBC6A /* WeatherDataSource.swift in Sources */,
 				34FA39BC2594A26900AD5E66 /* HTTPURLResponse+statusOK.swift in Sources */,
-				34145803259338AF00FEA647 /* DataDriven.swift in Sources */,
+				34145803259338AF00FEA647 /* Reusable.swift in Sources */,
 				75AE306F256FB24400549CB6 /* HourlySectionCell.swift in Sources */,
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
 				341457F8259336C900FEA647 /* Customizable.swift in Sources */,

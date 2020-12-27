@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class ExtendedInfoCell: ClearCell, Customizable, DataDriven {
+final class ExtendedInfoCell: ClearCell, Customizable, Reusable {
+    func reset() {
+        
+    }
+    
     //MARK: Other properties
   
     //MARK: Subviews

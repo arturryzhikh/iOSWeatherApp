@@ -8,7 +8,8 @@
 import UIKit
 
 ///Base class for all Custom UI Collection View Cells
-public class ClearCell: UICollectionViewCell {
+public class ClearCell: UICollectionViewCell  {
+   
     override init(frame: CGRect) {
         super.init(frame:frame)
         clipsToBounds = true
@@ -28,5 +29,6 @@ public class ClearCell: UICollectionViewCell {
     func setup() {
         
     }
+    
     
 }

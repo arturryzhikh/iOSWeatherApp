@@ -7,7 +7,13 @@
 
 import UIKit
 
-final class CurrentWeatherCell: ClearCell, Customizable, DataDriven {
+final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
+    
+    var viewModel: CurrentVM? {
+        didSet {
+            configureWith(viewModel)
+        }
+    }
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -27,16 +33,24 @@ final class CurrentWeatherCell: ClearCell, Customizable, DataDriven {
     //MARK: Life cycle
     override func setup() {
         super.setup()
-        addSubviewsForAutoLayout([locationLabel,descriptionLabel,temperatureLabel,highLowLabel,degreeLabel])
+        addSubviewsForAutoLayout([
+            locationLabel,
+            descriptionLabel,
+            temperatureLabel,
+            highLowLabel,
+            
+            
+        ])
         setupConstraints()
-        populateSubviews()
+        reset()
+        
     }
     override func layoutSubviews() {
         //update top constraint because origin of view changes during scrolling
         topConstraint?.constant = topPadding
         highLowLabel.alpha = computedAlpha
         temperatureLabel.alpha = computedAlpha
-        degreeLabel.alpha =  computedAlpha
+        
     }
     //MARK: Subviews
     let locationLabel: UILabel = {
@@ -51,18 +65,12 @@ final class CurrentWeatherCell: ClearCell, Customizable, DataDriven {
         let lbl = UILabel(font: .hugeTemperature)
         return lbl
     }()
+    
     private let highLowLabel: UILabel = {
         let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
-    private let degreeLabel: UILabel = {
-        let lbl = UILabel(font: .degree)
-        lbl.text = "o"
-        lbl.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        lbl.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        return lbl
-    }()
-    
+  
     func setupConstraints() {
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true
@@ -74,17 +82,36 @@ final class CurrentWeatherCell: ClearCell, Customizable, DataDriven {
             temperatureLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor),
             temperatureLabel.centerXAnchor.constraint(equalTo: descriptionLabel.centerXAnchor),
             highLowLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
-            highLowLabel.centerXAnchor.constraint(equalTo: temperatureLabel.centerXAnchor),
-            degreeLabel.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor),
-            degreeLabel.topAnchor.constraint(equalTo: temperatureLabel.topAnchor,constant: 8),
-            ]
+            highLowLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+           
+            
+        ]
         NSLayoutConstraint.activate(constraints)
     }
+    func reset() {
+        locationLabel.text = nil
+        descriptionLabel.text = nil
+        temperatureLabel.text = nil
+        highLowLabel.text = nil
+        
+        
+    }
+    
+    func configureWith(_ vm: CurrentVM?) {
+        guard let vm = vm else {
+            printFunction(items: "CurrenViewModel is NIL")
+            return
+        }
+        locationLabel.text = vm.location
+        descriptionLabel.text = vm.description
+        temperatureLabel.text = vm.temperature
+        highLowLabel.text = vm.highLowTemp
+
+        
+    }
     func populateSubviews() {
-        locationLabel.text = "Краснодарский край"
-        descriptionLabel.text = "Солнечно"
-        temperatureLabel.text = "27"
-        highLowLabel.text = "H:35  L:18"
+        
+        
     }
     
     //MARK:Instance methods

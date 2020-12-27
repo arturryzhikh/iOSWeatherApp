@@ -19,7 +19,7 @@ final class WeatherView: UIView {
         super.init(frame: frame)
         addSubviewsForAutoLayout([collectionView,pageControlBar,line])
         addConstraints()
-        backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         
     }
     

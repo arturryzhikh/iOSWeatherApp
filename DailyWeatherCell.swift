@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class DailyWeatherCell: ClearCell, Customizable, DataDriven {
+final class DailyWeatherCell: ClearCell, Customizable, Reusable {
+     func reset() {
+        
+    }
+    
     //MARK: Other properties
   
     //MARK: Subviews

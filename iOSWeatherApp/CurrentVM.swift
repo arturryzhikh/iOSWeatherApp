@@ -14,7 +14,7 @@ protocol ViewModel {
     
     associatedtype Model = Decodable
     
-    init(from model: Model )
+    init?(from model: Model )
     
 }
 
@@ -27,12 +27,24 @@ struct CurrentVM: ViewModel {
     
     let temperature: String
     
-    let highTemp: String
+    let highLowTemp: String
     
-    let lowTemp: String
+   
     
     
-    init(from model: Current) {
+    init?(from model: WeatherResponse) {
+        guard let location = model.timezone,
+              let description  = model.current?.weather?.first?.main?.rawValue,
+              let temperature = model.current?.temp,
+              let highTemp = model.daily?.first?.temp?.max,
+              let lowTemp = model.daily?.first?.temp?.min else {
+            return nil
+        }
+        self.location = location
+        self.description = String(description)
+        self.temperature = String(format: "%.0f", temperature) + "°"
+        self.highLowTemp = "H: \(String(format: "%.0f", highTemp))°" + "  " + "L: \(String(format: "%.0f", lowTemp))°"
+        
         
     }
     

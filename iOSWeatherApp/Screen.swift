@@ -8,7 +8,9 @@
 import UIKit
 
 //MARK: Screen dimensions
+
 struct Screen {
+    
     static var height: CGFloat {
         return UIScreen.main.bounds.height
     }
