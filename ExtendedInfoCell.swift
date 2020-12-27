@@ -7,10 +7,9 @@
 
 import UIKit
 
-final class ExtendedInfoCell: ClearCell, Customizable, Reusable {
-    func reset() {
-        
-    }
+final class ExtendedInfoCell: ClearCell, Customizable {
+    
+ 
     
     //MARK: Other properties
   
@@ -28,7 +27,7 @@ final class ExtendedInfoCell: ClearCell, Customizable, Reusable {
         addSubviewForAutoLayout(vStack)
         setupConstraints()
         addSeparator(to: .top, aboveSubview: infoValueLabel)
-        populateSubviews()
+        
         
       
     }
@@ -49,14 +48,6 @@ final class ExtendedInfoCell: ClearCell, Customizable, Reusable {
         ])
         
     }
-    func populateSubviews() {
-        infoTitleLabel.text = "feels like".uppercased()
-        infoValueLabel.text = "766,57 mm Hg"
-    }
-    
-
-    
-    
-   
+  
 }
 

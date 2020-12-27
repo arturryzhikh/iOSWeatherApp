@@ -7,12 +7,9 @@
 
 import UIKit
 
-final class WeatherOverViewCell: ClearCell, Customizable, Reusable {
-    func reset() {
-        
-    }
-    
-    //MARK: Subviews
+final class WeatherOverViewCell: ClearCell, Customizable {
+ 
+   //MARK: Subviews
     private let overViewTextView: UITextView = {
         let tv = UITextView()
         tv.textAlignment = .left

@@ -7,13 +7,10 @@
 
 import UIKit
 
-final class DailyWeatherCell: ClearCell, Customizable, Reusable {
-     func reset() {
-        
-    }
-    
-    //MARK: Other properties
+final class DailyWeatherCell: ClearCell, Customizable {
   
+    //MARK: Other properties
+    
     //MARK: Subviews
     let dayLabel: UILabel = {
         let lbl = UILabel(font: .regularTemperature)
@@ -54,12 +51,12 @@ final class DailyWeatherCell: ClearCell, Customizable, Reusable {
         return sv
         
     }()
-   //MARK: life Cycle
+    //MARK: life Cycle
     override func setup() {
-        populateSubviews()
+        
         addSubviewsForAutoLayout([dayLabel,weatherEmojiStack,temperatureStack])
         setupConstraints()
-      
+        
     }
     func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -73,16 +70,5 @@ final class DailyWeatherCell: ClearCell, Customizable, Reusable {
         ])
         
     }
-    func populateSubviews() {
-        dayLabel.text = "Воскресенье"
-        temperatureHighLabel.text = "28"
-        temperatureLowLabel.text = "22"
-        weatherEmojiLabel.text = "☀️"
-        percentageLabel.text = "47%"
-    }
-    
-
-    
-    
    
 }

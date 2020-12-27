@@ -8,12 +8,28 @@
 import UIKit
 
 final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
-    
-    var viewModel: CurrentVM? {
+
+    var viewModel: CurrentViewModel? {
+        
         didSet {
-            configureWith(viewModel)
+            if let vm = viewModel {
+                populateSubviews(with: vm)
+            }
+
         }
     }
+
+    func populateSubviews(with viewModel: CurrentViewModel) {
+        locationLabel.text = viewModel.location
+        descriptionLabel.text = viewModel.description
+        temperatureLabel.text = viewModel.temperature
+        highLowLabel.text = viewModel.highLowTemp
+    }
+
+
+
+    
+    
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -38,11 +54,9 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
             descriptionLabel,
             temperatureLabel,
             highLowLabel,
-            
-            
         ])
         setupConstraints()
-        reset()
+      
         
     }
     override func layoutSubviews() {
@@ -88,34 +102,6 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-    func reset() {
-        locationLabel.text = nil
-        descriptionLabel.text = nil
-        temperatureLabel.text = nil
-        highLowLabel.text = nil
-        
-        
-    }
-    
-    func configureWith(_ vm: CurrentVM?) {
-        guard let vm = vm else {
-            printFunction(items: "CurrenViewModel is NIL")
-            return
-        }
-        locationLabel.text = vm.location
-        descriptionLabel.text = vm.description
-        temperatureLabel.text = vm.temperature
-        highLowLabel.text = vm.highLowTemp
-
-        
-    }
-    func populateSubviews() {
-        
-        
-    }
-    
-    //MARK:Instance methods
-    
-    
+  
     
 }

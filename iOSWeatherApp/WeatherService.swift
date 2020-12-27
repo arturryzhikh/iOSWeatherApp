@@ -19,7 +19,8 @@ final class WeatherService: APIService {
     
     static let shared =  WeatherService(apiKey: API.apiKey)
     
-    func request<T: APIRequest>(_ request: T, completion: @escaping ResultClosure<T.Response>) {
+    func request<T: APIRequest>(_ request: T, completion: @escaping ResultClosure<T.Response>)  {
+        
         guard let url = makeURL(endPoint: request.endPoint, queries: request.queries)
         
         else {
@@ -43,6 +44,7 @@ final class WeatherService: APIService {
             }
             
             completion(Result.success(decoded))
+        
             
         }).resume()
     }

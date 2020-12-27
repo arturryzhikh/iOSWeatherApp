@@ -6,12 +6,11 @@
 //
 import UIKit
 
-final class WeatherLinkCell: ClearCell, Customizable, Reusable {
+final class WeatherLinkCell: ClearCell, Customizable {
     
-     func reset() {
-        
-    }
     
+    
+   
     
     //MARK: Subviews
     private let linkLabel: UILabel = {
@@ -24,7 +23,7 @@ final class WeatherLinkCell: ClearCell, Customizable, Reusable {
         addSubviewForAutoLayout(linkLabel)
         setupConstraints()
         addSeparator(to: .top, aboveSubview: linkLabel)
-        populateSubviews()
+        
     }
     //MARK: Instance methods
     func setupConstraints() {
@@ -36,10 +35,6 @@ final class WeatherLinkCell: ClearCell, Customizable, Reusable {
         ])
         
     }
-    
-    func populateSubviews() {
-        linkLabel.text = "Weather for Лазурная улица. Open in Maps"
-    }
-    
+   
     
 }

@@ -9,8 +9,11 @@ import UIKit
 
 protocol Reusable: UICollectionReusableView {
     
-    func populateSubviews()
-    func reset()
+    associatedtype ViewModel = ItemViewModelProtocol
+    
+    var viewModel: ViewModel? { get set }
+    
+    func populateSubviews(with viewModel: ViewModel)
     
 }
 

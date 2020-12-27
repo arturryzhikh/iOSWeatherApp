@@ -49,7 +49,6 @@ struct Weather: Decodable {
     let id: Int?
     let main: Main?
     let weatherDescription: Description?
-   
 
 }
 
@@ -61,6 +60,7 @@ enum Main: String, Decodable {
 }
 
 enum Description: String, Decodable {
+    
     case brokenClouds = "broken clouds"
     case clearSky = "clear sky"
     case lightRain = "light rain"
@@ -71,6 +71,7 @@ enum Description: String, Decodable {
 
 // MARK: - Daily
 struct Daily: Decodable {
+    
     let dt, sunrise, sunset: Int?
     let temp: Temp?
     let feelsLike: FeelsLike?

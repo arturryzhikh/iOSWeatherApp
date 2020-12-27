@@ -27,7 +27,8 @@ final class WeatherController: UIViewController {
     }
     //MARK: Other Properties
     private var dataSource: WeatherDataSource!
-    private var viewModel: CurrentVM?
+    private var current: CurrentViewModel?
+   
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -38,15 +39,16 @@ final class WeatherController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         let request = WeatherRequest(latitude: 55.733971016021876, longitude: 55.733971016021876)
-        dataSource = WeatherDataSource(request: nil, delegate: nil, locationService: nil)
-        dataSource.apiService.request(request) { (result) in
+        dataSource = WeatherDataSource()
+        dataSource.apiService!.request(request) { (result) in
+            self.printFunction()
             switch result {
             case .failure(let error):
                 print(error)
                 
             case .success(let weather):
-                self.viewModel = CurrentVM(from: weather)
-                print(self.viewModel)
+                self.current = CurrentViewModel(with: weather)
+                
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -99,7 +101,7 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: width, height: HourlySectionCell.defaultHeight)
+        let footerSize =  CGSize(width: width, height: HourlyWeatherCell.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -153,13 +155,14 @@ extension WeatherController: UICollectionViewDataSource {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
                 
             }
-            header.viewModel = viewModel
+            header.viewModel = current
             return header
         
         case UICollectionView.elementKindSectionFooter :
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlySectionCell.description(), for: indexPath) as? HourlySectionCell else {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyWeatherCell.description(), for: indexPath) as? HourlyWeatherCell else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
+            
             return footer
             
         default:

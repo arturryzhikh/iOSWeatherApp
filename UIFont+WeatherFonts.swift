@@ -19,7 +19,7 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.028), weight: .regular)
     }
     class var hugeTemperature: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.08), weight: .regular)
+        UIFont.systemFont(ofSize: (Screen.height * 0.08), weight: .light)
      
     }
     class var degree: UIFont {
