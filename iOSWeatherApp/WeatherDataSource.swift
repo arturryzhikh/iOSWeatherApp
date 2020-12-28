@@ -25,23 +25,10 @@ final class WeatherDataSource: NSObject , DataSource {
     
     
     func numberOfItemsIn(_ section: Int) -> Int {
-        
-        switch section {
-        
-        case 0:
-            return 0
-        case 1:
-            return 9
-        case 2:
-            return 1
-        case 3:
-            return 10
-        case 4:
-            return 1
-        default:
-            assert(false)
+       8
             
         }
     }
     
-}
+
+

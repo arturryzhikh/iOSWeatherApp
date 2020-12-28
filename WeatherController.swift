@@ -28,7 +28,8 @@ final class WeatherController: UIViewController {
     //MARK: Other Properties
     private var dataSource: WeatherDataSource!
     private var current: CurrentViewModel?
-    private var hourly: HourlyWeatherViewModel?
+    private var hourly: HourlySectionViewModel?
+    private var daily: DailySectionViewModel?
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -48,7 +49,8 @@ final class WeatherController: UIViewController {
                 
             case .success(let weather):
                 self.current = CurrentViewModel(with: weather)
-                self.hourly = HourlyWeatherViewModel(with: weather)
+                self.hourly = HourlySectionViewModel(with: weather)
+                self.daily = DailySectionViewModel(with: weather)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -116,28 +118,43 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
 extension WeatherController: UICollectionViewDataSource {
     
    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        dataSource.numberOfSections
+        5
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        dataSource.numberOfItemsIn(section)
+        
+        switch section {
+        
+        case 0:
+            return 0
+        case 1:
+            return daily?.items.count ?? 0
+        case 2:
+            return 1
+        case 3:
+            return 10
+        case 4:
+            return 1
+        default:
+            assert(false)
+        }
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell: UICollectionViewCell
+      
         let section = indexPath.section
         switch section {
         case 1:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyWeatherCell.description(), for: indexPath) as! DailyWeatherCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyItemCell.description(), for: indexPath) as! DailyItemCell
+            cell.viewModel = daily?.items[indexPath.item]
             return cell
         case 2:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
             return cell
         case 3:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
             return cell
         case 4:
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
             return cell
         default:
            assert(false)
@@ -164,7 +181,7 @@ extension WeatherController: UICollectionViewDataSource {
             }
             footer.viewModel = hourly
             
-            return footer
+return footer
             
         default:
             assert(false)

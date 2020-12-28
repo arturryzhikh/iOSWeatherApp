@@ -69,6 +69,7 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         cellsAttributes.forEach { (attribute) in
             if attribute.frame.origin.y < footerBottomBound {
                 attribute.alpha = 0
+            
                 
             }
         }

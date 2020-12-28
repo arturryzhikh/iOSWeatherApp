@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HourlyWeatherViewModel: ItemViewModelProtocol {
+struct HourlySectionViewModel: ItemViewModelProtocol {
     
     
     

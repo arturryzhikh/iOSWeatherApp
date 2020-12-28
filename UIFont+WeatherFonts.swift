@@ -29,7 +29,7 @@ extension UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.022), weight: .light)
     }
     class var weatherEmoji: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.04), weight: .light)
+        UIFont.systemFont(ofSize: (Screen.height * 0.03), weight: .light)
     }
     class var extendedInfoTitle: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.02), weight: .light)
