@@ -11,7 +11,7 @@ protocol Reusable: UICollectionReusableView {
     
     associatedtype ViewModel = ItemViewModelProtocol
     
-    var viewModel: ViewModel? { get set }
+    var viewModel: ViewModel? { get }
     
     func populateSubviews(with viewModel: ViewModel)
     

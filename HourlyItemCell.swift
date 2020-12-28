@@ -7,13 +7,29 @@
 
 import UIKit
 
-final class HourlyCell: ClearCell, Customizable  {
-
+final class HourlyItemCell: ClearCell  ,Reusable {
+    
+    var viewModel: HourlyItemViewModel? {
+        didSet {
+           
+            if let vm = viewModel {
+                populateSubviews(with: vm)
+            }
+        }
+    }
+    
+    func populateSubviews(with viewModel: HourlyItemViewModel) {
+        hourLabel.text = viewModel.hour
+        weatherEmojiLabel.text = viewModel.weatherEmoji
+        temperatureLabel.text = viewModel.temperature
+    }
+    
+    
     //MARK: Life Cycle
     override func setup() {
+        super.setup()
         addSubviewForAutoLayout(vStack)
-        setupConstraints()
-        
+        activateConstraints()
         
         
     }
@@ -43,7 +59,7 @@ final class HourlyCell: ClearCell, Customizable  {
         let lbl = UILabel(font: .weatherEmoji)
         return lbl
     }()
-    func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             vStack.topAnchor.constraint(equalTo: topAnchor),
             vStack.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -51,10 +67,5 @@ final class HourlyCell: ClearCell, Customizable  {
             vStack.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
     }
-    
-   
-    
-    
-    
     
 }

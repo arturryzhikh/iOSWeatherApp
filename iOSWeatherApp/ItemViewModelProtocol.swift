@@ -19,4 +19,3 @@ protocol ItemViewModelProtocol {
     init(with model: Model )
     
 }
-

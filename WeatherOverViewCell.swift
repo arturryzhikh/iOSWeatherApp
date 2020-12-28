@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class WeatherOverViewCell: ClearCell, Customizable {
+final class WeatherOverViewCell: ClearCell {
  
    //MARK: Subviews
     private let overViewTextView: UITextView = {
@@ -25,13 +25,13 @@ final class WeatherOverViewCell: ClearCell, Customizable {
     }()
     //MARK: Life cycle
     override func setup() {
+        super.setup()
         addSubviewForAutoLayout(overViewTextView)
         addSeparator(to: .top, aboveSubview: overViewTextView)
-        setupConstraints()
-        populateSubviews()
+        activateConstraints()
     }
     //MARK: Instance methods
-    func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             overViewTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
             overViewTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -40,10 +40,6 @@ final class WeatherOverViewCell: ClearCell, Customizable {
         ])
         
     }
-
-    func populateSubviews() {
-        overViewTextView.text = "Today: Mostly cloudy congitions with 7m/s winds from south/ The high will be 27.pPartly cloudy tonight with a low of 16"
-    }
-    
+   
     
 }

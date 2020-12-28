@@ -7,29 +7,18 @@
 
 import UIKit
 
-final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
-
+final class CurrentWeatherHeader: ClearCell, Reusable {
+    
     var viewModel: CurrentViewModel? {
-        
-        didSet {
-            if let vm = viewModel {
-                populateSubviews(with: vm)
-            }
+          
+          didSet {
+              if let vm = viewModel {
+                  populateSubviews(with: vm)
+              }
 
-        }
-    }
+          }
+      }
 
-    func populateSubviews(with viewModel: CurrentViewModel) {
-        locationLabel.text = viewModel.location
-        descriptionLabel.text = viewModel.description
-        temperatureLabel.text = viewModel.temperature
-        highLowLabel.text = viewModel.highLowTemp
-    }
-
-
-
-    
-    
     //MARK: Static  Properties
     static var defaultHeight: CGFloat {
         Screen.height * 0.453
@@ -40,7 +29,7 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
     //MARK: Other Properties
     private var computedAlpha: CGFloat { //calculate alpha of temperature and high low labels depending on view height
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (CurrentWeatherCell.defaultHeight - transparentY), 0)
+        return max((frame.height - transparentY) / (CurrentWeatherHeader.defaultHeight - transparentY), 0)
     }
     private var topConstraint: NSLayoutConstraint?
     private var topPadding: CGFloat {
@@ -49,15 +38,13 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
     //MARK: Life cycle
     override func setup() {
         super.setup()
-        addSubviewsForAutoLayout([
+       addSubviewsForAutoLayout([
             locationLabel,
             descriptionLabel,
             temperatureLabel,
             highLowLabel,
         ])
-        setupConstraints()
-      
-        
+        activateConstraints()
     }
     override func layoutSubviews() {
         //update top constraint because origin of view changes during scrolling
@@ -84,8 +71,7 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
         let lbl = UILabel(font: .lightTemperature)
         return lbl
     }()
-  
-    func setupConstraints() {
+    override func activateConstraints() {
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true
         let constraints = [
@@ -97,11 +83,19 @@ final class CurrentWeatherCell: ClearCell, Customizable, Reusable {
             temperatureLabel.centerXAnchor.constraint(equalTo: descriptionLabel.centerXAnchor),
             highLowLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor),
             highLowLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-           
-            
         ]
         NSLayoutConstraint.activate(constraints)
     }
-  
+ 
+    func populateSubviews(with viewModel: CurrentViewModel) {
+        locationLabel.text = viewModel.location
+        descriptionLabel.text = viewModel.description
+        temperatureLabel.text = viewModel.temperature
+        highLowLabel.text = viewModel.highLowTemp
+    }
+
+
+
+    
     
 }

@@ -6,11 +6,7 @@
 //
 import UIKit
 
-final class WeatherLinkCell: ClearCell, Customizable {
-    
-    
-    
-   
+final class WeatherLinkCell: ClearCell {
     
     //MARK: Subviews
     private let linkLabel: UILabel = {
@@ -20,21 +16,20 @@ final class WeatherLinkCell: ClearCell, Customizable {
     }()
     //MARK: Life cycle
     override func setup() {
+        super.setup()
         addSubviewForAutoLayout(linkLabel)
-        setupConstraints()
         addSeparator(to: .top, aboveSubview: linkLabel)
+        activateConstraints()
         
     }
     //MARK: Instance methods
-    func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             linkLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             linkLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             linkLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
             
         ])
-        
     }
-   
-    
+  
 }

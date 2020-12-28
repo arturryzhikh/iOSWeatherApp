@@ -37,6 +37,7 @@ struct Current: Decodable {
 
 // MARK: - Snow
 struct Snow: Codable {
+    
     let the1H: Double?
 
     enum CodingKeys: String, CodingKey {
@@ -60,7 +61,7 @@ enum Main: String, Decodable {
 }
 
 enum Description: String, Decodable {
-    
+
     case brokenClouds = "broken clouds"
     case clearSky = "clear sky"
     case lightRain = "light rain"

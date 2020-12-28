@@ -27,7 +27,7 @@ final class WeatherService: APIService {
             completion(Result.failure(.encoding))
             return
         }
-        print(url)
+        
         let urlRequest = URLRequest(url: url)
         session.dataTask(with: urlRequest , completionHandler: { data, response, error in
             

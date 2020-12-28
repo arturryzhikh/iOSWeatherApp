@@ -7,10 +7,16 @@
 
 import UIKit
 
-final class HourlyWeatherCell: ClearCell, UICollectionViewDelegate {
-  
-    
+final class HourlyWeatherFooter: ClearCell, UICollectionViewDelegate {
+
     //MAKR: Static properties
+    
+    var viewModel: HourlyWeatherViewModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     static var defaultHeight: CGFloat {
         Screen.height * 0.15
     }
@@ -22,7 +28,7 @@ final class HourlyWeatherCell: ClearCell, UICollectionViewDelegate {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerCells(HourlyCell.self)
+        collectionView.registerCells(HourlyItemCell.self)
         let horizontalInset = Screen.width * 0.05
         collectionView.contentInset = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -38,16 +44,17 @@ final class HourlyWeatherCell: ClearCell, UICollectionViewDelegate {
     //MARK: Other Properties
     //MARK: Life cycle
     override func setup() {
+        super.setup()
         isUserInteractionEnabled = true//switch back property to allow collection view to be scrolling
         addSubviewForAutoLayout(collectionView)
         addSeparator(to: .top, aboveSubview: collectionView)
         addSeparator(to: .bottom, aboveSubview: collectionView)
-        setupConstraints()
+        activateConstraints()
         
         
     }
     //MARK:Instance methods
-    private func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -55,18 +62,22 @@ final class HourlyWeatherCell: ClearCell, UICollectionViewDelegate {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
+  
 }
 ////MARK: DataSource
-extension HourlyWeatherCell: UICollectionViewDataSource {
+extension HourlyWeatherFooter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        50
+      
+        return viewModel?.items.count ?? 0
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyCell.description(), for: indexPath) as! HourlyCell
-       
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyItemCell.description(), for: indexPath) as! HourlyItemCell
         
+        cell.viewModel = viewModel?.items[indexPath.item]
+       
         return cell
     }
     
@@ -74,6 +85,6 @@ extension HourlyWeatherCell: UICollectionViewDataSource {
 }
 //MARK: Delegate Flow Layout
 
-extension HourlyWeatherCell: UICollectionViewDelegateFlowLayout {
+extension HourlyWeatherFooter: UICollectionViewDelegateFlowLayout {
     
 }

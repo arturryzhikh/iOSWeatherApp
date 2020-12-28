@@ -28,7 +28,7 @@ final class WeatherController: UIViewController {
     //MARK: Other Properties
     private var dataSource: WeatherDataSource!
     private var current: CurrentViewModel?
-   
+    private var hourly: HourlyWeatherViewModel?
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -38,17 +38,17 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        let request = WeatherRequest(latitude: 55.733971016021876, longitude: 55.733971016021876)
+        let request = WeatherRequest(latitude: 40.730610, longitude: 73.935242)
         dataSource = WeatherDataSource()
         dataSource.apiService!.request(request) { (result) in
-            self.printFunction()
+            
             switch result {
             case .failure(let error):
                 print(error)
                 
             case .success(let weather):
                 self.current = CurrentViewModel(with: weather)
-                
+                self.hourly = HourlyWeatherViewModel(with: weather)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -65,7 +65,7 @@ final class WeatherController: UIViewController {
 //MARK: UICollectionViewDelegateFlowLayout
 extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        printFunction(items: indexPath)
+        
     }
     //item size
     func collectionView(_ collectionView: UICollectionView,
@@ -94,14 +94,14 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: width, height: CurrentWeatherCell.defaultHeight)
+        let headerSize = CGSize(width: width, height: CurrentWeatherHeader.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: width, height: HourlyWeatherCell.defaultHeight)
+        let footerSize =  CGSize(width: width, height: HourlyWeatherFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -151,7 +151,7 @@ extension WeatherController: UICollectionViewDataSource {
         switch kind {
         
         case UICollectionView.elementKindSectionHeader :
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentWeatherCell.description(), for: indexPath) as? CurrentWeatherCell else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentWeatherHeader.description(), for: indexPath) as? CurrentWeatherHeader else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
                 
             }
@@ -159,9 +159,10 @@ extension WeatherController: UICollectionViewDataSource {
             return header
         
         case UICollectionView.elementKindSectionFooter :
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyWeatherCell.description(), for: indexPath) as? HourlyWeatherCell else {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyWeatherFooter.description(), for: indexPath) as? HourlyWeatherFooter else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
+            footer.viewModel = hourly
             
             return footer
             

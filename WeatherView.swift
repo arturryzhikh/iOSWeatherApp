@@ -62,8 +62,8 @@ final class WeatherView: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerHeaders(CurrentWeatherCell.self)
-        collectionView.registerFooters(HourlyWeatherCell.self)
+        collectionView.registerHeaders(CurrentWeatherHeader.self)
+        collectionView.registerFooters(HourlyWeatherFooter.self)
         collectionView.registerCells(DailyWeatherCell.self, WeatherOverViewCell.self, ExtendedInfoCell.self, WeatherLinkCell.self)
         return collectionView
     }()

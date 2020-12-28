@@ -57,7 +57,7 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         // first header and first footer attributes
         guard let header = headersAttributes.first, let footer = footersAttributes.first else { return nil }
         // setup header in first section
-        let newHeaderHeight = max(CurrentWeatherCell.minimumHeight, CurrentWeatherCell.defaultHeight - yOffset)
+        let newHeaderHeight = max(CurrentWeatherHeader.minimumHeight, CurrentWeatherHeader.defaultHeight - yOffset)
         header.frame.size.height = newHeaderHeight
         header.frame.origin.y = yOffset
         // setup footer in  first section
@@ -68,7 +68,8 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         let footerBottomBound = footer.frame.origin.y + footer.frame.size.height
         cellsAttributes.forEach { (attribute) in
             if attribute.frame.origin.y < footerBottomBound {
-                attribute.alpha = 0 
+                attribute.alpha = 0
+                
             }
         }
         return attributesCache

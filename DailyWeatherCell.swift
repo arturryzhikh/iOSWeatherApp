@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DailyWeatherCell: ClearCell, Customizable {
+final class DailyWeatherCell: ClearCell {
   
     //MARK: Other properties
     
@@ -53,12 +53,12 @@ final class DailyWeatherCell: ClearCell, Customizable {
     }()
     //MARK: life Cycle
     override func setup() {
-        
+        super.setup()
         addSubviewsForAutoLayout([dayLabel,weatherEmojiStack,temperatureStack])
-        setupConstraints()
+        activateConstraints()
         
     }
-    func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             dayLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             dayLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -68,7 +68,6 @@ final class DailyWeatherCell: ClearCell, Customizable {
             temperatureStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             
         ])
-        
     }
-   
+ 
 }

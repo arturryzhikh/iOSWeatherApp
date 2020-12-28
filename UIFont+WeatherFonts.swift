@@ -13,10 +13,10 @@ extension UIFont {
 
     }
     class var lightTemperature: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.028), weight: .light)
+        UIFont.systemFont(ofSize: (Screen.height * 0.025), weight: .light)
     }
     class var regularTemperature: UIFont {
-        UIFont.systemFont(ofSize: (Screen.height * 0.028), weight: .regular)
+        UIFont.systemFont(ofSize: (Screen.height * 0.025), weight: .regular)
     }
     class var hugeTemperature: UIFont {
         UIFont.systemFont(ofSize: (Screen.height * 0.08), weight: .light)

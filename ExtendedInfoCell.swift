@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class ExtendedInfoCell: ClearCell, Customizable {
+final class ExtendedInfoCell: ClearCell {
     
- 
+    
     
     //MARK: Other properties
-  
+    
     //MARK: Subviews
     let infoTitleLabel: UILabel = {
         let lbl = UILabel(transparentText: true, alignment: .left, font: .extendedInfoTitle)
@@ -22,14 +22,15 @@ final class ExtendedInfoCell: ClearCell, Customizable {
         let lbl = UILabel(transparentText: false, alignment: .left, font: .extendedInfoValue)
         return lbl
     }()
-   //MARK: life Cycle
+    //MARK: life Cycle
     override func setup() {
+        super.setup()
         addSubviewForAutoLayout(vStack)
-        setupConstraints()
+        activateConstraints()
         addSeparator(to: .top, aboveSubview: infoValueLabel)
         
         
-      
+        
     }
     private lazy var vStack: UIStackView = {
         let sv = UIStackView(arrangedSubviews:[infoTitleLabel, infoValueLabel])
@@ -40,14 +41,13 @@ final class ExtendedInfoCell: ClearCell, Customizable {
         return sv
         
     }()
-    func setupConstraints() {
+    override func activateConstraints() {
         NSLayoutConstraint.activate([
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             vStack.centerYAnchor.constraint(equalTo: centerYAnchor)
             
         ])
-        
     }
-  
+    
 }
 

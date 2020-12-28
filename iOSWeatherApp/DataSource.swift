@@ -11,11 +11,12 @@ import Foundation
 
 protocol DataSource {
     
-    var apiService: APIService? { get }
+   var apiService: APIService? { get }
     
     var numberOfSections: Int { get }
     
     func numberOfItemsIn(_ section: Int) -> Int
+    
     init(apiService: APIService?)
     
 }

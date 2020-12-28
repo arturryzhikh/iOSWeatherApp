@@ -12,13 +12,8 @@ public class ClearCell: UICollectionViewCell  {
    
     override init(frame: CGRect) {
         super.init(frame:frame)
-        clipsToBounds = true
-        backgroundColor =  .clear
-        isUserInteractionEnabled = false
         setup()
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -27,6 +22,14 @@ public class ClearCell: UICollectionViewCell  {
     ///Default implementation of this method does nothing
     ///Override this method to provide your initial setup for view and subviews
     func setup() {
+        clipsToBounds = true
+        backgroundColor =  .clear
+        isUserInteractionEnabled = false
+    }
+    ///This is placeholder method to incapsulate autoLayout code
+    ///Default implementation of this method does nothing
+    ///Override this method to provide your initial setup for auto layout constraints
+    func activateConstraints() {
         
     }
     
