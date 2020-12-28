@@ -65,12 +65,11 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
         let cellsAttributes = attributesCache.filter { (attribute) -> Bool in
             return attribute.representedElementCategory == .cell //if attributes belong to items
         }
+        
         let footerBottomBound = footer.frame.origin.y + footer.frame.size.height
         cellsAttributes.forEach { (attribute) in
             if attribute.frame.origin.y < footerBottomBound {
                 attribute.alpha = 0
-            
-                
             }
         }
         return attributesCache

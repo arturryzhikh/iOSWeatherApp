@@ -67,7 +67,7 @@ struct DailyWeatherViewModel: ItemViewModelProtocol {
         case .rain:
             return "🌧"
         case .snow:
-            return "❅"
+            return "❄️"
             
         }
     }
@@ -75,7 +75,7 @@ struct DailyWeatherViewModel: ItemViewModelProtocol {
         guard let prob = model.pop else {
             return "--"
         }
-        return String(prob) + "%"
+        return String(prob * 100) + "%"
     }
 
     let model: Daily

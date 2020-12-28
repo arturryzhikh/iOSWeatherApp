@@ -39,7 +39,7 @@ struct HourlyItemViewModel: ItemViewModelProtocol {
         case .rain:
             return "🌧"
         case .snow:
-            return "❅"
+            return "❄️"
             
         }
         

@@ -54,7 +54,7 @@ final class DailyItemCell: ClearCell, Reusable {
     private lazy var weatherEmojiStack: UIStackView = {
         let sv = UIStackView(arrangedSubviews:[weatherEmojiLabel,percentageLabel])
         sv.axis = .horizontal
-        sv.alignment = .center
+        sv.alignment = .fill
         sv.distribution = .fill
         sv.spacing = Screen.width * 0.025
         return sv
@@ -80,7 +80,7 @@ final class DailyItemCell: ClearCell, Reusable {
         NSLayoutConstraint.activate([
             dayLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             dayLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            weatherEmojiStack.leadingAnchor.constraint(equalTo: centerXAnchor,constant: -Screen.width * 0.05),
+            weatherEmojiStack.leadingAnchor.constraint(equalTo: centerXAnchor,constant: -Screen.width * 0.1),
             weatherEmojiStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             temperatureStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             temperatureStack.centerYAnchor.constraint(equalTo: centerYAnchor),

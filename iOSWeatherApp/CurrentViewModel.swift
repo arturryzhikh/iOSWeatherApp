@@ -13,7 +13,7 @@ struct CurrentViewModel: ItemViewModelProtocol {
     let model: WeatherResponse
     
     var location: String {
-        return model.timezone ?? "__"
+        return model.timezone?.components(separatedBy: "/")[1] ?? "__"
     }
     
     var description: String {
