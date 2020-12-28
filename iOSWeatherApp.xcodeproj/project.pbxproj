@@ -15,9 +15,11 @@
 		3414585725936C8D00FEA647 /* ExtendedInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414585625936C8D00FEA647 /* ExtendedInfoCell.swift */; };
 		341458672593764200FEA647 /* WeatherLinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341458662593764200FEA647 /* WeatherLinkCell.swift */; };
 		3414587D259391F500FEA647 /* LocationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3414587C259391F500FEA647 /* LocationsController.swift */; };
+		344B62C2259A881F009158D5 /* SectionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344B62C1259A881F009158D5 /* SectionViewModelProtocol.swift */; };
 		345DE9D4259540A400765038 /* CurrentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345DE9D3259540A400765038 /* CurrentViewModel.swift */; };
 		347C41912598D9290049F463 /* ItemViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347C41902598D9290049F463 /* ItemViewModelProtocol.swift */; };
-		34D4525425990CAE00E5AAF8 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D4525325990CAE00E5AAF8 /* DataSource.swift */; };
+		34D4525425990CAE00E5AAF8 /* DataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D4525325990CAE00E5AAF8 /* DataSourceProtocol.swift */; };
+		34EC4CE3259A7F0A00F75C7D /* ApiConnectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EC4CE2259A7F0A00F75C7D /* ApiConnectable.swift */; };
 		34F98DA325994B1700021C5A /* HourlyItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F98DA225994B1700021C5A /* HourlyItemViewModel.swift */; };
 		34FA39AB2594A0A600AD5E66 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FA39AA2594A0A600AD5E66 /* APIRequest.swift */; };
 		34FA39B72594A1DF00AD5E66 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FA39B62594A1DF00AD5E66 /* APIService.swift */; };
@@ -79,9 +81,11 @@
 		3414585625936C8D00FEA647 /* ExtendedInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedInfoCell.swift; sourceTree = "<group>"; };
 		341458662593764200FEA647 /* WeatherLinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLinkCell.swift; sourceTree = "<group>"; };
 		3414587C259391F500FEA647 /* LocationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsController.swift; sourceTree = "<group>"; };
+		344B62C1259A881F009158D5 /* SectionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewModelProtocol.swift; sourceTree = "<group>"; };
 		345DE9D3259540A400765038 /* CurrentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewModel.swift; sourceTree = "<group>"; };
 		347C41902598D9290049F463 /* ItemViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelProtocol.swift; sourceTree = "<group>"; };
-		34D4525325990CAE00E5AAF8 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		34D4525325990CAE00E5AAF8 /* DataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceProtocol.swift; sourceTree = "<group>"; };
+		34EC4CE2259A7F0A00F75C7D /* ApiConnectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConnectable.swift; sourceTree = "<group>"; };
 		34F98DA225994B1700021C5A /* HourlyItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyItemViewModel.swift; sourceTree = "<group>"; };
 		34FA39AA2594A0A600AD5E66 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		34FA39B62594A1DF00AD5E66 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -151,7 +155,8 @@
 		3418E48D2599061C007D1776 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				34D4525325990CAE00E5AAF8 /* DataSource.swift */,
+				34D4525325990CAE00E5AAF8 /* DataSourceProtocol.swift */,
+				34EC4CE2259A7F0A00F75C7D /* ApiConnectable.swift */,
 				750F197925753360004FBC6A /* WeatherDataSource.swift */,
 			);
 			name = DataSource;
@@ -186,6 +191,7 @@
 		345DE9C325953F4C00765038 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				344B62C1259A881F009158D5 /* SectionViewModelProtocol.swift */,
 				347C41902598D9290049F463 /* ItemViewModelProtocol.swift */,
 				345DE9D3259540A400765038 /* CurrentViewModel.swift */,
 				34F98DA225994B1700021C5A /* HourlyItemViewModel.swift */,
@@ -492,11 +498,12 @@
 				341458202593404100FEA647 /* UIView+AddSeparator.swift in Sources */,
 				750F197A25753360004FBC6A /* WeatherDataSource.swift in Sources */,
 				34FA39BC2594A26900AD5E66 /* HTTPURLResponse+statusOK.swift in Sources */,
-				34D4525425990CAE00E5AAF8 /* DataSource.swift in Sources */,
+				34D4525425990CAE00E5AAF8 /* DataSourceProtocol.swift in Sources */,
 				34145803259338AF00FEA647 /* Reusable.swift in Sources */,
 				340498AC259A4A41008B4F45 /* DailyWeatherViewModel.swift in Sources */,
 				75AE306F256FB24400549CB6 /* HourlyWeatherFooter.swift in Sources */,
 				751BF87325471A1400F2EB22 /* iOSWeatherApp.xcdatamodeld in Sources */,
+				34EC4CE3259A7F0A00F75C7D /* ApiConnectable.swift in Sources */,
 				7567BA8D255700D3006082FB /* UIView+AddSubviewsForAutoLayout.swift in Sources */,
 				751BF86B25471A1400F2EB22 /* SceneDelegate.swift in Sources */,
 				34FA39D52594A68200AD5E66 /* WeatherRequest.swift in Sources */,
@@ -509,6 +516,7 @@
 				34FD48CC2599AD060008DE79 /* Double+StringTemperature.swift in Sources */,
 				341458452593606200FEA647 /* WeatherOverViewCell.swift in Sources */,
 				7548A94B258F4F9200690A52 /* UIColor+WeatherColors.swift in Sources */,
+				344B62C2259A881F009158D5 /* SectionViewModelProtocol.swift in Sources */,
 				75F27D722572FBEE00C8C22D /* UICollectionView+RegisterReusableViews.swift in Sources */,
 				34FD48D42599B00A0008DE79 /* HourlySectionViewModel.swift in Sources */,
 				757D526E2547F9EE00F53F1D /* NSObject+PrintFunction+ClassName.swift in Sources */,

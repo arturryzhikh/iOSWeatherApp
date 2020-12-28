@@ -39,9 +39,8 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        let request = WeatherRequest(latitude: 55.751244, longitude: 37.618423)
-        dataSource = WeatherDataSource()
-        dataSource.apiService!.request(request) { (result) in
+        dataSource = WeatherDataSource(request: WeatherRequest(latitude: 55.751244, longitude: 37.618423))
+        dataSource.apiService.request(request) { (result) in
             
             switch result {
             case .failure(let error):
@@ -119,10 +118,11 @@ extension WeatherController: UICollectionViewDataSource {
     
    func numberOfSections(in collectionView: UICollectionView) -> Int {
         5
+            //datasource.number of sections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        //datasource.numberOfItemsIn(section)
         switch section {
         
         case 0:

@@ -52,7 +52,7 @@ final class WeatherView: UIView {
     private let backgroundImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "background")
+//        iv.image = UIImage(named: "background")
         return iv
     }()
     private let line: UIView =  {

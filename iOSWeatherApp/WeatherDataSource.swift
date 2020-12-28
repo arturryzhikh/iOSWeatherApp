@@ -8,27 +8,27 @@
 
 import Foundation
 
-
-final class WeatherDataSource: NSObject , DataSource {
+final class WeatherDataSource: NSObject , DataSourceProtocol, ApiConnectable {
     
     
+    var sections: [Sections] = []
     
-    var apiService: APIService?
+    var request: WeatherRequest?
     
-    init(apiService: APIService? = WeatherService.shared) {
+    var apiService: APIService
+    
+    init(apiService: APIService = WeatherService.shared, request: WeatherRequest? = nil) {
         self.apiService = apiService
     }
 
     var numberOfSections: Int {
-       return 5
+       4
     }
-    
-    
     func numberOfItemsIn(_ section: Int) -> Int {
-       8
-            
-        }
+       7
     }
+    
+}
     
 
 

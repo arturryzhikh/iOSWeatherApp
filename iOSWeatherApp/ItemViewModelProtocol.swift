@@ -7,15 +7,12 @@
 
 import Foundation
 
-
-
-
 protocol ItemViewModelProtocol {
     
     associatedtype Model = Decodable
     
     var model: Model { get }
     
-    init(with model: Model )
+    init(with model: Model)
     
 }
