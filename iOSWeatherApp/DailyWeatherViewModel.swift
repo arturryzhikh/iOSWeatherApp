@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DailySectionViewModel: ItemViewModelProtocol {
+struct DailySectionViewModel: ItemReprasantable {
     
     var model: WeatherResponse
     
@@ -32,7 +32,7 @@ struct DailySectionViewModel: ItemViewModelProtocol {
 }
 
 
-struct DailyWeatherViewModel: ItemViewModelProtocol {
+struct DailyWeatherViewModel: ItemReprasantable {
     
     var day: String {
         guard  let dt = model.dt else {

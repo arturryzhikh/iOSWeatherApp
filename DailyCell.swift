@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DailyItemCell: ClearCell, Reusable {
+final class DailyCell: ClearCell, Reusable {
     
     
     

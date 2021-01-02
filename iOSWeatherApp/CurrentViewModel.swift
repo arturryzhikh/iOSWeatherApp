@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrentViewModel: ItemViewModelProtocol {
+struct CurrentViewModel: ItemReprasantable {
     
     let model: WeatherResponse
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HourlySectionViewModel: ItemViewModelProtocol {
+struct HourlySectionViewModel: ItemReprasantable {
     
     
     

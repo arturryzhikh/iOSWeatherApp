@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HourlyItemViewModel: ItemViewModelProtocol {
+struct HourlyItemViewModel: ItemReprasantable {
    
     let model: Current
     

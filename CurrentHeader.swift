@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrentWeatherHeader: ClearCell, Reusable {
+final class CurrentHeader: ClearCell, Reusable {
     
     var viewModel: CurrentViewModel? {
           
@@ -29,7 +29,7 @@ final class CurrentWeatherHeader: ClearCell, Reusable {
     //MARK: Other Properties
     private var computedAlpha: CGFloat { //calculate alpha of temperature and high low labels depending on view height
         let transparentY = temperatureLabel.frame.height + temperatureLabel.frame.origin.y
-        return max((frame.height - transparentY) / (CurrentWeatherHeader.defaultHeight - transparentY), 0)
+        return max((frame.height - transparentY) / (CurrentHeader.defaultHeight - transparentY), 0)
     }
     private var topConstraint: NSLayoutConstraint?
     private var topPadding: CGFloat {

@@ -95,14 +95,14 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        let headerSize = CGSize(width: width, height: CurrentWeatherHeader.defaultHeight)
+        let headerSize = CGSize(width: width, height: CurrentHeader.defaultHeight)
         return section == 0 ? headerSize : .zero
     }
     //footer size
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
-        let footerSize =  CGSize(width: width, height: HourlyWeatherFooter.defaultHeight)
+        let footerSize =  CGSize(width: width, height: HourlyFooter.defaultHeight)
         return section == 0 ? footerSize : .zero
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -144,7 +144,7 @@ extension WeatherController: UICollectionViewDataSource {
         let section = indexPath.section
         switch section {
         case 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyItemCell.description(), for: indexPath) as! DailyItemCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyCell.description(), for: indexPath) as! DailyCell
             cell.viewModel = daily?.items[indexPath.item]
             return cell
         case 2:
@@ -168,7 +168,7 @@ extension WeatherController: UICollectionViewDataSource {
         switch kind {
         
         case UICollectionView.elementKindSectionHeader :
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentWeatherHeader.description(), for: indexPath) as? CurrentWeatherHeader else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentHeader.description(), for: indexPath) as? CurrentHeader else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
                 
             }
@@ -176,7 +176,7 @@ extension WeatherController: UICollectionViewDataSource {
             return header
         
         case UICollectionView.elementKindSectionFooter :
-            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyWeatherFooter.description(), for: indexPath) as? HourlyWeatherFooter else {
+            guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyFooter.description(), for: indexPath) as? HourlyFooter else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
             footer.viewModel = hourly

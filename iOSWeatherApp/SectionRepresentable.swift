@@ -9,14 +9,16 @@ import Foundation
 
 
 
-protocol SectionViewModelProtocol {
+protocol SectionRepresentable {
     
-    associatedtype Item = ItemViewModelProtocol
+    associatedtype HeaderViewModel: HeaderRepresentable
+    associatedtype FooterViewModel: FooterRepresentable
+    associatedtype Item = ItemReprasantable
     associatedtype Model = Decodable
     
-    var header: Item? { get }
+    var headerViewModel: HeaderViewModel? { get }
     
-    var footer: Item? { get }
+    var footerViewModel: FooterViewModel? { get }
     
     var model: Model { get }
     
@@ -28,7 +30,7 @@ protocol SectionViewModelProtocol {
     
 }
 
-extension SectionViewModelProtocol {
+extension SectionRepresentable {
     var numberOfItems: Int? {
         return items?.count
     }

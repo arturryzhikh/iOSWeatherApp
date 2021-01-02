@@ -9,7 +9,7 @@ import Foundation
 
 protocol DataSourceProtocol {
     
-    associatedtype Sections = SectionViewModelProtocol
+    associatedtype Sections = SectionRepresentable
         
     var sections: [Sections] { get }
     

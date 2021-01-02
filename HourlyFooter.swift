@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HourlyWeatherFooter: ClearCell, UICollectionViewDelegate {
+final class HourlyFooter: ClearCell, UICollectionViewDelegate {
 
     //MAKR: Static properties
     
@@ -28,7 +28,7 @@ final class HourlyWeatherFooter: ClearCell, UICollectionViewDelegate {
         collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerCells(HourlyItemCell.self)
+        collectionView.registerCells(HourlyCell.self)
         let horizontalInset = Screen.width * 0.05
         collectionView.contentInset = UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
@@ -65,7 +65,7 @@ final class HourlyWeatherFooter: ClearCell, UICollectionViewDelegate {
   
 }
 ////MARK: DataSource
-extension HourlyWeatherFooter: UICollectionViewDataSource {
+extension HourlyFooter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
@@ -74,7 +74,7 @@ extension HourlyWeatherFooter: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyItemCell.description(), for: indexPath) as! HourlyItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyCell.description(), for: indexPath) as! HourlyCell
         
         cell.viewModel = viewModel?.items[indexPath.item]
        
@@ -85,6 +85,6 @@ extension HourlyWeatherFooter: UICollectionViewDataSource {
 }
 //MARK: Delegate Flow Layout
 
-extension HourlyWeatherFooter: UICollectionViewDelegateFlowLayout {
+extension HourlyFooter: UICollectionViewDelegateFlowLayout {
     
 }

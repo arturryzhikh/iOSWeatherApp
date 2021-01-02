@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ItemViewModelProtocol {
+protocol ItemReprasantable {
     
     associatedtype Model = Decodable
     
