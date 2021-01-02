@@ -13,7 +13,7 @@ protocol SectionRepresentable {
     
     associatedtype HeaderViewModel: HeaderRepresentable
     associatedtype FooterViewModel: FooterRepresentable
-    associatedtype Item = ItemReprasantable
+    associatedtype ItemViewModel = ItemReprasantable
     associatedtype Model = Decodable
     
     var headerViewModel: HeaderViewModel? { get }
@@ -22,16 +22,10 @@ protocol SectionRepresentable {
     
     var model: Model { get }
     
-    var items : [Item]? { get }
+    var items : [ItemViewModel]? { get }
     
     var numberOfItems: Int?  { get }
     
-    init(with model: Model)
+    init(model: Model)
     
-}
-
-extension SectionRepresentable {
-    var numberOfItems: Int? {
-        return items?.count
-    }
 }

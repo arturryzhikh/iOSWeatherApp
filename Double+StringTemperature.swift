@@ -15,7 +15,7 @@ extension Double  {
         } else {
             return String(format: "%.0f", self) + "°"
         }
-       
+        
     }
 }
 

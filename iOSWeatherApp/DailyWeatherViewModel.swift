@@ -14,7 +14,7 @@ struct DailySectionViewModel: ItemReprasantable {
     var items: [DailyWeatherViewModel] {
         if let daily = model.daily {
             return daily.compactMap {
-                DailyWeatherViewModel(with: $0)
+                DailyWeatherViewModel(model: $0)
             }
         }
         return []
@@ -24,7 +24,7 @@ struct DailySectionViewModel: ItemReprasantable {
         return items.count
     }
     
-    init(with model: WeatherResponse) {
+    init(model: WeatherResponse) {
         self.model = model
     }
     
@@ -83,7 +83,7 @@ struct DailyWeatherViewModel: ItemReprasantable {
 
     let model: Daily
     
-    init(with model: Daily) {
+    init(model: Daily) {
         self.model = model
     }
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CurrentViewModel: ItemReprasantable {
+struct CurrentHourlyHeaderVM: HeaderRepresentable {
     
     let model: WeatherResponse
     
@@ -35,7 +35,7 @@ struct CurrentViewModel: ItemReprasantable {
         return "__"
         
     }
-    init(with model: WeatherResponse) {
+    init(model: WeatherResponse) {
         self.model = model
         
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HourlySectionViewModel: ItemReprasantable {
+struct CurrentHourlyFooterVM: FooterRepresentable {
     
     
     
@@ -17,7 +17,7 @@ struct HourlySectionViewModel: ItemReprasantable {
             return []
         }
         returnValue =  hourly.compactMap {
-            HourlyItemViewModel(with: $0)
+            HourlyItemViewModel(model: $0)
             
         }
         return returnValue
@@ -26,7 +26,7 @@ struct HourlySectionViewModel: ItemReprasantable {
     
     let model: WeatherResponse
     
-    init(with model: WeatherResponse) {
+    init(model: WeatherResponse) {
         self.model = model
         
        

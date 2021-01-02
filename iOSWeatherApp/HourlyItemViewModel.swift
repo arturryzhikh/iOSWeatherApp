@@ -53,7 +53,7 @@ struct HourlyItemViewModel: ItemReprasantable {
         return "__"
     }
     
-    init(with model: Current) {
+    init(model: Current) {
         self.model = model
         
     }

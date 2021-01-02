@@ -27,9 +27,8 @@ final class WeatherController: UIViewController {
     }
     //MARK: Other Properties
     private var dataSource: WeatherDataSource!
-    private var current: CurrentViewModel?
-    private var hourly: HourlySectionViewModel?
     private var daily: DailySectionViewModel?
+    private var currentHourlySectionViewModel: CurrentHourlySectionViewModel?
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -47,18 +46,17 @@ final class WeatherController: UIViewController {
                 print(error)
                 
             case .success(let weather):
-                self.current = CurrentViewModel(with: weather)
-                self.hourly = HourlySectionViewModel(with: weather)
-                self.daily = DailySectionViewModel(with: weather)
+                self.currentHourlySectionViewModel = CurrentHourlySectionViewModel(model: weather)
+                self.daily = DailySectionViewModel(model: weather)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-               
+                
             }
         }
         
     }
-   
+    
     
 }
 
@@ -116,9 +114,9 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
 //MARK: UICollectionViewDataSource
 extension WeatherController: UICollectionViewDataSource {
     
-   func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         5
-            //datasource.number of sections
+        //datasource.number of sections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -126,7 +124,7 @@ extension WeatherController: UICollectionViewDataSource {
         switch section {
         
         case 0:
-            return 0
+            return currentHourlySectionViewModel?.items?.count ?? 0
         case 1:
             return daily?.items.count ?? 0
         case 2:
@@ -140,7 +138,7 @@ extension WeatherController: UICollectionViewDataSource {
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      
+        
         let section = indexPath.section
         switch section {
         case 1:
@@ -157,7 +155,7 @@ extension WeatherController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
             return cell
         default:
-           assert(false)
+            assert(false)
             
         }
         
@@ -172,19 +170,19 @@ extension WeatherController: UICollectionViewDataSource {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
                 
             }
-            header.viewModel = current
+            header.viewModel = currentHourlySectionViewModel?.headerViewModel
             return header
-        
+            
         case UICollectionView.elementKindSectionFooter :
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyFooter.description(), for: indexPath) as? HourlyFooter else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
-            footer.viewModel = hourly
+            footer.viewModel = currentHourlySectionViewModel?.footerViewModel
             
-return footer
+            return footer
             
         default:
             assert(false)
         }
     }
- }
+}

@@ -9,7 +9,7 @@ import UIKit
 
 final class CurrentHeader: ClearCell, Reusable {
     
-    var viewModel: CurrentViewModel? {
+    var viewModel: CurrentHourlyHeaderVM? {
           
           didSet {
               if let vm = viewModel {
@@ -87,7 +87,7 @@ final class CurrentHeader: ClearCell, Reusable {
         NSLayoutConstraint.activate(constraints)
     }
  
-    func populateSubviews(with viewModel: CurrentViewModel) {
+    func populateSubviews(with viewModel: CurrentHourlyHeaderVM) {
         locationLabel.text = viewModel.location
         descriptionLabel.text = viewModel.description
         temperatureLabel.text = viewModel.temperature

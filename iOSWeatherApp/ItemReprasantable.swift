@@ -13,6 +13,6 @@ protocol ItemReprasantable {
     
     var model: Model { get }
     
-    init(with model: Model)
+    init(model: Model)
     
 }
