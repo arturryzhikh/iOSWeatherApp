@@ -39,8 +39,8 @@ final class WeatherController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        dataSource = WeatherDataSource(request: WeatherRequest(latitude: 55.751244, longitude: 37.618423))
-        dataSource.apiService.request(request) { (result) in
+        dataSource = WeatherDataSource()
+        dataSource.apiService.request(WeatherRequest(latitude: 55.751244, longitude: 37.618423)) { (result) in
             
             switch result {
             case .failure(let error):
