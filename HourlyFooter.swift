@@ -11,7 +11,7 @@ final class HourlyFooter: ClearCell, UICollectionViewDelegate {
 
     //MAKR: Static properties
     
-    var viewModel: CurrentHourlyFooterVM? {
+    var viewModel: HourlyFooterVM? {
         didSet {
             collectionView.reloadData()
         }

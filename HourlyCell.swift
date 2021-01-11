@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HourlyCell: ClearCell  ,Reusable {
+final class HourlyCell: ClearCell ,Reusable {
     
     var viewModel: HourlyItemViewModel? {
         didSet {

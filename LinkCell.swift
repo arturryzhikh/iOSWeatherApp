@@ -6,14 +6,13 @@
 //
 import UIKit
 
-final class WeatherLinkCell: ClearCell {
+final class LinkCell: ClearCell {
     
     //MARK: Subviews
     private let linkLabel: UILabel = {
-        let lbl = UILabel(transparentText: false, alignment: .center, font: .overView)
-        lbl.numberOfLines = 3
-        return lbl
-    }()
+        $0.numberOfLines = 3
+        return $0
+    }(UILabel(transparentText: false, alignment: .center, font: .overView))
     //MARK: Life cycle
     override func setup() {
         super.setup()

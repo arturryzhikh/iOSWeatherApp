@@ -9,7 +9,7 @@ import UIKit
 
 protocol Reusable: UICollectionReusableView {
     
-    associatedtype ViewModel = ItemReprasantable
+    associatedtype ViewModel: ModelInstantiable
     
     var viewModel: ViewModel? { get }
     

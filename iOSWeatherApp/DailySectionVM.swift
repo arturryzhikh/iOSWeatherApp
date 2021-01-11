@@ -7,32 +7,37 @@
 
 import Foundation
 
-struct DailySectionViewModel: ItemReprasantable {
+struct DailySectionVM: ItemRepresentable {
     
-    var model: WeatherResponse
     
-    var items: [DailyWeatherViewModel] {
+    var numberOfItems: Int {
+        return items?.count ?? 0
+    }
+    
+    var items: [DailyCellVM]? {
+        
         if let daily = model.daily {
-            return daily.compactMap {
-                DailyWeatherViewModel(model: $0)
+            return daily.map {
+                DailyCellVM(model: $0)
             }
         }
         return []
+        
     }
     
-    var numberOfItems: Int {
-        return items.count
-    }
+    
+    
+    var model: WeatherResponse
     
     init(model: WeatherResponse) {
         self.model = model
+        
     }
-    
     
 }
 
 
-struct DailyWeatherViewModel: ItemReprasantable {
+struct DailyCellVM: ModelInstantiable {
     
     var day: String {
         guard  let dt = model.dt else {
@@ -80,7 +85,7 @@ struct DailyWeatherViewModel: ItemReprasantable {
         let probability = Int(prob * 100)
         return String(probability) + "%"
     }
-
+    
     let model: Daily
     
     init(model: Daily) {

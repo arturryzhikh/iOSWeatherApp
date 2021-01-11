@@ -50,11 +50,10 @@ final class WeatherView: UIView {
     }
     //MARK: Subviews:
     private let backgroundImage: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-//        iv.image = UIImage(named: "background")
-        return iv
-    }()
+        $0.contentMode = .scaleToFill
+//        $0.image = UIImage(named: "background")
+        return $0
+    }(UIImageView())
     private let line: UIView =  {
         let v = UIView()
         v.backgroundColor = .weatherWhite
@@ -74,7 +73,7 @@ final class WeatherView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.registerHeaders(CurrentHeader.self)
         collectionView.registerFooters(HourlyFooter.self)
-        collectionView.registerCells(DailyCell.self, WeatherOverViewCell.self, ExtendedInfoCell.self, WeatherLinkCell.self)
+        collectionView.registerCells(DailyCell.self, TodayCell.self, DetailCell.self, LinkCell.self)
         return collectionView
     }()
     

@@ -27,34 +27,23 @@ final class WeatherController: UIViewController {
     }
     //MARK: Other Properties
     private var dataSource: WeatherDataSource!
-    private var daily: DailySectionViewModel?
-    private var currentHourlySectionViewModel: CurrentHourlySectionViewModel?
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.dataSource = self
         dataSource = WeatherDataSource()
-        dataSource.apiService.request(WeatherRequest(latitude: 55.751244, longitude: 37.618423)) { (result) in
-            
-            switch result {
-            case .failure(let error):
-                print(error)
-                
-            case .success(let weather):
-                self.currentHourlySectionViewModel = CurrentHourlySectionViewModel(model: weather)
-                self.daily = DailySectionViewModel(model: weather)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                
+        dataSource.getWeatherWith(WeatherRequest(latitude: 55.751244, longitude: 37.618423))
+        dataSource.reloadClosure = {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
         }
-        
     }
     
     
@@ -63,10 +52,7 @@ final class WeatherController: UIViewController {
 
 //MARK: UICollectionViewDelegateFlowLayout
 extension WeatherController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    //item size
+   
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -115,45 +101,40 @@ extension WeatherController: UICollectionViewDelegateFlowLayout {
 extension WeatherController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
-        //datasource.number of sections
+        return dataSource.numberOfSections
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //datasource.numberOfItemsIn(section)
-        switch section {
-        
-        case 0:
-            return currentHourlySectionViewModel?.items?.count ?? 0
-        case 1:
-            return daily?.items.count ?? 0
-        case 2:
-            return 1
-        case 3:
-            return 10
-        case 4:
-            return 1
-        default:
-            assert(false)
-        }
+        dataSource.numberOfItemsIn(section)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let section = indexPath.section
+        
+        let section = Section(rawValue: indexPath.section)
         switch section {
-        case 1:
+        
+        
+        
+        case .daily:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyCell.description(), for: indexPath) as! DailyCell
-            cell.viewModel = daily?.items[indexPath.item]
+            cell.viewModel = dataSource.dailySectionVM?.items?[indexPath.item]
             return cell
-        case 2:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherOverViewCell.description(), for: indexPath) as! WeatherOverViewCell
+            
+        case .today:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayCell.description(), for: indexPath) as! TodayCell
+            cell.viewModel = dataSource.todaySectionVM?.items?[indexPath.item]
             return cell
-        case 3:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ExtendedInfoCell.description(), for: indexPath) as! ExtendedInfoCell
+            
+       case .detail:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCell.description(), for: indexPath) as! DetailCell
+            let vm = dataSource.detailSectionVM?.items?[indexPath.item]
+            cell.viewModel = vm
             return cell
-        case 4:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherLinkCell.description(), for: indexPath) as! WeatherLinkCell
+        
+        case .link:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.description(), for: indexPath) as! LinkCell
             return cell
+            
         default:
             assert(false)
             
@@ -168,17 +149,17 @@ extension WeatherController: UICollectionViewDataSource {
         case UICollectionView.elementKindSectionHeader :
             guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CurrentHeader.description(), for: indexPath) as? CurrentHeader else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
-                
             }
-            header.viewModel = currentHourlySectionViewModel?.headerViewModel
+            let vm = dataSource.currentHourlySectionVM?.header
+            header.viewModel = vm
             return header
             
         case UICollectionView.elementKindSectionFooter :
             guard let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HourlyFooter.description(), for: indexPath) as? HourlyFooter else {
                 fatalError("No appropriate view for supplementary view of \(kind) ad \(indexPath)")
             }
-            footer.viewModel = currentHourlySectionViewModel?.footerViewModel
-            
+            let vm = dataSource.currentHourlySectionVM?.footer
+            footer.viewModel = vm
             return footer
             
         default:

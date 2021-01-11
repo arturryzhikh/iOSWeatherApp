@@ -9,12 +9,13 @@ import Foundation
 
 
 protocol ApiConnectable {
-    associatedtype Request: APIRequest
     
-    var apiService: APIService { get }
     
-    var request: Request? { get }
+    var apiService: APIService! { get }
     
-    init(apiService: APIService, request: Request?)
+    var isFetching: Bool { get }
+    
+    
+  
 
 }

@@ -1,31 +1,37 @@
 //
-//  SectionViewModelProtocol.swift
+//  SectionRepresentable.swift
 //  iOSWeatherApp
 //
-//  Created by Artur Ryzhikh on 29.12.2020.
+//  Created by Artur Ryzhikh on 04.01.2021.
 //
 
 import Foundation
 
+protocol FooterRepresentable {
+    
+    associatedtype FooterViewModel: ModelInstantiable
+    
+    var footer: FooterViewModel? { get }
+    var numberOfItems: Int { get }
+}
+protocol HeaderRepresentable {
+    
+    associatedtype HeaderViewModel: ModelInstantiable
+    
+    var header: HeaderViewModel? { get }
+    var numberOfItems: Int { get }
+   
+}
 
-
-protocol SectionRepresentable {
+protocol ItemRepresentable {
     
-    associatedtype HeaderViewModel: HeaderRepresentable
-    associatedtype FooterViewModel: FooterRepresentable
-    associatedtype ItemViewModel = ItemReprasantable
-    associatedtype Model = Decodable
+    associatedtype ItemViewModel: ModelInstantiable
     
-    var headerViewModel: HeaderViewModel? { get }
+    var items: [ItemViewModel]? { get }
     
-    var footerViewModel: FooterViewModel? { get }
-    
-    var model: Model { get }
-    
-    var items : [ItemViewModel]? { get }
-    
-    var numberOfItems: Int?  { get }
-    
-    init(model: Model)
+    var numberOfItems: Int { get }
     
 }
+
+
+

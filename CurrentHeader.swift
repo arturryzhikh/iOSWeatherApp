@@ -9,7 +9,7 @@ import UIKit
 
 final class CurrentHeader: ClearCell, Reusable {
     
-    var viewModel: CurrentHourlyHeaderVM? {
+    var viewModel: CurrentHeaderVM? {
           
           didSet {
               if let vm = viewModel {
@@ -68,9 +68,8 @@ final class CurrentHeader: ClearCell, Reusable {
     }()
     
     private let highLowLabel: UILabel = {
-        let lbl = UILabel(font: .lightTemperature)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .lightTemperature))
     override func activateConstraints() {
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true
@@ -87,7 +86,7 @@ final class CurrentHeader: ClearCell, Reusable {
         NSLayoutConstraint.activate(constraints)
     }
  
-    func populateSubviews(with viewModel: CurrentHourlyHeaderVM) {
+    func populateSubviews(with viewModel: CurrentHeaderVM) {
         locationLabel.text = viewModel.location
         descriptionLabel.text = viewModel.description
         temperatureLabel.text = viewModel.temperature

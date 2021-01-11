@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class DailyCell: ClearCell, Reusable {
+final class DailyCell: ClearCell {
     
     
     
-    var viewModel: DailyWeatherViewModel? {
+    var viewModel: DailyCellVM? {
         didSet {
             if let vm = viewModel {
                 populateSubviews(with: vm)
@@ -19,7 +19,7 @@ final class DailyCell: ClearCell, Reusable {
         }
     }
     
-    func populateSubviews(with viewModel: DailyWeatherViewModel) {
+    func populateSubviews(with viewModel: DailyCellVM) {
         dayLabel.text = viewModel.day
         temperatureHighLabel.text = viewModel.temperatureHigh
         temperatureLowLabel.text = viewModel.temperatureLow
@@ -62,9 +62,9 @@ final class DailyCell: ClearCell, Reusable {
     private lazy var temperatureStack: UIStackView = {
         let sv = UIStackView(arrangedSubviews:[temperatureHighLabel,temperatureLowLabel])
         sv.axis = .horizontal
-        sv.alignment = .fill
-        sv.distribution = .fill
-        sv.spacing = Screen.width * 0.05
+        sv.alignment = .trailing
+        sv.distribution = .fillEqually
+        sv.spacing = 0
         return sv
         
     }()
@@ -82,6 +82,7 @@ final class DailyCell: ClearCell, Reusable {
             dayLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             weatherEmojiStack.leadingAnchor.constraint(equalTo: centerXAnchor,constant: -Screen.width * 0.1),
             weatherEmojiStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            temperatureStack.leadingAnchor.constraint(equalTo: centerXAnchor,constant: Screen.width * 0.15),
             temperatureStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             temperatureStack.centerYAnchor.constraint(equalTo: centerYAnchor),
             

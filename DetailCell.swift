@@ -7,18 +7,28 @@
 
 import UIKit
 
-final class ExtendedInfoCell: ClearCell {
-    
-    
-    
+final class DetailCell: ClearCell , Reusable {
+   
+    var viewModel: DetailCellVM? {
+        
+        didSet {
+            if let vm = viewModel {
+                populateSubviews(with: vm)
+            }
+        }
+    }
+    func populateSubviews(with viewModel: DetailCellVM) {
+        detailLabel.text = viewModel.detail
+        valueLabel.text = viewModel.value
+    }
     //MARK: Other properties
     
     //MARK: Subviews
-    let infoTitleLabel: UILabel = {
+    let detailLabel: UILabel = {
         let lbl = UILabel(transparentText: true, alignment: .left, font: .extendedInfoTitle)
         return lbl
     }()
-    private let infoValueLabel: UILabel = {
+    private let valueLabel: UILabel = {
         let lbl = UILabel(transparentText: false, alignment: .left, font: .extendedInfoValue)
         return lbl
     }()
@@ -27,13 +37,13 @@ final class ExtendedInfoCell: ClearCell {
         super.setup()
         addSubviewForAutoLayout(vStack)
         activateConstraints()
-        addSeparator(to: .top, aboveSubview: infoValueLabel)
+        addSeparator(to: .top, aboveSubview: valueLabel)
         
         
         
     }
     private lazy var vStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews:[infoTitleLabel, infoValueLabel])
+        let sv = UIStackView(arrangedSubviews:[detailLabel, valueLabel])
         sv.axis = .vertical
         sv.alignment = .leading
         sv.distribution = .fillProportionally

@@ -36,10 +36,12 @@ final class WeatherFlowLayout: UICollectionViewFlowLayout {
             }
         }
     }
+    
     // UICollectionViewLayout should be updating the layout while scrolling
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
     }
+    
     //constantly updating method to configure header and footers behaviours
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
