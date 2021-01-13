@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct DailySectionVM: ItemRepresentable {
+struct DailySectionVM: ItemRepresentable, ModelInstantiable {
     
     
     var numberOfItems: Int {
-        return items?.count ?? 0
+        return items.count
     }
     
-    var items: [DailyCellVM]? {
+    var items: [DailyCellVM] {
         
         if let daily = model.daily {
             return daily.map {

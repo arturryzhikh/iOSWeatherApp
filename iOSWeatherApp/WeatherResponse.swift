@@ -9,12 +9,13 @@ import Foundation
 import Foundation
 
 
+// MARK: - Welcome
 struct WeatherResponse: Codable {
-    
     let lat, lon: Double?
     let timezone: String?
     let timezoneOffset: Int?
     let current: Current?
+    let minutely: [Minutely]?
     let hourly: [Current]?
     let daily: [Daily]?
 
@@ -31,8 +32,8 @@ struct Current: Codable {
     let windDeg: Int?
     let weather: [Weather]?
     let pop: Double?
-
-
+   
+  
 }
 
 
@@ -40,16 +41,21 @@ struct Current: Codable {
 struct Weather: Codable {
     let id: Int?
     let main: Main?
-  
+    
+
 }
+
+
 
 enum Main: String, Codable {
     case clouds = "Clouds"
-    case mist = "Mist"
     case snow = "Snow"
     case rain = "Rain"
     case clear = "Clear"
+    case mist = "Mist"
 }
+
+
 
 // MARK: - Daily
 struct Daily: Codable {
@@ -63,6 +69,7 @@ struct Daily: Codable {
     let clouds: Int?
     let pop, snow, uvi: Double?
 
+   
 }
 
 // MARK: - FeelsLike
@@ -74,4 +81,10 @@ struct FeelsLike: Codable {
 struct Temp: Codable {
     let day, min, max, night: Double?
     let eve, morn: Double?
+}
+
+// MARK: - Minutely
+struct Minutely: Codable {
+    let dt: Int?
+    let precipitation: Double?
 }

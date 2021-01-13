@@ -18,7 +18,7 @@ struct WeatherRequest: APIRequest {
 //    String(Locale.current.languageCode ?? "en") //current language code
     var queries: [String : String ] = [
         "lang" : "ru" ,
-        "exclude" :  "minutely,alerts",
+        "exclude" :  "alerts",
         "units": "metric",
     ]
     

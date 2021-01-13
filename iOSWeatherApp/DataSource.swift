@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 enum Section: Int, CaseIterable {
     
     case currentHourly = 0
@@ -20,54 +21,56 @@ enum Section: Int, CaseIterable {
     
     case link
     
+    
+    
 }
 
 
-final class WeatherDataSource: NSObject, ApiConnectable {
+final class DataSource: NSObject, ApiConnectable, StaticCollectionRepresentable {
     
-   //MARK: Other Properties
-    var sections: Set<Section> = [.currentHourly,.daily,.today,.detail,.link]
+    var model: WeatherResponse? {
+        didSet {
+            if let model = model {
+                generateSectionViewModels(model: model)
+                reloadClosure?()
+            }
+        }
+    }
+    
+    
+    //MARK: Section View Models
+    var currentHourlySectionVM: CurrentHourlySectionVM?
+    var dailySectionVM: DailySectionVM?
+    var todaySectionVM: TodaySectionVM?
+    var detailSectionVM: DetailSectionVM?
+    var linkSectionVM: LinkSectionVM?
+    
+    //MARK: Life Cycle
+    init(apiService: APIService = WeatherService.shared) {
+        self.apiService = apiService
+        
+    }
+    //MARK: Properties
+   
+    var sections: [Int] = [
+        Section.currentHourly.rawValue,
+        Section.daily.rawValue,
+        Section.today.rawValue,
+        Section.detail.rawValue,
+        Section.link.rawValue
+    ]
     
     var reloadClosure: (()->Void)?
     
     var apiService: APIService!
     
     var isFetching: Bool = false
-    
-    //MARK: View Models
-    var currentHourlySectionVM: CurrentHourlySectionVM? {
-        
-        didSet {
-            reloadClosure?()
-        }
-        
-    }
-    var dailySectionVM: DailySectionVM? {
-        
-        didSet {
-            reloadClosure?()
-        }
-    }
-    var todaySectionVM: TodaySectionVM? {
-        didSet {
-            reloadClosure?()
-        }
-    }
-    var detailSectionVM: DetailSectionVM? {
-        didSet {
-            reloadClosure?()
-        }
-    }
-    //MARK: Life Cycle
-    init(apiService: APIService = WeatherService.shared) {
-        self.apiService = apiService
-        
-    }
-    
-    
+  
     var numberOfSections: Int {
         return sections.count
     }
+    
+   
     func numberOfItemsIn(_ section: Int) -> Int {
         
         let section = Section(rawValue: section)
@@ -85,18 +88,29 @@ final class WeatherDataSource: NSObject, ApiConnectable {
         case .detail:
             return detailSectionVM?.numberOfItems ?? 0
         case .link:
-            return 1
+            return linkSectionVM?.numberOfItems ?? 0
             
         default:
             return 0
         }
     }
-   
+    func generateSectionViewModels(model: WeatherResponse) {
+        currentHourlySectionVM = CurrentHourlySectionVM(model: model)
+        dailySectionVM = DailySectionVM(model: model)
+        todaySectionVM = TodaySectionVM(model: model)
+        detailSectionVM = DetailSectionVM(model: model)
+        linkSectionVM = LinkSectionVM(model: model)
+        
+    }
+    
+    
+    
+
 }
 
+//MARK: Fetch Wather
 
-
-extension WeatherDataSource {
+extension DataSource {
     
     func getWeatherWith(_ request: WeatherRequest) {
         
@@ -108,12 +122,7 @@ extension WeatherDataSource {
             case .failure(let error):
                 print(error)
             case .success(let weather):
-                
-                self.currentHourlySectionVM = CurrentHourlySectionVM(model: weather)
-                self.dailySectionVM = DailySectionVM(model: weather)
-                self.todaySectionVM = TodaySectionVM(model: weather)
-                self.detailSectionVM = DetailSectionVM(model: weather)
-                
+                self.model = weather
             }
         }
     }

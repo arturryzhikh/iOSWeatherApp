@@ -8,19 +8,21 @@
 import Foundation
 
 
-struct CurrentHourlySectionVM:  ModelInstantiable, HeaderRepresentable, FooterRepresentable {
+struct CurrentHourlySectionVM: ModelInstantiable, HeaderRepresentable, FooterRepresentable {
+    
+   
     
     var numberOfItems: Int {
         return 0
     }
     
-   
-  
-    var header: CurrentHeaderVM? {
+    var header: CurrentHeaderVM {
+        
         return CurrentHeaderVM(model: model)
     }
     
-    var footer: HourlyFooterVM? {
+    var footer: HourlyFooterVM {
+        
         return FooterViewModel(model: model)
     }
     
@@ -28,7 +30,9 @@ struct CurrentHourlySectionVM:  ModelInstantiable, HeaderRepresentable, FooterRe
     
     init(model: WeatherResponse) {
         self.model = model
+        
     }
+    
  
 }
 
@@ -37,7 +41,7 @@ struct CurrentHeaderVM: ModelInstantiable {
     let model: WeatherResponse
     
     var location: String {
-        return model.timezone?.components(separatedBy: "/")[1] ?? "__"
+        return model.timezone?.components(separatedBy: "/")[1].replacingOccurrences(of: "_", with: " ") ?? "__"
     }
     
     var description: String {

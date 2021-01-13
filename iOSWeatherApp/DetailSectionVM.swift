@@ -16,19 +16,19 @@ struct DetailSectionVM:  ItemRepresentable, ModelInstantiable {
     init(model: WeatherResponse) {
         self.model = model
     }
-    var items: [DetailCellVM]? {
+    var items: [DetailCellVM] {
+        
         var items: [DetailCellVM] = []
-        for n in 0...10 {
+        for n in 0...8 {
             var item = DetailCellVM(model: model)
             item.item = n
-            print(n)
             items.append(item)
         }
         return items
     }
     
     var numberOfItems: Int {
-        return items?.count ?? 0
+        return items.count
     }
    
 }
@@ -77,16 +77,28 @@ struct DetailCellVM: ModelInstantiable {
             }
             return ("HUMIDITY", "\(humidity)%")
         case 3:
-            return ("WIND", "")
+            guard let windDeg = model.current?.windDeg,
+                  let windSpeed = model.current?.windSpeed else {
+                return ("WIND", "")
+            }
+            return ("WIND", "\(windDeg.windDirectionFromDegrees()) \(Int(windSpeed)) m/s")
         case 4:
             guard let feelsLike = model.current?.feelsLike else {
                 return ("FEELS LIKE", "")
             }
             return ("FEELS LIKE", "\(feelsLike.stringTemperature)")
         case 5:
-            return ("PRECIPITATION", "")
+            guard let prec = model.minutely?.first?.precipitation else {
+                return ("PRECIPITATION", "")
+            }
+            return ("PRECIPITATION", "\(Int(prec)) cm")
         case 6:
-            return ("PRESSURE", "")
+            guard let pressure = model.current?.pressure else {
+                return ("PRESSURE", "")
+            }
+            let mmHgPressure = (Double(Double(pressure) / 1.333).rounded() * 100 / 100)
+                                
+            return ("PRESSURE", "\(mmHgPressure) mm Hg")
         case 7:
             guard let visibility = model.current?.visibility else {
                  return ("VISIBILITY", "")

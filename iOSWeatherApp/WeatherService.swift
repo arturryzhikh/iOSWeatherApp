@@ -10,7 +10,7 @@ import Foundation
 final class WeatherService: APIService {
     
     var apiKey: String
-    
+  
     private init(apiKey: String = API.apiKey) {
         self.apiKey = apiKey
     }

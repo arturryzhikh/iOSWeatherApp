@@ -26,7 +26,7 @@ final class WeatherController: UIViewController {
         return weatherView.collectionView
     }
     //MARK: Other Properties
-    private var dataSource: WeatherDataSource!
+    private var dataSource: DataSource!
     //MARK: Life Cycle
     override func loadView() {
         view = WeatherView()
@@ -35,10 +35,11 @@ final class WeatherController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
-        dataSource = WeatherDataSource()
-        dataSource.getWeatherWith(WeatherRequest(latitude: 55.751244, longitude: 37.618423))
+        dataSource = DataSource()
+        dataSource.getWeatherWith(WeatherRequest(latitude: 55.7522200, longitude: 37.6155600))
         dataSource.reloadClosure = {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -117,22 +118,24 @@ extension WeatherController: UICollectionViewDataSource {
         
         case .daily:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DailyCell.description(), for: indexPath) as! DailyCell
-            cell.viewModel = dataSource.dailySectionVM?.items?[indexPath.item]
+            cell.viewModel = dataSource.dailySectionVM?.items[indexPath.item]
             return cell
             
         case .today:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TodayCell.description(), for: indexPath) as! TodayCell
-            cell.viewModel = dataSource.todaySectionVM?.items?[indexPath.item]
+            cell.viewModel = dataSource.todaySectionVM?.items[indexPath.item]
             return cell
             
        case .detail:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCell.description(), for: indexPath) as! DetailCell
-            let vm = dataSource.detailSectionVM?.items?[indexPath.item]
+            let vm = dataSource.detailSectionVM?.items[indexPath.item]
             cell.viewModel = vm
             return cell
         
         case .link:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.description(), for: indexPath) as! LinkCell
+            let vm = dataSource.linkSectionVM
+            cell.viewModel = vm?.items[indexPath.item]
             return cell
             
         default:
