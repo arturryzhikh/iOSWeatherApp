@@ -47,18 +47,21 @@ final class HourlyCell: ClearCell ,Reusable {
         return sv
         
     }()
-    let hourLabel: UILabel = {
-        let lbl = UILabel(font: .lightTemperature)
-        return lbl
-    }()
+    let hourLabel: UILabel = { 
+        return $0
+    }(UILabel(font: .lightTemperature))
+    
+    
     private let temperatureLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .regularTemperature))
+    
+    
     private let weatherEmojiLabel: UILabel = {
-        let lbl = UILabel(font: .weatherEmoji)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .weatherEmoji))
+    
+    
     override func activateConstraints() {
         NSLayoutConstraint.activate([
             vStack.topAnchor.constraint(equalTo: topAnchor),

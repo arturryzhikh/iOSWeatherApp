@@ -6,8 +6,13 @@
 //
 import Foundation
 
+
+
+
 protocol APIService {
     
+    typealias ResultClosure<Value> = (Result<Value, ResponseError>) -> Void
+
     var session: URLSession { get }
     
     func request<T:APIRequest>(_ request: T, completion: @escaping ResultClosure<T.Response>)
@@ -19,9 +24,11 @@ protocol APIService {
 
 
 enum ResponseError: Error {
+    
     case network
     case decoding
     case encoding
+    
     var reason: String {
         switch self {
         case .network:
@@ -34,7 +41,6 @@ enum ResponseError: Error {
     }
 }
 
-typealias ResultClosure<Value> = (Result<Value, ResponseError>) -> Void
 
 
 

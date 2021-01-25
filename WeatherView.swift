@@ -50,32 +50,29 @@ final class WeatherView: UIView {
     }
     //MARK: Subviews:
     private let backgroundImage: UIImageView = {
-        $0.contentMode = .scaleToFill
-//        $0.image = UIImage(named: "background")
+        $0.contentMode = .scaleAspectFill
+        $0.image = UIImage(named: "background")
         return $0
     }(UIImageView())
     private let line: UIView =  {
-        let v = UIView()
-        v.backgroundColor = .weatherWhite
-        return v
-    }()
+        $0.backgroundColor = .weatherWhite
+        return $0
+    }(UIView())
     //Page Control Bar
     private lazy var pageControlBar: UIView =  {
-        let v = UIView()
-        v.backgroundColor = .clear
-        return v
-    }()
+        $0.backgroundColor = .clear
+        return $0
+    }(UIView())
     //create collection view
     let collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout())
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerHeaders(CurrentHeader.self)
-        collectionView.registerFooters(HourlyFooter.self)
-        collectionView.registerCells(DailyCell.self, TodayCell.self, DetailCell.self, LinkCell.self)
-        return collectionView
-    }()
+        $0.backgroundColor = .clear
+        $0.showsVerticalScrollIndicator = false
+        $0.showsHorizontalScrollIndicator = false
+        $0.registerHeaders(CurrentHeader.self)
+        $0.registerFooters(HourlyFooter.self)
+        $0.registerCells(DailyCell.self, TodayCell.self, DetailCell.self, LinkCell.self)
+        return $0
+    }(UICollectionView(frame: .zero, collectionViewLayout: WeatherFlowLayout()))
     
 }
 

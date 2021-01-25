@@ -16,10 +16,12 @@ extension NSObject {
         print("Caller: \(Self.className) Function: \(function)", items)
    }
     
-    /// Returns a name of an UIResponder
+    /// Returns name of an NSObject
     static var className: String {
+        
         return  NSStringFromClass(self.classForCoder())
             .components(separatedBy: ".").last ?? String(describing: self)
+        
     }
     
 }

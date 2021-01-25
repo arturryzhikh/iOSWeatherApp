@@ -12,6 +12,7 @@ final class DailyCell: ClearCell {
     
     
     var viewModel: DailyCellVM? {
+        
         didSet {
             if let vm = viewModel {
                 populateSubviews(with: vm)
@@ -30,52 +31,53 @@ final class DailyCell: ClearCell {
     
     //MARK: Subviews
     let dayLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
-        return lbl
-    }()
+        $0.font = .regularTemperature
+        $0.textColor = .weatherWhite
+        return $0
+    }(UILabel())
+    
     private let temperatureHighLabel: UILabel = {
-        let lbl = UILabel(font: .regularTemperature)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .regularTemperature))
+    
+    
     private let temperatureLowLabel: UILabel = {
-        let lbl = UILabel(font: .lightTemperature)
-        lbl.textColor = .weatherTransparent
-        return lbl
-    }()
+       return $0
+    }(UILabel(transparentText: true, alignment: .center, font: .lightTemperature))
+    
     private let weatherEmojiLabel: UILabel = {
-        let lbl = UILabel(font: .weatherEmoji)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .weatherEmoji))
+    
     private let percentageLabel: UILabel = {
-        let lbl = UILabel(font: .extendedInfoTitle)
-        lbl.textColor = .percentage
-        return lbl
-    }()
+        $0.textColor = .percentage
+        return $0
+    }(UILabel(font: .extendedInfoTitle))
+    
     private lazy var weatherEmojiStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews:[weatherEmojiLabel,percentageLabel])
-        sv.axis = .horizontal
-        sv.alignment = .fill
-        sv.distribution = .fill
-        sv.spacing = Screen.width * 0.025
-        return sv
-    }()
+        $0.axis = .horizontal
+        $0.alignment = .fill
+        $0.distribution = .fill
+        $0.spacing = Screen.width * 0.025
+        return $0
+    }(UIStackView(arrangedSubviews: [weatherEmojiLabel,percentageLabel]))
+    
     private lazy var temperatureStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews:[temperatureHighLabel,temperatureLowLabel])
-        sv.axis = .horizontal
-        sv.alignment = .trailing
-        sv.distribution = .fillEqually
-        sv.spacing = 0
-        return sv
-        
-    }()
+        $0.axis = .horizontal
+        $0.alignment = .trailing
+        $0.distribution = .fillEqually
+        $0.spacing = 0
+        return $0
+    }(UIStackView(arrangedSubviews:[temperatureHighLabel,temperatureLowLabel]))
     //MARK: life Cycle
+    
     override func setup() {
         super.setup()
         addSubviewsForAutoLayout([dayLabel,weatherEmojiStack,temperatureStack])
         activateConstraints()
         
-        
     }
+    
     override func activateConstraints() {
         NSLayoutConstraint.activate([
             dayLabel.leadingAnchor.constraint(equalTo: leadingAnchor),

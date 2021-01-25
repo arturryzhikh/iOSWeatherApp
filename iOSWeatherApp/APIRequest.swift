@@ -14,5 +14,4 @@ protocol APIRequest: Encodable {
     
     var queries: [String:String] { get set }
     
-    
 }

@@ -55,22 +55,22 @@ final class CurrentHeader: ClearCell, Reusable {
     }
     //MARK: Subviews
     let locationLabel: UILabel = {
-        let lbl = UILabel(transparentText: false,font: .locationLabel)
-        lbl.text = "- -"
-        return lbl
-    }()
+        $0.text = "- -"
+        return $0
+    }(UILabel(transparentText: false,font: .locationLabel))
+    
     private let descriptionLabel: UILabel = {
-        let lbl = UILabel(font: .lightTemperature)
-        return lbl
-    }()
+        return $0
+    }(UILabel(font: .lightTemperature))
+    
     private let temperatureLabel: UILabel = {
-        let lbl = UILabel(font: .hugeTemperature)
-        return lbl
-    }()
+       return $0
+    }(UILabel(font: .hugeTemperature))
     
     private let highLowLabel: UILabel = {
         return $0
     }(UILabel(font: .lightTemperature))
+    
     override func activateConstraints() {
         topConstraint = locationLabel.topAnchor.constraint(equalTo: topAnchor,constant: topPadding)
         topConstraint?.isActive = true

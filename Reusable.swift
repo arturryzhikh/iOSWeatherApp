@@ -16,4 +16,3 @@ protocol Reusable: UICollectionReusableView {
     func populateSubviews(with viewModel: ViewModel)
     
 }
-

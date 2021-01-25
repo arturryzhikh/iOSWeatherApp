@@ -35,10 +35,12 @@ final class WeatherService: APIService {
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusOK , let data = data
             
             else {
+                
                 completion(Result.failure(ResponseError.network))
                 
                 return
             }
+            
            guard let decoded = self.decode(data: data, into: T.Response.self) else {
                 completion(Result.failure(ResponseError.decoding))
                 return
@@ -58,11 +60,16 @@ final class WeatherService: APIService {
         urlComponents?.queryItems?.append(URLQueryItem(name: "appid", value: apiKey))
         return urlComponents?.url
     }
+    
     //Decoding JSON
-    func decode<T: Decodable>(data: Data, into model: T.Type) -> T?  {
+    func decode<T: Decodable>(data: Data, into model: T.Type)  ->  T?  {
+        
         let decoder = JSONDecoder()
+        
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         return try? decoder.decode(model.self, from: data)
+        
     }
     
 }

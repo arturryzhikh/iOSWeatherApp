@@ -27,19 +27,18 @@ final class TodayCell: ClearCell, Reusable {
     
     //MARK: Subviews
     private let todayTxtView: UITextView = {
-        let tv = UITextView()
-        tv.textAlignment = .left
-        tv.font = .overView
-        tv.textColor = .weatherWhite
-        tv.backgroundColor = .clear
-        tv.isScrollEnabled = false
-        tv.isUserInteractionEnabled = false
-        tv.textContainerInset = .zero
-        tv.textContainer.maximumNumberOfLines = 4
-        tv.textContainer.lineFragmentPadding = 0
-        tv.textContainer.lineBreakMode = .byWordWrapping
-        return tv
-    }()
+        $0.textAlignment = .left
+        $0.font = .overView
+        $0.textColor = .weatherWhite
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = false
+        $0.isUserInteractionEnabled = false
+        $0.textContainerInset = .zero
+        $0.textContainer.maximumNumberOfLines = 4
+        $0.textContainer.lineFragmentPadding = 0
+        $0.textContainer.lineBreakMode = .byWordWrapping
+        return $0
+    }(UITextView())
     //MARK: Life cycle
     override func setup() {
         super.setup()

@@ -10,6 +10,7 @@ import Foundation
 extension Double  {
     
     var stringTemperature: String {
+        
         if self > -1 && self < 0  {
             return "0°"
         } else {

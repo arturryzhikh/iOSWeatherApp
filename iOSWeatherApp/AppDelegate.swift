@@ -20,7 +20,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
             let rootVC = WeatherController()
             window?.rootViewController = rootVC
             window?.makeKeyAndVisible()

@@ -9,11 +9,13 @@ import UIKit
 final class LinkCell: ClearCell, Reusable {
     
     var viewModel: LinkCellVM? {
-        didSet {
-            if let vm = viewModel {
-                populateSubviews(with: vm)
+        
+        willSet {
+            if let vm = newValue {
+                populateSubviews(with:vm )
             }
         }
+       
     }
     func populateSubviews(with viewModel: LinkCellVM) {
         linkTxtView.attributedText = viewModel.linkAttributedString
@@ -23,6 +25,7 @@ final class LinkCell: ClearCell, Reusable {
         $0.font = .overView
         return $0
     }(UITextView())
+    
     //MARK: Life cycle
     override func setup() {
         super.setup()

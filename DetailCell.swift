@@ -25,13 +25,13 @@ final class DetailCell: ClearCell , Reusable {
     
     //MARK: Subviews
     let detailLabel: UILabel = {
-        let lbl = UILabel(transparentText: true, alignment: .left, font: .extendedInfoTitle)
-        return lbl
-    }()
+        return $0
+    }(UILabel(transparentText: true, alignment: .left, font: .extendedInfoTitle))
+    
     private let valueLabel: UILabel = {
-        let lbl = UILabel(transparentText: false, alignment: .left, font: .extendedInfoValue)
-        return lbl
-    }()
+        return $0
+    }(UILabel(transparentText: false, alignment: .left, font: .extendedInfoValue))
+    
     //MARK: life Cycle
     override func setup() {
         super.setup()
@@ -42,15 +42,18 @@ final class DetailCell: ClearCell , Reusable {
         
         
     }
+    
+    
     private lazy var vStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews:[detailLabel, valueLabel])
-        sv.axis = .vertical
-        sv.alignment = .leading
-        sv.distribution = .fillProportionally
-        sv.spacing = 0
-        return sv
+        $0.axis = .vertical
+        $0.alignment = .leading
+        $0.distribution = .fillProportionally
+        $0.spacing = 0
+        return $0
         
-    }()
+    }(UIStackView(arrangedSubviews:[detailLabel, valueLabel]))
+    
+    
     override func activateConstraints() {
         NSLayoutConstraint.activate([
             vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
